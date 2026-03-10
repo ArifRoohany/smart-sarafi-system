@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="transition duration-300 font-poppins">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Transactions | Smart Sarafi</title>
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+  .active-link{
+    background-color:hsl(209,87%,40%);
+    color:white;
+  }
+
+  /* Modal styles */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+  }
+
+  .modal {
+    background: white;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    transition: all 0.3s;
+  }
+
+  .modal.dark {
+    background: hsl(211, 100%, 12%);
+    color: white;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .modal-body {
+    margin-top: 10px;
+  }
+</style>
+</head>
+
+<body class="bg-sectionColor dark:bg-darkBodyColor transition duration-300 min-h-screen">
+
+<div class="flex min-h-screen">
+
+<!-- Sidebar -->
+<aside class="w-64 bg-white dark:bg-darkSectionColor p-6 flex flex-col transition duration-300">
+  <img src="images/logo.png" width="200">
+  <nav class="flex flex-col gap-4 mt-10 text-gray-800 dark:text-white">
+    <a href="dashboard.html" class="flex items-center gap-3 p-3 rounded hover:bg-primaryColorLight hover:text-white transition">
+      <i class="fa-solid fa-chart-line"></i>
+      <span class="lang" data-fa="داشبورد" data-en="Dashboard">داشبورد</span>
+    </a>
+    <a href="customers.html" class="flex items-center gap-3 p-3 rounded hover:bg-primaryColorLight hover:text-white transition">
+      <i class="fa-solid fa-users"></i>
+      <span class="lang" data-fa="کاربران" data-en="Users">کاربران</span>
+    </a>
+    <a href="transactions.html" class="flex items-center gap-3 p-3 rounded active-link">
+      <i class="fa-solid fa-money-bill-transfer"></i>
+      <span class="lang" data-fa="تراکنش‌ها" data-en="Transactions">تراکنش‌ها</span>
+    </a>
+    <a href="#" class="flex items-center gap-3 p-3 rounded hover:bg-primaryColorLight hover:text-white transition">
+      <i class="fa-solid fa-gear"></i>
+      <span class="lang" data-fa="تنظیمات" data-en="Settings">تنظیمات</span>
+    </a>
+  </nav>
+</aside>
+
+<!-- Main -->
+<main class="flex-1 p-6 transition duration-300">
+
+<!-- Navbar -->
+<div class="flex justify-between items-center mb-6">
+  <h1 class="text-2xl font-semibold text-primaryColor dark:text-whiteColor lang"
+      data-fa="مدیریت تراکنش‌ها"
+      data-en="Transactions Management">
+    مدیریت تراکنش‌ها
+  </h1>
+
+  <div class="flex items-center gap-4">
+
+    <!-- Language Switch -->
+    <div class="relative w-32">
+      <select id="langSwitch" class="appearance-none w-full px-4 py-2 pr-8 rounded-lg border border-gray-300 dark:border-gray-600 text-primaryColor dark:text-whiteColor bg-white dark:bg-darkSectionColor shadow-sm focus:outline-none transition">
+        <option value="fa">فارسی</option>
+        <option value="en">English</option>
+      </select>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300">
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button id="themeToggle"
+      class="w-12 h-12 flex items-center justify-center text-primaryColor dark:text-white border rounded-full">
+      <i id="themeIcon" class="fa-solid fa-moon text-xl"></i>
+    </button>
+
+    <!-- Logout -->
+    <button class="flex items-center gap-2 border border-gray-300 dark:border-gray-600 text-primaryColor dark:text-whiteColor bg-white dark:bg-darkSectionColor px-4 py-2 rounded-lg shadow transition font-medium lang"
+      data-fa="خروج" data-en="Logout">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      خروج
+    </button>
+
+  </div>
+</div>
+
+<!-- Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+
+  <div class="bg-white dark:bg-darkSectionColor p-5 rounded-2xl shadow flex justify-between">
+    <div>
+      <h2 class="lang text-primaryColor dark:text-whiteColor" data-fa="کل تراکنش‌ها" data-en="Total Transactions">کل تراکنش‌ها</h2>
+      <p class="text-2xl font-bold text-primaryColor dark:text-whiteColor">245</p>
+    </div>
+    <i class="fa-solid fa-money-bill-transfer text-3xl text-primaryColor dark:text-whiteColor"></i>
+  </div>
+
+  <div class="bg-white dark:bg-darkSectionColor p-5 rounded-2xl shadow flex justify-between">
+    <div>
+      <h2 class="lang text-primaryColor dark:text-whiteColor" data-fa="موفق" data-en="Successful">موفق</h2>
+      <p class="text-2xl font-bold text-green-500">198</p>
+    </div>
+    <i class="fa-solid fa-check text-3xl text-green-500"></i>
+  </div>
+
+  <div class="bg-white dark:bg-darkSectionColor p-5 rounded-2xl shadow flex justify-between">
+    <div>
+      <h2 class="lang text-primaryColor dark:text-whiteColor" data-fa="ناموفق" data-en="Failed">ناموفق</h2>
+      <p class="text-2xl font-bold text-red-500">47</p>
+    </div>
+    <i class="fa-solid fa-xmark text-3xl text-red-500"></i>
+  </div>
+
+  <div class="bg-white dark:bg-darkSectionColor p-5 rounded-2xl shadow flex justify-between">
+    <div>
+      <h2 class="lang text-primaryColor dark:text-whiteColor" data-fa="امروز" data-en="Today">امروز</h2>
+      <p class="text-2xl font-bold text-purple-500">12</p>
+    </div>
+    <i class="fa-solid fa-calendar-day text-3xl text-purple-500"></i>
+  </div>
+
+</div>
+
+<!-- Chart -->
+<div class="bg-white dark:bg-darkSectionColor p-5 rounded-2xl shadow mb-6" style="height:300px;">
+  <canvas id="transactionChart" class="w-full h-full"></canvas>
+</div>
+
+<!-- Search + Add -->
+<div class="flex flex-col md:flex-row md:justify-between gap-4 mb-6">
+
+  <div class="relative w-full md:w-80">
+    <input type="text" placeholder="Search transaction..." id="transactionSearch"
+      class="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-primaryColor placeholder-gray-400 text-gray-800 dark:text-whiteColor transition text-sm">
+    <i class="fa-solid fa-magnifying-glass absolute top-1/2 transform -translate-y-1/2 right-3 text-gray-400 dark:text-gray-300 pointer-events-none"></i>
+  </div>
+
+  <button id="addTransactionBtn" class="bg-primaryColor hover:bg-primaryColorLight text-white px-5 py-2 rounded-lg flex items-center gap-2">
+    <i class="fa-solid fa-plus"></i>
+    <span class="lang" data-fa="افزودن تراکنش" data-en="Add Transaction">افزودن تراکنش</span>
+  </button>
+
+</div>
+
+<!-- Table -->
+<div class="bg-white dark:bg-darkSectionColor rounded-sm shadow overflow-x-auto">
+<table class="min-w-full text-sm">
+<thead class="bg-primaryColor dark:bg-primaryColor text-whiteColor">
+<tr>
+  <th class="px-6 py-3">ID</th>
+  <th class="px-6 py-3 lang" data-fa="فرستنده" data-en="Sender">فرستنده</th>
+  <th class="px-6 py-3 lang" data-fa="گیرنده" data-en="Receiver">گیرنده</th>
+  <th class="px-6 py-3 lang" data-fa="ارز" data-en="Currency">ارز</th>
+  <th class="px-6 py-3 lang" data-fa="مقدار" data-en="Amount">مقدار</th>
+  <th class="px-6 py-3 lang" data-fa="وضعیت" data-en="Status">وضعیت</th>
+  <th class="px-6 py-3 lang" data-fa="تاریخ" data-en="Date">تاریخ</th>
+  <th class="px-6 py-3 lang" data-fa="عملیات" data-en="Actions">عملیات</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b dark:border-gray-700">
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">1</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">Ahmad Khan</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">Ali Reza</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">USD</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">$500</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">
+    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs lang" data-fa="موفق" data-en="Successful">موفق</span>
+  </td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">2026-03-10</td>
+  <td class="px-6 py-4 flex gap-3">
+    <button class="text-blue-500"><i class="fa-solid fa-eye"></i></button>
+    <button class="text-red-500"><i class="fa-solid fa-trash"></i></button>
+  </td>
+</tr>
+<tr>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">2</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">Ali Reza</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">Ahmad Khan</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">EUR</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">€200</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">
+    <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs lang" data-fa="ناموفق" data-en="Failed">ناموفق</span>
+  </td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">2026-03-10</td>
+  <td class="px-6 py-4 flex gap-3">
+    <button class="text-blue-500"><i class="fa-solid fa-eye"></i></button>
+    <button class="text-red-500"><i class="fa-solid fa-trash"></i></button>
+  </td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</main>
+</div>
+
+<!-- Modal -->
+<div id="addTransactionModal" class="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="lang" data-fa="افزودن تراکنش جدید" data-en="Add New Transaction">افزودن تراکنش جدید</h2>
+      <button id="closeModal" class="text-red-500 text-xl">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="flex flex-col gap-4">
+        <input type="text" placeholder="Sender" id="modalSender" class="w-full border px-4 py-2 rounded-lg">
+        <input type="text" placeholder="Receiver" id="modalReceiver" class="w-full border px-4 py-2 rounded-lg">
+        <input type="text" placeholder="Currency" id="modalCurrency" class="w-full border px-4 py-2 rounded-lg">
+        <input type="number" placeholder="Amount" id="modalAmount" class="w-full border px-4 py-2 rounded-lg">
+        <select id="modalStatus" class="w-full border px-4 py-2 rounded-lg">
+          <option value="Successful" class="lang" data-fa="موفق" data-en="Successful">موفق</option>
+          <option value="Failed" class="lang" data-fa="ناموفق" data-en="Failed">ناموفق</option>
+        </select>
+        <button id="saveTransaction" class="bg-primaryColor hover:bg-primaryColorLight text-white px-5 py-2 rounded-lg lang"
+                data-fa="ذخیره" data-en="Save">ذخیره</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  // Dark/Light Mode Toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+
+  themeToggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+
+    themeIcon.classList.toggle('fa-moon');
+    themeIcon.classList.toggle('fa-sun');
+
+    updateChartColors();
+
+    const modal = document.getElementById('addTransactionModal');
+    if(modal){
+      modal.querySelector('.modal').classList.toggle('dark');
+    }
+  });
+
+
+  // Language Switch
+  const langSwitch = document.getElementById('langSwitch');
+  const searchInput = document.getElementById('transactionSearch');
+
+
+  // Chart setup
+  const ctx = document.getElementById('transactionChart').getContext('2d');
+
+  const chartColors = {
+
+    light: {
+      borderColor: 'hsl(209,87%,40%)',
+      backgroundColor: 'rgba(29,78,216,0.2)',
+      textColor:'hsl(209,87%,20%)',
+      gridColor:'rgba(0,0,0,0.05)'
+    },
+
+    dark: {
+      borderColor:'#60a5fa',
+      backgroundColor:'rgba(96,165,250,0.2)',
+      textColor:'#ffffff',
+      gridColor:'rgba(255,255,255,0.1)'
+    }
+
+  };
+
+
+  let transactionChart = new Chart(ctx, {
+
+    type: 'line',
+
+    data: {
+      labels: ['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'],
+
+      datasets: [{
+        label: 'تراکنش‌های موفق',
+        data: [5,8,6,10,4,7,3],
+        borderColor: chartColors.light.borderColor,
+        backgroundColor: chartColors.light.backgroundColor,
+        tension: 0.4,
+        fill: true,
+        pointBackgroundColor: chartColors.light.borderColor,
+        pointBorderColor: chartColors.light.borderColor,
+        pointRadius:5
+      }]
+    },
+
+    options: {
+      responsive:true,
+      maintainAspectRatio:false,
+
+      plugins:{
+        legend:{
+          labels:{
+            color:chartColors.light.textColor,
+            font:{size:14}
+          }
+        }
+      },
+
+      scales:{
+        x:{
+          ticks:{
+            color:chartColors.light.textColor,
+            font:{size:12}
+          },
+          grid:{
+            color:chartColors.light.gridColor
+          }
+        },
+
+        y:{
+          ticks:{
+            color:chartColors.light.textColor,
+            font:{size:12}
+          },
+          grid:{
+            color:chartColors.light.gridColor
+          }
+        }
+      }
+    }
+
+  });
+
+
+
+  function updateChartColors(){
+
+    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    const colors = chartColors[theme];
+
+    transactionChart.data.datasets[0].borderColor = colors.borderColor;
+    transactionChart.data.datasets[0].backgroundColor = colors.backgroundColor;
+
+    transactionChart.data.datasets[0].pointBackgroundColor = colors.borderColor;
+    transactionChart.data.datasets[0].pointBorderColor = colors.borderColor;
+
+    transactionChart.options.plugins.legend.labels.color = colors.textColor;
+
+    transactionChart.options.scales.x.ticks.color = colors.textColor;
+    transactionChart.options.scales.x.grid.color = colors.gridColor;
+
+    transactionChart.options.scales.y.ticks.color = colors.textColor;
+    transactionChart.options.scales.y.grid.color = colors.gridColor;
+
+    transactionChart.update();
+  }
+
+
+
+  function updateLanguage(lang){
+
+    document.querySelectorAll('.lang').forEach(el=>{
+      el.textContent = el.dataset[lang];
+    });
+
+    if(lang === 'fa'){
+
+      searchInput.placeholder = 'جستجوی تراکنش...';
+      searchInput.dir = 'rtl';
+
+      transactionChart.data.labels = [
+        'شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'
+      ];
+
+      transactionChart.data.datasets[0].label = 'تراکنش‌های موفق';
+
+    }else{
+
+      searchInput.placeholder = 'Search transaction...';
+      searchInput.dir = 'ltr';
+
+      transactionChart.data.labels = [
+        'Sat','Sun','Mon','Tue','Wed','Thu','Fri'
+      ];
+
+      transactionChart.data.datasets[0].label = 'Successful Transactions';
+
+    }
+
+    transactionChart.update();
+  }
+
+
+  // Default language
+  updateLanguage(langSwitch.value);
+
+  langSwitch.addEventListener('change', ()=>{
+    updateLanguage(langSwitch.value);
+  });
+
+
+
+  // Modal controls
+  const addTransactionBtn = document.getElementById('addTransactionBtn');
+  const addTransactionModal = document.getElementById('addTransactionModal');
+  const closeModal = document.getElementById('closeModal');
+
+  if(addTransactionBtn){
+    addTransactionBtn.addEventListener('click', ()=>{
+      addTransactionModal.style.display = 'flex';
+    });
+  }
+
+  if(closeModal){
+    closeModal.addEventListener('click', ()=>{
+      addTransactionModal.style.display = 'none';
+    });
+  }
+
+
+  // Save button (demo)
+  const saveTransaction = document.getElementById('saveTransaction');
+
+  if(saveTransaction){
+    saveTransaction.addEventListener('click', ()=>{
+      addTransactionModal.style.display = 'none';
+    });
+  }
+
+</script>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="transition duration-300 font-poppins">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Customers | Smart Sarafi</title>
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+  .active-link{
+    background-color:hsl(209,87%,40%);
+    color:white;
+  }
+</style>
+</head>
+
+<body class="bg-sectionColor dark:bg-darkBodyColor transition duration-300 min-h-screen">
+
+<div class="flex min-h-screen">
+
+<!-- Sidebar -->
+<aside class="w-64 bg-white dark:bg-darkSectionColor p-6 flex flex-col transition duration-300">
+  <img src="images/logo.png" width="200">
+  <nav class="flex flex-col gap-4 mt-10 text-gray-800 dark:text-white">
+    <a href="dashboard.html" class="flex items-center gap-3 p-3 rounded hover:bg-primaryColorLight hover:text-white transition">
+      <i class="fa-solid fa-chart-line"></i>
+      <span class="lang" data-fa="داشبورد" data-en="Dashboard">داشبورد</span>
+    </a>
+    <a href="customers.html" class="flex items-center gap-3 p-3 rounded active-link">
+      <i class="fa-solid fa-users"></i>
+      <span class="lang" data-fa="کاربران" data-en="Users">کاربران</span>
+    </a>
+    <a href="transactions.html" class="flex items-center gap-3 p-3 rounded hover:bg-primaryColorLight hover:text-white transition">
+      <i class="fa-solid fa-money-bill-transfer"></i>
+      <span class="lang" data-fa="تراکنش‌ها" data-en="Transactions">تراکنش‌ها</span>
+    </a>
+    <a href="#" class="flex items-center gap-3 p-3 rounded hover:bg-primaryColorLight hover:text-white transition">
+      <i class="fa-solid fa-gear"></i>
+      <span class="lang" data-fa="تنظیمات" data-en="Settings">تنظیمات</span>
+    </a>
+  </nav>
+</aside>
+
+<!-- Main -->
+<main class="flex-1 p-6 transition duration-300">
+
+<!-- Navbar -->
+<div class="flex justify-between items-center mb-6">
+  <h1 class="text-2xl font-semibold text-primaryColor dark:text-whiteColor lang"
+      data-fa="مدیریت کاربران"
+      data-en="Customers Management">
+    مدیریت کاربران
+  </h1>
+
+  <div class="flex items-center gap-4">
+
+    <!-- Language Switch -->
+    <div class="relative w-32">
+      <select id="langSwitch" class="appearance-none w-full px-4 py-2 pr-8 rounded-lg border border-gray-300 dark:border-gray-600 text-primaryColor dark:text-whiteColor bg-white dark:bg-darkSectionColor shadow-sm focus:outline-none transition">
+        <option value="fa">فارسی</option>
+        <option value="en">English</option>
+      </select>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300">
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button id="themeToggle"
+      class="w-12 h-12 flex items-center justify-center text-primaryColor dark:text-white border rounded-full">
+      <i id="themeIcon" class="fa-solid fa-moon text-xl"></i>
+    </button>
+
+    <!-- Logout -->
+    <button class="flex items-center gap-2 border border-gray-300 dark:border-gray-600 text-primaryColor dark:text-whiteColor bg-white dark:bg-darkSectionColor px-4 py-2 rounded-lg shadow transition font-medium lang"
+      data-fa="خروج" data-en="Logout">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      خروج
+    </button>
+
+  </div>
+</div>
+
+<!-- Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+
+  <div class="bg-white dark:bg-darkSectionColor p-5 rounded-2xl shadow flex justify-between">
+    <div>
+      <h2 class="lang text-primaryColor dark:text-whiteColor" data-fa="کل کاربران" data-en="Total Customers">کل کاربران</h2>
+      <p class="text-2xl font-bold text-primaryColor dark:text-whiteColor">120</p>
+    </div>
+    <i class="fa-solid fa-users text-3xl text-primaryColor dark:text-whiteColor"></i>
+  </div>
+
+  <div class="bg-white dark:bg-darkSectionColor p-5 rounded-2xl shadow flex justify-between">
+    <div>
+      <h2 class="lang text-primaryColor dark:text-whiteColor" data-fa="فعال" data-en="Active">فعال</h2>
+      <p class="text-2xl font-bold text-primaryColor dark:text-whiteColor">98</p>
+    </div>
+    <i class="fa-solid fa-user-check text-3xl text-green-500"></i>
+  </div>
+
+  <div class="bg-white dark:bg-darkSectionColor p-5 rounded-2xl shadow flex justify-between">
+    <div>
+      <h2 class="lang text-primaryColor dark:text-whiteColor" data-fa="امروز" data-en="New Today">امروز</h2>
+      <p class="text-2xl font-bold text-primaryColor dark:text-whiteColor">5</p>
+    </div>
+    <i class="fa-solid fa-user-plus text-3xl text-purple-500"></i>
+  </div>
+
+  <div class="bg-white dark:bg-darkSectionColor p-5 rounded-2xl shadow flex justify-between">
+    <div>
+      <h2 class="lang text-primaryColor dark:text-whiteColor" data-fa="VIP" data-en="VIP Customers">VIP</h2>
+      <p class="text-2xl font-bold text-primaryColor dark:text-whiteColor">8</p>
+    </div>
+    <i class="fa-solid fa-star text-3xl text-yellow-500"></i>
+  </div>
+
+</div>
+
+<!-- Chart -->
+<div class="bg-white dark:bg-darkSectionColor p-5 rounded-2xl shadow mb-6" style="height:300px;">
+  <canvas id="customerChart" class="w-full h-full"></canvas>
+</div>
+
+<!-- Search + Add -->
+<div class="flex flex-col md:flex-row md:justify-between gap-4 mb-6">
+
+  <div class="relative w-full md:w-80">
+    <input type="text" placeholder="Search customer..." id="customerSearch"
+      class="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-primaryColor placeholder-gray-400 text-gray-800 dark:text-whiteColor transition text-sm">
+    <i class="fa-solid fa-magnifying-glass absolute top-1/2 transform -translate-y-1/2 right-3 text-gray-400 dark:text-gray-300 pointer-events-none"></i>
+  </div>
+
+  <button id="addCustomerBtn" class="bg-primaryColor hover:bg-primaryColorLight text-white px-5 py-2 rounded-lg flex items-center gap-2">
+    <i class="fa-solid fa-user-plus"></i>
+    <span class="lang" data-fa="افزودن کاربر" data-en="Add Customer">افزودن کاربر</span>
+  </button>
+
+</div>
+
+<!-- Table -->
+<div class="bg-white dark:bg-darkSectionColor rounded-sm shadow overflow-x-auto">
+<table class="min-w-full text-sm">
+<thead class="bg-primaryColor dark:bg-primaryColor text-whiteColor">
+<tr>
+  <th class="px-6 py-3">ID</th>
+  <th class="px-6 py-3 lang" data-fa="نام" data-en="Name">نام</th>
+  <th class="px-6 py-3 lang" data-fa="شماره" data-en="Phone">شماره</th>
+  <th class="px-6 py-3 lang" data-fa="ارز" data-en="Currency">ارز</th>
+  <th class="px-6 py-3 lang" data-fa="موجودی" data-en="Balance">موجودی</th>
+  <th class="px-6 py-3 lang" data-fa="وضعیت" data-en="Status">وضعیت</th>
+  <th class="px-6 py-3 lang" data-fa="عملیات" data-en="Actions">عملیات</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b dark:border-gray-700">
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">1</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">Ahmad Khan</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">070000000</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">USD</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">$2500</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">
+    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs">Active</span>
+  </td>
+  <td class="px-6 py-4 flex gap-3">
+    <button class="text-blue-500"><i class="fa-solid fa-eye"></i></button>
+    <button class="text-green-500"><i class="fa-solid fa-pen"></i></button>
+    <button class="text-red-500"><i class="fa-solid fa-trash"></i></button>
+  </td>
+</tr>
+<tr>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">2</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">Ali Reza</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">079000000</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">USD</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">$800</td>
+  <td class="px-6 py-4 text-primaryColor dark:text-whiteColor">
+    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs">Active</span>
+  </td>
+  <td class="px-6 py-4 flex gap-3">
+    <button class="text-blue-500"><i class="fa-solid fa-eye"></i></button>
+    <button class="text-green-500"><i class="fa-solid fa-pen"></i></button>
+    <button class="text-red-500"><i class="fa-solid fa-trash"></i></button>
+  </td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- Modal Add Customer -->
+<div id="addCustomerModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 transition-opacity duration-300">
+  <div class="bg-white dark:bg-darkSectionColor rounded-xl w-96 p-6 relative shadow-lg transition-colors duration-300">
+    <h2 class="text-xl font-semibold mb-4 text-primaryColor dark:text-whiteColor lang" data-fa="افزودن کاربر جدید" data-en="Add New Customer">افزودن کاربر جدید</h2>
+    
+    <form id="customerForm" class="flex flex-col gap-4">
+      <input type="text" name="name" placeholder="نام" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none text-gray-800 dark:text-whiteColor bg-white dark:bg-darkSectionColor transition-colors duration-300">
+      <input type="text" name="phone" placeholder="شماره" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none text-gray-800 dark:text-whiteColor bg-white dark:bg-darkSectionColor transition-colors duration-300">
+      <input type="text" name="currency" placeholder="ارز" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none text-gray-800 dark:text-whiteColor bg-white dark:bg-darkSectionColor transition-colors duration-300">
+      <input type="text" name="balance" placeholder="موجودی" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none text-gray-800 dark:text-whiteColor bg-white dark:bg-darkSectionColor transition-colors duration-300">
+      <select name="status" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none text-gray-800 dark:text-whiteColor bg-white dark:bg-darkSectionColor transition-colors duration-300">
+        <option value="active" class="lang" data-fa="فعال" data-en="Active">فعال</option>
+        <option value="inactive" class="lang" data-fa="غیرفعال" data-en="Inactive">غیرفعال</option>
+        <option value="vip" class="lang" data-fa="VIP" data-en="VIP">VIP</option>
+      </select>
+
+      <div class="flex justify-end gap-3 mt-4">
+        <button type="button" id="closeModal" class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-primaryColor dark:text-whiteColor lang" data-fa="بستن" data-en="Close">بستن</button>
+        <button type="submit" class="bg-primaryColor hover:bg-primaryColorLight text-white px-4 py-2 rounded-lg lang" data-fa="ذخیره" data-en="Save">ذخیره</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+  // Dark/Light Mode Toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+
+  themeToggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+    themeIcon.classList.toggle('fa-moon');
+    themeIcon.classList.toggle('fa-sun');
+    updateChartColors();
+  });
+
+  // Language Switch
+  const langSwitch = document.getElementById('langSwitch');
+  const searchInput = document.getElementById('customerSearch');
+
+  // Chart setup
+  const ctx = document.getElementById('customerChart').getContext('2d');
+
+  const chartColors = {
+    light: {
+      borderColor: 'hsl(209,87%,40%)',
+      backgroundColor: 'rgba(29,78,216,0.2)',
+      textColor: 'hsl(209,87%,20%)',
+      gridColor: 'rgba(0,0,0,0.05)'
+    },
+    dark: {
+      borderColor: '#60a5fa',
+      backgroundColor: 'rgba(96,165,250,0.2)',
+      textColor: '#ffffff',
+      gridColor: 'rgba(255,255,255,0.1)'
+    }
+  };
+
+  let customerChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'],
+      datasets: [{
+        label: 'کاربران ثبت‌شده',
+        data: [12, 15, 8, 20, 10, 7, 5],
+        borderColor: chartColors.light.borderColor,
+        backgroundColor: chartColors.light.backgroundColor,
+        tension: 0.4,
+        fill: true,
+        pointBackgroundColor: chartColors.light.borderColor,
+        pointBorderColor: chartColors.light.borderColor,
+        pointRadius: 5
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: chartColors.light.textColor, font: {size:14} } }
+      },
+      scales: {
+        x: { ticks: { color: chartColors.light.textColor, font:{size:12} }, grid:{color:chartColors.light.gridColor} },
+        y: { ticks: { color: chartColors.light.textColor, font:{size:12} }, grid:{color:chartColors.light.gridColor} }
+      }
+    }
+  });
+
+  function updateChartColors() {
+    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    const colors = chartColors[theme];
+
+    customerChart.data.datasets[0].borderColor = colors.borderColor;
+    customerChart.data.datasets[0].backgroundColor = colors.backgroundColor;
+    customerChart.data.datasets[0].pointBackgroundColor = colors.borderColor;
+    customerChart.data.datasets[0].pointBorderColor = colors.borderColor;
+
+    customerChart.options.plugins.legend.labels.color = colors.textColor;
+    customerChart.options.scales.x.ticks.color = colors.textColor;
+    customerChart.options.scales.x.grid.color = colors.gridColor;
+    customerChart.options.scales.y.ticks.color = colors.textColor;
+    customerChart.options.scales.y.grid.color = colors.gridColor;
+
+    customerChart.update();
+  }
+
+  function updateLanguage(lang) {
+    document.querySelectorAll('.lang').forEach(el => { el.textContent = el.dataset[lang]; });
+
+    if (lang === 'fa') {
+      searchInput.placeholder = 'جستجوی کاربر...';
+      searchInput.dir = 'rtl';
+      customerChart.data.labels = ['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'];
+      customerChart.data.datasets[0].label = 'کاربران ثبت‌شده';
+    } else {
+      searchInput.placeholder = 'Search customer...';
+      searchInput.dir = 'ltr';
+      customerChart.data.labels = ['Sat','Sun','Mon','Tue','Wed','Thu','Fri'];
+      customerChart.data.datasets[0].label = 'Registered Customers';
+    }
+    customerChart.update();
+  }
+
+  updateLanguage(langSwitch.value);
+  langSwitch.addEventListener('change', () => { updateLanguage(langSwitch.value); });
+
+  // Modal Add Customer
+  const addCustomerBtn = document.getElementById('addCustomerBtn');
+  const addCustomerModal = document.getElementById('addCustomerModal');
+  const closeModal = document.getElementById('closeModal');
+  const customerForm = document.getElementById('customerForm');
+
+  addCustomerBtn.addEventListener('click', () => {
+    addCustomerModal.classList.remove('hidden');
+  });
+
+  closeModal.addEventListener('click', () => {
+    addCustomerModal.classList.add('hidden');
+  });
+
+  customerForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    addCustomerModal.classList.add('hidden');
+    customerForm.reset();
+  });
+
+  function updateModalLanguage(lang) {
+    document.querySelectorAll('#addCustomerModal .lang').forEach(el => {
+      el.textContent = el.dataset[lang];
+    });
+
+    const placeholders = customerForm.querySelectorAll('input, select');
+    placeholders[0].placeholder = lang === 'fa' ? 'نام' : 'Name';
+    placeholders[1].placeholder = lang === 'fa' ? 'شماره' : 'Phone';
+    placeholders[2].placeholder = lang === 'fa' ? 'ارز' : 'Currency';
+    placeholders[3].placeholder = lang === 'fa' ? 'موجودی' : 'Balance';
+    placeholders[4].querySelectorAll('option')[0].textContent = lang === 'fa' ? 'فعال' : 'Active';
+    placeholders[4].querySelectorAll('option')[1].textContent = lang === 'fa' ? 'غیرفعال' : 'Inactive';
+    placeholders[4].querySelectorAll('option')[2].textContent = 'VIP';
+  }
+
+  langSwitch.addEventListener('change', () => {
+    updateModalLanguage(langSwitch.value);
+  });
+
+  updateModalLanguage(langSwitch.value);
+</script>
+
+</body>
+</html>
