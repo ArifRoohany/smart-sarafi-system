@@ -1,105 +1,251 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-const themeBtn = document.getElementById("themeToggle")
-const icon = document.getElementById("themeIcon")
-const html = document.documentElement
+    /* ===============================
+       نمایش / مخفی کردن پسورد
+    =============================== */
 
-// Elements for language
-const titleSystem = document.getElementById("titleSystem")
-const bankText = document.getElementById("bankText")
-const welcomeText = document.getElementById("welcomeText")
-const descText = document.getElementById("descText")
-const loginTitle = document.getElementById("loginTitle")
-const userLabel = document.getElementById("userLabel")
-const passLabel = document.getElementById("passLabel")
-const rememberText = document.getElementById("rememberText")
-const forgotText = document.getElementById("forgotText")
-const loginBtn = document.getElementById("loginBtn")
+    window.togglePassword = function () {
 
-// Load saved theme
-const savedTheme = localStorage.getItem("theme")
+        const input = document.getElementById("passwordInput");
+        const icon = document.getElementById("passwordIcon");
 
-if(savedTheme === "dark"){
-html.classList.add("dark")
-icon.classList.replace("fa-moon","fa-sun")
-}
+        // اگر عناصر وجود نداشتند
+        if (!input || !icon) return;
 
-// Dark Mode Toggle
-themeBtn.addEventListener("click", () => {
+        // تغییر نوع input
+        if (input.type === "password") {
 
-html.classList.toggle("dark")
+            input.type = "text";
+            icon.classList.replace("fa-eye", "fa-eye-slash");
 
-if(html.classList.contains("dark")){
-icon.classList.replace("fa-moon","fa-sun")
-localStorage.setItem("theme","dark")
-}else{
-icon.classList.replace("fa-sun","fa-moon")
-localStorage.setItem("theme","light")
-}
+        } else {
 
-})
+            input.type = "password";
+            icon.classList.replace("fa-eye-slash", "fa-eye");
 
-// Password Toggle
-window.togglePassword = function(){
+        }
+    };
 
-let input = document.getElementById("passwordInput")
-let icon = document.getElementById("passwordIcon")
 
-if(input.type === "password"){
-input.type = "text"
-icon.classList.replace("fa-eye","fa-eye-slash")
-}else{
-input.type = "password"
-icon.classList.replace("fa-eye-slash","fa-eye")
-}
 
-}
+    /* ===============================
+       چارت تراکنش‌ها
+    =============================== */
 
-// Language Switch
-const langSwitch = document.getElementById("langSwitch")
+    const transactionCanvas = document.getElementById("transactionChart");
 
-langSwitch.addEventListener("change",function(){
+    if (transactionCanvas) {
 
-if(this.value === "en"){
+        const ctx = transactionCanvas.getContext("2d");
 
-document.documentElement.dir="ltr"
-document.documentElement.lang="en"
+        new Chart(ctx, {
 
-titleSystem.innerText="Smart Sarafi System"
-bankText.innerText="Approved by Afghanistan Bank"
-welcomeText.innerText="Welcome!"
-descText.innerText="Login to your account and manage your dashboard."
+            type: "line",
 
-loginTitle.innerText="Login to Smart Sarafi System"
+            data: {
 
-userLabel.innerText="Username"
-passLabel.innerText="Password"
+                labels: [
+                    "شنبه",
+                    "یکشنبه",
+                    "دوشنبه",
+                    "سه‌شنبه",
+                    "چهارشنبه",
+                    "پنجشنبه",
+                    "جمعه"
+                ],
 
-rememberText.innerText="Remember me"
-forgotText.innerText="Forgot password?"
-loginBtn.innerText="Login"
+                datasets: [{
 
-}else{
+                    label: "تراکنش‌ها",
 
-document.documentElement.dir="rtl"
-document.documentElement.lang="fa"
+                    data: [12, 15, 8, 20, 10, 7, 5],
 
-titleSystem.innerText="سیستم صرافی هوشمند"
-bankText.innerText="تایید شده د افغانستان بانک"
-welcomeText.innerText="خوش آمدید!"
-descText.innerText="برای دسترسی به حساب کاربری خود وارد شوید و داشبورد خود را مدیریت کنید."
+                    borderColor: "hsl(209,87%,40%)",
+                    backgroundColor: "rgba(29,78,216,0.2)",
 
-loginTitle.innerText="ورود به سیستم صرافی هوشمند"
+                    tension: 0.4,
+                    fill: true,
+                    pointRadius: 5
 
-userLabel.innerText="نام کاربری"
-passLabel.innerText="رمز عبور"
+                }]
+            },
 
-rememberText.innerText="مرا به خاطر بسپار"
-forgotText.innerText="رمز عبور خود را فراموش کرده‌اید؟"
-loginBtn.innerText="ورود"
+            options: {
 
-}
+                responsive: true,
+                maintainAspectRatio: false
 
-})
+            }
 
-})
+        });
+
+    }
+
+
+
+    /* ===============================
+       چارت کاربران
+    =============================== */
+
+    const customerCanvas = document.getElementById("customerChart");
+
+    if (customerCanvas) {
+
+        const ctx = customerCanvas.getContext("2d");
+
+        new Chart(ctx, {
+
+            type: "line",
+
+            data: {
+
+                labels: [
+                    "شنبه",
+                    "یکشنبه",
+                    "دوشنبه",
+                    "سه‌شنبه",
+                    "چهارشنبه",
+                    "پنجشنبه",
+                    "جمعه"
+                ],
+
+                datasets: [{
+
+                    label: "کاربران ثبت‌شده",
+
+                    data: [12, 15, 8, 20, 10, 7, 5],
+
+                    borderColor: "hsl(209,87%,40%)",
+                    backgroundColor: "rgba(29,78,216,0.2)",
+
+                    tension: 0.4,
+                    fill: true
+
+                }]
+            },
+
+            options: {
+
+                responsive: true,
+                maintainAspectRatio: false
+
+            }
+
+        });
+
+    }
+
+
+
+    /* ===============================
+       فعال شدن لینک سایدبار
+    =============================== */
+
+    const sidebarLinks = document.querySelectorAll("aside nav a");
+
+    sidebarLinks.forEach(link => {
+
+        link.addEventListener("click", function () {
+
+            // حذف active از همه لینک‌ها
+            sidebarLinks.forEach(l => l.classList.remove("active-link"));
+
+            // اضافه کردن active به لینک کلیک شده
+            this.classList.add("active-link");
+
+        });
+
+    });
+
+
+
+    /* ===============================
+       مودال افزودن کاربر
+    =============================== */
+
+    const addCustomerBtn = document.getElementById("addCustomerBtn");
+    const addCustomerModal = document.getElementById("addCustomerModal");
+    const closeCustomerModal = document.getElementById("closeModal");
+    const customerForm = document.getElementById("customerForm");
+
+    // باز کردن مودال
+    if (addCustomerBtn && addCustomerModal) {
+
+        addCustomerBtn.addEventListener("click", () => {
+
+            addCustomerModal.classList.remove("hidden");
+
+        });
+
+    }
+
+    // بستن مودال
+    if (closeCustomerModal && addCustomerModal) {
+
+        closeCustomerModal.addEventListener("click", () => {
+
+            addCustomerModal.classList.add("hidden");
+
+        });
+
+    }
+
+    // ارسال فرم
+    if (customerForm && addCustomerModal) {
+
+        customerForm.addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+            addCustomerModal.classList.add("hidden");
+
+            customerForm.reset();
+
+        });
+
+    }
+
+
+
+    /* ===============================
+       مودال افزودن تراکنش
+    =============================== */
+
+    const addTransactionBtn = document.getElementById("addTransactionBtn");
+    const transactionModal = document.getElementById("addTransactionModal");
+    const saveTransactionBtn = document.getElementById("saveTransaction");
+
+    // باز کردن مودال
+    if (addTransactionBtn && transactionModal) {
+
+        addTransactionBtn.addEventListener("click", () => {
+
+            transactionModal.style.display = "flex";
+
+        });
+
+    }
+
+    // بستن مودال
+    if (closeCustomerModal && transactionModal) {
+
+        closeCustomerModal.addEventListener("click", () => {
+
+            transactionModal.style.display = "none";
+
+        });
+
+    }
+
+    // ذخیره تراکنش
+    if (saveTransactionBtn && transactionModal) {
+
+        saveTransactionBtn.addEventListener("click", () => {
+
+            transactionModal.style.display = "none";
+
+        });
+
+    }
+
+});
