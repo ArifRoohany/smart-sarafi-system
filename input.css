@@ -19,6 +19,17 @@
 
 @layer components {
 
+    /* وقتی سایدبار جمع شده */
+.sidebar-collapsed {
+  width: 0 !important;
+  overflow: hidden;
+}
+
+/* محتوای اصلی که فضای سایدبار را پر می‌کند */
+.main-collapsed {
+  margin-left: 0 !important;
+  transition: margin 0.3s;
+}
    
 }
 
