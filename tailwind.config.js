@@ -11,15 +11,9 @@ module.exports = {
     },
     extend: {
        colors: {
-        sectionColor: "hsl(209, 100%, 97%)",
-        darkBodyColor: "hsl(216, 100%, 4%)",
-        darkSectionColor: "hsl(211, 100%, 12%)",
-        primaryColor: "hsl(209, 87%, 21%)",
-        primaryColorLight: "hsl(209, 74%, 45%)",
-        whiteColor: "#fff",
-        textColor: "#DDD",
-        secondaryColor: "red",
-        whatsappGreen: "#25D366",
+        primary: '#4f46e5',
+            secondary: '#6366f1',
+            accent: '#f59e0b',
       },
         fontFamily: {
         poppins: ["Poppins", "sans-serif"],

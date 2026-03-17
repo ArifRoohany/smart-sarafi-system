@@ -1,141 +1,435 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl" class="font-poppins">
+<html lang="fa" dir="rtl" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Sarafi Dashboard</title>
-
+  <title>داشبورد صرافی</title>
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <style>
-    .active-link {
-      background-color: hsl(209, 87%, 40%);
-      color: white;
-    }
-
-    ::-webkit-scrollbar {
-      height: 8px;
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background-color: hsl(209, 87%, 40%);
-      border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: transparent;
-    }
-  </style>
+  <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 
-<body class="bg-sectionColor min-h-screen">
+<body class="bg-gray-200 font-sans">
 
-  <div class="flex min-h-screen">
-
-    <!-- Sidebar -->
-    <aside class="w-64 bg-white p-6 flex flex-col">
-
-      <img src="images/logo.png" width="180" alt="Logo" class="mb-8">
-
-      <nav class="flex flex-col gap-4 text-gray-800">
-
-        <a href="#" class="flex items-center gap-3 p-3 rounded active-link">
-          <i class="fa-solid fa-chart-line"></i>
-          <span>داشبورد</span>
-        </a>
-
-        <a href="customers.html"
-          class="flex items-center gap-3 p-3 rounded hover:bg-primaryColorLight hover:text-white transition">
-          <i class="fa-solid fa-users"></i>
-          <span>کاربران</span>
-        </a>
-
-        <a href="transactions.html"
-          class="flex items-center gap-3 p-3 rounded hover:bg-primaryColorLight hover:text-white transition">
-          <i class="fa-solid fa-money-bill-transfer"></i>
-          <span>تراکنش‌ها</span>
-        </a>
-
-        <a href="#" class="flex items-center gap-3 p-3 rounded hover:bg-primaryColorLight hover:text-white transition">
-          <i class="fa-solid fa-gear"></i>
-          <span>تنظیمات</span>
-        </a>
-
-      </nav>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="flex-1 p-6">
-
-      <!-- Navbar -->
-      <div class="flex justify-between items-center mb-6">
-
-        <h1 class="text-2xl font-semibold text-primaryColor">
-          داشبورد
-        </h1>
-
-        <button
-          class="flex items-center gap-2 border border-gray-300 text-primaryColor bg-white px-4 py-2 rounded-lg shadow">
-
-          <i class="fa-solid fa-right-from-bracket"></i>
-          خروج
-
+  <!-- Navbar -->
+  <header class="flex items-center justify-between bg-white shadow px-4 py-3 sticky top-0 z-50">
+    <!-- چپ: سلکت ادمین -->
+    <div class="flex items-center space-x-4 rtl:space-x-reverse">
+      <div class="relative">
+        <button id="adminDropdownBtn" class="flex items-center gap-2 px-3 py-1 bg-gray-100 rounded hover:bg-gray-200">
+          <span>ادمین</span>
+          <i class="fas fa-chevron-down text-gray-600"></i>
         </button>
-
+        <div id="adminDropdown" class="hidden absolute right-0 mt-2 w-40 bg-white border rounded shadow-md">
+          <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"><i class="fas fa-key"></i> تغییر
+            رمز</a>
+          <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"><i class="fas fa-sign-out-alt"></i>
+            خروج</a>
+        </div>
       </div>
 
-      <!-- Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-
-        <div class="bg-white p-5 rounded-2xl shadow flex items-center justify-between hover:scale-105 transition">
-          <div>
-            <h2 class="text-primaryColor">تعداد کاربران</h2>
-            <p class="text-2xl font-bold text-primaryColor">120</p>
-          </div>
-          <i class="fa-solid fa-users text-3xl text-primaryColor"></i>
+      <!-- سلکت زبان -->
+      <div class="relative">
+        <button id="langDropdownBtn" class="flex items-center gap-2 px-3 py-1 bg-gray-100 rounded hover:bg-gray-200">
+          <i class="fas fa-globe"></i> <span>FA</span>
+        </button>
+        <div id="langDropdown" class="hidden absolute right-0 mt-2 w-28 bg-white border rounded shadow-md">
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100"> فارسی</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">English</a>
         </div>
-
-        <div class="bg-white p-5 rounded-2xl shadow flex items-center justify-between hover:scale-105 transition">
-          <div>
-            <h2 class="text-primaryColor">تراکنش‌ها</h2>
-            <p class="text-2xl font-bold text-primaryColor">340</p>
-          </div>
-          <i class="fa-solid fa-money-bill-transfer text-3xl text-primaryColor"></i>
-        </div>
-
-        <div class="bg-white p-5 rounded-2xl shadow flex items-center justify-between hover:scale-105 transition">
-          <div>
-            <h2 class="text-primaryColor">موجودی کل</h2>
-            <p class="text-2xl font-bold text-primaryColor">50,000$</p>
-          </div>
-          <i class="fa-solid fa-wallet text-3xl text-primaryColor"></i>
-        </div>
-
-        <div class="bg-white p-5 rounded-2xl shadow flex items-center justify-between hover:scale-105 transition">
-          <div>
-            <h2 class="text-primaryColor">تراکنش‌های امروز</h2>
-            <p class="text-2xl font-bold text-primaryColor">24</p>
-          </div>
-          <i class="fa-solid fa-calendar-day text-3xl text-primaryColor"></i>
-        </div>
-
       </div>
+    </div>
 
-      <!-- Chart -->
-      <div class="bg-white p-5 rounded-2xl shadow mb-6" style="height:300px;">
-        <canvas id="transactionChart"></canvas>
-      </div>
+    <!-- مرکز: لینک‌ها -->
+    <nav class="hidden md:flex items-center gap-6 rtl:gap-reverse">
+      <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-primary"><i class="fas fa-exchange-alt"></i>
+        تبادله</a>
+      <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-primary"><i class="fas fa-wallet"></i>
+        حواله</a>
+      <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-primary"><i class="fas fa-receipt"></i>
+        برد/رسید</a>
+      <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-primary"><i class="fas fa-dollar-sign"></i>
+        نرخ اسعار</a>
+      <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-primary"><i class="fas fa-gavel"></i>
+        تعزیرات</a>
+      <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-primary"><i class="fas fa-bolt"></i>
+        اکشن‌ها</a>
+    </nav>
 
-    </main>
+    <!-- راست: ایکن‌ها (مثل notifications) -->
+    <div class="flex items-center gap-4 rtl:gap-reverse">
+      <button class="text-gray-600 hover:text-primary"><i class="fas fa-bell"></i></button>
+      <button class="text-gray-600 hover:text-primary"><i class="fas fa-cog"></i></button>
+    </div>
+  </header>
+
+  <div class="flex">
+
+ <!-- Sidebar -->
+<aside class="w-64 bg-white h-screen shadow-md flex flex-col sticky top-0">
+
+  <!-- Logo -->
+  <div class="flex items-center justify-center h-20 mt-10">
+    <img src="images/logo.png" style="width: 200px; height: 200px;"  alt="لوگو شرکت" class="h-12">
   </div>
 
-  <script src="main.js"></script>
+  <hr class="border-gray-200">
 
+  <!-- Menu -->
+  <nav class="flex-1 overflow-y-auto px-2 py-4">
+    <ul class="space-y-2">
+
+      <!-- Dashboard -->
+      <li>
+        <a href="#"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100 text-primary font-semibold">
+          <i class="fas fa-tachometer-alt"></i>
+          داشبورد
+        </a>
+      </li>
+
+      <!-- Exchange -->
+      <li>
+        <a href="#"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100 text-gray-700">
+          <i class="fas fa-exchange-alt"></i>
+          تبادله
+        </a>
+      </li>
+
+      <!-- Hawala -->
+      <li>
+        <a href="#"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100 text-gray-700">
+          <i class="fas fa-paper-plane"></i>
+          حواله
+        </a>
+      </li>
+
+      <!-- Customers -->
+      <li>
+        <a href="#"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100 text-gray-700">
+          <i class="fas fa-users"></i>
+          مشتریان
+        </a>
+      </li>
+
+      <!-- Transactions -->
+      <li>
+        <a href="#"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100 text-gray-700">
+          <i class="fas fa-receipt"></i>
+          معاملات
+        </a>
+      </li>
+
+      <!-- Currency Rates -->
+      <li>
+        <a href="#"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100 text-gray-700">
+          <i class="fas fa-dollar-sign"></i>
+          نرخ اسعار
+        </a>
+      </li>
+
+      <!-- Reports -->
+      <li>
+        <a href="#"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100 text-gray-700">
+          <i class="fas fa-chart-line"></i>
+          گزارشات
+        </a>
+      </li>
+
+      <hr class="my-3">
+
+      <!-- Settings -->
+      <li>
+        <a href="#"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100 text-gray-700">
+          <i class="fas fa-cog"></i>
+          تنظیمات
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+
+</aside>
+
+   <!-- Main Content -->
+<main class="flex-1 p-6 space-y-8">
+
+  <!-- کارت های مالی -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+    <!-- دخل / کش -->
+    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-semibold text-gray-800 text-lg">دخل / کش</h3>
+        <i class="fas fa-wallet text-blue-500 text-xl"></i>
+      </div>
+
+      <div class="flex flex-col gap-2 text-sm">
+        <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
+          <span>دالر</span>
+          <span class="font-semibold">34,000</span>
+        </div>
+        <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
+          <span>افغانی</span>
+          <span class="font-semibold">114,000</span>
+        </div>
+        <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
+          <span>کالدَر</span>
+          <span class="font-semibold">134,000</span>
+        </div>
+        <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
+          <span>ریال</span>
+          <span class="font-semibold">23,000</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- توتل قرض بر مردم -->
+    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-semibold text-gray-800 text-lg">توتل قرض بر مردم</h3>
+        <i class="fas fa-arrow-up text-red-500 text-xl"></i>
+      </div>
+
+      <div class="flex flex-col gap-2 text-sm">
+        <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
+          <span>دالر</span>
+          <span class="font-semibold text-red-600">12,500</span>
+        </div>
+        <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
+          <span>افغانی</span>
+          <span class="font-semibold text-red-600">450,000</span>
+        </div>
+        <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
+          <span>کالدَر</span>
+          <span class="font-semibold text-red-600">80,000</span>
+        </div>
+        <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
+          <span>ریال</span>
+          <span class="font-semibold text-red-600">1,200,000</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- توتل طلب مردم -->
+    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-semibold text-gray-800 text-lg">توتل طلب مردم</h3>
+        <i class="fas fa-arrow-down text-green-500 text-xl"></i>
+      </div>
+
+      <div class="flex flex-col gap-2 text-sm">
+        <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
+          <span>دالر</span>
+          <span class="font-semibold text-green-600">18,000</span>
+        </div>
+        <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
+          <span>افغانی</span>
+          <span class="font-semibold text-green-600">320,000</span>
+        </div>
+        <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
+          <span>کالدَر</span>
+          <span class="font-semibold text-green-600">70,000</span>
+        </div>
+        <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
+          <span>ریال</span>
+          <span class="font-semibold text-green-600">900,000</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- حواله های نااجرا -->
+    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-semibold text-gray-800 text-lg">حواله‌های نااجرا</h3>
+        <i class="fas fa-clock text-yellow-500 text-xl"></i>
+      </div>
+
+      <div class="flex flex-col gap-2 text-sm">
+        <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
+          <span>دالر</span>
+          <span class="font-semibold text-yellow-600">5 حواله</span>
+        </div>
+        <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
+          <span>افغانی</span>
+          <span class="font-semibold text-yellow-600">3 حواله</span>
+        </div>
+        <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
+          <span>کالدَر</span>
+          <span class="font-semibold text-yellow-600">2 حواله</span>
+        </div>
+        <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
+          <span>درهم</span>
+          <span class="font-semibold text-yellow-600">4 حواله</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- کارت های عملیات -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+  <!-- انتقال دیتا حواله ها -->
+  <a href="#" class="bg-blue-50 p-6 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+    
+    <div class="flex justify-end">
+      <div class="bg-blue-100 text-blue-600 p-3 rounded-lg text-xl">
+        <i class="fas fa-database"></i>
+      </div>
+    </div>
+
+    <h3 class="mt-6 text-blue-700 font-semibold text-lg">
+      انتقال دیتا حواله‌ها
+    </h3>
+
+  </a>
+
+
+  <!-- تعیین نرخ گل صبح -->
+  <a href="#" class="bg-green-50 p-6 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+    
+    <div class="flex justify-end">
+      <div class="bg-green-100 text-green-600 p-3 rounded-lg text-xl">
+        <i class="fas fa-coins"></i>
+      </div>
+    </div>
+
+    <h3 class="mt-6 text-green-700 font-semibold text-lg">
+      تعیین نرخ گل صبح
+    </h3>
+
+  </a>
+
+
+  <!-- امپورت یا اکسپورت بیکپ -->
+  <a href="#" class="bg-purple-50 p-6 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+    
+    <div class="flex justify-end">
+      <div class="bg-purple-100 text-purple-600 p-3 rounded-lg text-xl">
+        <i class="fas fa-file-export"></i>
+      </div>
+    </div>
+
+    <h3 class="mt-6 text-purple-700 font-semibold text-lg">
+      امپورت / اکسپورت بیکپ
+    </h3>
+
+  </a>
+
+</div>
+
+
+<!-- آمار روزانه -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+
+  <!-- دخل دیروز -->
+  <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+    
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-gray-600 font-semibold">دخل دیروز</h3>
+      <i class="fas fa-calendar-day text-blue-500 text-xl"></i>
+    </div>
+
+    <p class="text-2xl font-bold text-gray-800">
+      45,000 USD
+    </p>
+
+    <div class="mt-3 pt-3 border-t text-sm text-gray-500 space-y-1">
+      <p>AFN 3,200,000</p>
+      <p>PKR 1,450,000</p>
+      <p>IRR 820,000</p>
+    </div>
+
+  </div>
+
+
+  <!-- دخل امروز -->
+  <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+    
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-gray-600 font-semibold">دخل امروز</h3>
+      <i class="fas fa-coins text-green-500 text-xl"></i>
+    </div>
+
+    <p class="text-2xl font-bold text-gray-800">
+      62,000 USD
+    </p>
+
+    <div class="mt-3 pt-3 border-t text-sm text-gray-500 space-y-1">
+      <p>AFN 4,320,000</p>
+      <p>PKR 1,750,000</p>
+      <p>IRR 980,000</p>
+    </div>
+
+  </div>
+
+
+  <!-- تفاوت دیروز و امروز -->
+  <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+    
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-gray-600 font-semibold">
+        تفاوت دیروز و امروز
+      </h3>
+      <i class="fas fa-chart-line text-purple-500 text-xl"></i>
+    </div>
+
+    <p class="text-2xl font-bold text-green-600">
+      +17,000 USD
+    </p>
+
+    <div class="mt-3 pt-3 border-t text-sm text-gray-500 space-y-1">
+      <p>AFN +1,120,000</p>
+      <p>PKR +300,000</p>
+      <p>IRR +160,000</p>
+    </div>
+
+  </div>
+
+
+  <!-- همه فعالیت ها -->
+  <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+    
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-gray-600 font-semibold">
+        همه فعالیت‌ها
+      </h3>
+      <i class="fas fa-tasks text-orange-500 text-xl"></i>
+    </div>
+
+    <select class="w-full border border-gray-200 rounded-lg p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+      <option>انتخاب فعالیت</option>
+      <option>تبادله</option>
+      <option>حواله</option>
+      <option>برد</option>
+      <option>رسید</option>
+      <option>تغییر نرخ</option>
+    </select>
+
+  </div>
+
+</div>
+
+</main>
+
+  </div>
+
+  <!-- JS -->
+  <script src="main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 </body>
 
 </html>
