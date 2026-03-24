@@ -334,217 +334,103 @@
 
             </div>
 
-           
-<!-- ===== بخش تبادله ===== -->
+
 <div class="bg-white p-6 rounded-lg shadow-lg mt-8">
-  <h2 class="text-xl font-semibold mb-6 text-white bg-blue-600 py-2 rounded-md px-3">انجام تبادله</h2>
+  <h2 class="text-xl font-semibold mb-6 bg-blue-600 text-white py-2 px-3 rounded">
+    تاریخچه حواله‌ها
+  </h2>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div>
-      <label class="block mb-2 text-gray-700 font-medium">از ارز</label>
-      <select id="fromCurrency" class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <option>USD</option>
-        <option>AFN</option>
-        <option>EUR</option>
-      </select>
-    </div>
-    <div>
-      <label class="block mb-2 text-gray-700 font-medium">به ارز</label>
-      <select id="toCurrency" class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <option>AFN</option>
-        <option>USD</option>
-        <option>EUR</option>
-      </select>
-    </div>
-    <div>
-      <label class="block mb-2 text-gray-700 font-medium">مقدار</label>
-      <input id="amount" type="number" class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-    </div>
-    <div>
-      <label class="block mb-2 text-gray-700 font-medium">نرخ</label>
-      <input id="rate" type="number" class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-    </div>
-    <div>
-      <label class="block mb-2 text-gray-700 font-medium">مقدار نهایی</label>
-      <input id="total" type="number" class="w-full border border-gray-300 p-3 rounded-lg bg-gray-100" readonly>
-    </div>
-  </div>
-
-  <button id="calculateBtn" class="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition duration-300">
-    محاسبه و ثبت
-  </button>
-
-  <!-- جدول ثبت تبادلات -->
-  <div class="mt-8 overflow-x-auto">
-    <table class="min-w-full bg-white rounded-lg shadow overflow-hidden">
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white rounded-lg shadow">
       <thead class="bg-gray-100">
         <tr>
-          <th class="py-3 px-6 text-left text-gray-700">#</th>
-          <th class="py-3 px-6 text-left text-gray-700">از ارز</th>
-          <th class="py-3 px-6 text-left text-gray-700">به ارز</th>
-          <th class="py-3 px-6 text-left text-gray-700">مقدار</th>
-          <th class="py-3 px-6 text-left text-gray-700">نرخ</th>
-          <th class="py-3 px-6 text-left text-gray-700">مقدار نهایی</th>
-          <th class="py-3 px-6 text-gray-700">تاریخ</th>
-          <th class="py-3 px-6 text-center text-gray-700">عملیات</th>
+          <th class="py-3 px-6">ID</th>
+          <th class="py-3 px-6">فرستنده</th>
+          <th class="py-3 px-6">گیرنده</th>
+          <th class="py-3 px-6">مقدار</th>
+          <th class="py-3 px-6">ارز</th>
+          <th class="py-3 px-6">وضعیت</th>
+          <th class="py-3 px-6">تاریخ</th>
         </tr>
       </thead>
-      <tbody id="exchangeTableBody" class="divide-y divide-gray-200">
-        <!-- ردیف‌ها اینجا اضافه می‌شوند -->
+
+      <tbody>
+        <tr>
+          <td class="py-3 px-6">HW001</td>
+          <td class="py-3 px-6">احمد</td>
+          <td class="py-3 px-6">کریم</td>
+          <td class="py-3 px-6">2000</td>
+          <td class="py-3 px-6">USD</td>
+          <td class="py-3 px-6 text-green-600">انجام شده</td>
+          <td class="py-3 px-6">۱۴۰۴/۰۱/۰۱</td>
+        </tr>
+        <tr>
+          <td class="py-3 px-6">HW001</td>
+          <td class="py-3 px-6">احمد</td>
+          <td class="py-3 px-6">کریم</td>
+          <td class="py-3 px-6">2000</td>
+          <td class="py-3 px-6">USD</td>
+          <td class="py-3 px-6 text-green-600">انجام شده</td>
+          <td class="py-3 px-6">۱۴۰۴/۰۱/۰۱</td>
+        </tr>
+        <tr>
+          <td class="py-3 px-6">HW001</td>
+          <td class="py-3 px-6">احمد</td>
+          <td class="py-3 px-6">کریم</td>
+          <td class="py-3 px-6">2000</td>
+          <td class="py-3 px-6">USD</td>
+          <td class="py-3 px-6 text-green-600">انجام شده</td>
+          <td class="py-3 px-6">۱۴۰۴/۰۱/۰۱</td>
+        </tr>
+        <tr>
+          <td class="py-3 px-6">HW001</td>
+          <td class="py-3 px-6">احمد</td>
+          <td class="py-3 px-6">کریم</td>
+          <td class="py-3 px-6">2000</td>
+          <td class="py-3 px-6">USD</td>
+          <td class="py-3 px-6 text-green-600">انجام شده</td>
+          <td class="py-3 px-6">۱۴۰۴/۰۱/۰۱</td>
+        </tr>
+        <tr>
+          <td class="py-3 px-6">HW001</td>
+          <td class="py-3 px-6">احمد</td>
+          <td class="py-3 px-6">کریم</td>
+          <td class="py-3 px-6">2000</td>
+          <td class="py-3 px-6">USD</td>
+          <td class="py-3 px-6 text-green-600">انجام شده</td>
+          <td class="py-3 px-6">۱۴۰۴/۰۱/۰۱</td>
+        </tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- مدال جزئیات تبادله -->
-<div id="exchangeModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-  <div class="bg-white rounded-lg w-11/12 sm:w-96 p-6 relative">
-    <button id="closeModal" class="absolute top-3 left-3 text-gray-500 hover:text-gray-800">
-      <i class="fas fa-times text-lg"></i>
-    </button>
-    <h3 class="text-lg font-semibold mb-4 text-gray-800">جزئیات تبادله</h3>
-    <div id="modalContent" class="space-y-2 text-gray-700">
-      <!-- محتویات داینامیک -->
-    </div>
-  </div>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </main>
     </div>
-
-   
-<script>
-  // ===== گرفتن المان‌ها =====
-  const amountInput = document.getElementById('amount');
-  const rateInput = document.getElementById('rate');
-  const totalInput = document.getElementById('total');
-  const fromCurrency = document.getElementById('fromCurrency');
-  const toCurrency = document.getElementById('toCurrency');
-  const calculateBtn = document.getElementById('calculateBtn');
-  const tableBody = document.getElementById('exchangeTableBody');
-
-  let exchangeCount = 0; // شمارنده ID
-
-  // ===== محاسبه مقدار نهایی =====
-  function calculateTotal() {
-    const amount = parseFloat(amountInput.value) || 0;
-    const rate = parseFloat(rateInput.value) || 0;
-    totalInput.value = (amount * rate).toFixed(2);
-  }
-
-  amountInput.addEventListener('input', calculateTotal);
-  rateInput.addEventListener('input', calculateTotal);
-
-  // ===== ثبت تبادله =====
-  calculateBtn.addEventListener('click', () => {
-    const amount = parseFloat(amountInput.value) || 0;
-    const rate = parseFloat(rateInput.value) || 0;
-    const total = (amount * rate).toFixed(2);
-
-    // ❗ اعتبارسنجی
-    if(amount <= 0 || rate <= 0){
-      alert("مقدار و نرخ باید درست باشد");
-      return;
-    }
-
-    // ❗ جلوگیری از انتخاب ارز یکسان
-    if(fromCurrency.value === toCurrency.value){
-      alert("ارز مبدا و مقصد نمی‌تواند یکسان باشد");
-      return;
-    }
-
-    // ===== تولید ID حرفه‌ای =====
-    exchangeCount++;
-    const id = "EX" + exchangeCount.toString().padStart(3, '0');
-
-    // ===== گرفتن تاریخ =====
-    const now = new Date().toLocaleString('fa-IR');
-
-    // ===== ساخت ردیف =====
-    const tr = document.createElement('tr');
-    tr.classList.add('hover:bg-gray-50');
-
-    tr.innerHTML = `
-      <td class="py-3 px-6">${id}</td>
-      <td class="py-3 px-6">${fromCurrency.value}</td>
-      <td class="py-3 px-6">${toCurrency.value}</td>
-      <td class="py-3 px-6">${amount}</td>
-      <td class="py-3 px-6">${rate}</td>
-      <td class="py-3 px-6">${total}</td>
-      <td class="py-3 px-6">${now}</td>
-      <td class="py-3 px-6 text-center space-x-2">
-        <!-- دکمه ویو -->
-        <button class="viewBtn text-blue-500 hover:text-blue-700">
-          <i class="fas fa-eye"></i>
-        </button>
-
-        <!-- دکمه حذف -->
-        <button class="deleteBtn text-red-500 hover:text-red-700">
-          <i class="fas fa-trash"></i>
-        </button>
-      </td>
-    `;
-
-    tableBody.appendChild(tr);
-
-    // ===== ریست فرم =====
-    amountInput.value = '';
-    rateInput.value = '';
-    totalInput.value = '';
-    fromCurrency.selectedIndex = 0;
-    toCurrency.selectedIndex = 0;
-
-    alert("تبادله با موفقیت ثبت شد ✅");
-  });
-
-  // ===== مدال =====
-  const modal = document.getElementById('exchangeModal');
-  const modalContent = document.getElementById('modalContent');
-  const closeModal = document.getElementById('closeModal');
-
-  document.addEventListener('click', (e) => {
-
-    // ===== ویو =====
-    if(e.target.closest('.viewBtn')) {
-      const row = e.target.closest('tr');
-      const cells = row.querySelectorAll('td');
-
-      modalContent.innerHTML = `
-        <p><strong>ID:</strong> ${cells[0].textContent}</p>
-        <p><strong>از ارز:</strong> ${cells[1].textContent}</p>
-        <p><strong>به ارز:</strong> ${cells[2].textContent}</p>
-        <p><strong>مقدار:</strong> ${cells[3].textContent}</p>
-        <p><strong>نرخ:</strong> ${cells[4].textContent}</p>
-        <p><strong>مقدار نهایی:</strong> ${cells[5].textContent}</p>
-        <p><strong>تاریخ:</strong> ${cells[6].textContent}</p>
-      `;
-
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-    }
-
-    // ===== حذف =====
-    if(e.target.closest('.deleteBtn')){
-      if(confirm("آیا مطمئن هستید؟")){
-        e.target.closest('tr').remove();
-      }
-    }
-
-  });
-
-  // ===== بستن مدال =====
-  closeModal.addEventListener('click', () => {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-  });
-</script>
-
 
 
 
 
     <!-- main js link -->
     <script src="main.js"></script>
+
+
 
 </body>
 

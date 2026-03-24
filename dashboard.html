@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>داشبورد صرافی</title>
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 
-<body class="bg-gray-200 font-sans">
+<body class="bg-gray-100 font-sans">
 
   <!-- Navbar -->
-  <header class="flex items-center  justify-between bg-white shadow px-4 py-3 sticky top-0 z-50">
+  <header class="flex items-center  justify-between bg-white shadow px-4 py-5 sticky top-0 z-50">
     <!-- چپ: سلکت ادمین -->
     <div class="flex items-center space-x-4 rtl:space-x-reverse">
       <div class="relative">
@@ -22,7 +22,8 @@
           <i class="fas fa-chevron-down text-gray-600"></i>
         </button>
         <div id="adminDropdown" class="hidden absolute right-0 mt-2 w-40 bg-white border rounded shadow-md">
-          <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"><i class="fas fa-key"></i> تغییر
+          <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"><i class="fas fa-key"></i>
+            تغییر
             رمز</a>
           <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"><i class="fas fa-sign-out-alt"></i>
             خروج</a>
@@ -58,593 +59,614 @@
     </nav>
 
     <!-- راست: ایکن‌ها (مثل notifications) -->
-    <div class="flex items-center gap-4 rtl:gap-reverse">
-      <button class="text-gray-600 hover:text-primary"><i class="fas fa-bell"></i></button>
-      <button class="text-gray-600 hover:text-primary"><i class="fas fa-cog"></i></button>
+    <div class="flex items-center gap-4 rtl:gap-reverse ml-3">
+      <button class="text-gray-600 hover:text-primary"><i class="fas fa-bell text-2xl"></i></button>
+      <button class="text-gray-600 hover:text-primary"><i class="fas fa-cog text-2xl"></i></button>
     </div>
   </header>
 
   <div class="flex">
 
- <!-- Sidebar -->
-<aside id="sidebar" class="w-64 bg-white h-screen shadow-md flex flex-col sticky top-0 transition-all duration-300">
+<aside id="sidebar"
+       class="w-64 bg-gradient-to-b from-blue-900 to-blue-800 h-screen shadow-lg flex flex-col sticky top-0 transition-all duration-300 text-white">
 
-    <!-- Toggle Button -->
-  <div class="flex justify-end p-2">
-    <button id="sidebarToggle" class="text-gray-600 hover:text-primary">
-      <i class="fas fa-angle-double-left text-xl"></i>
+  <!-- Toggle Button -->
+  <div class="flex justify-end p-2 md:hidden">
+    <button id="sidebarToggle" class="text-white">
+      <i class="fas fa-angle-double-left text-2xl transition-transform duration-300"></i>
     </button>
   </div>
 
-
   <!-- Logo -->
-  <div class="flex items-center justify-center h-20 mt-10">
-    <img src="images/logo.png" style="width: 200px; height: 200px;"  alt="لوگو شرکت" class="h-12">
+  <div class="flex items-center justify-center h-20 mt-4">
+    <img src="images/logo.png" alt="لوگو شرکت" class="h-14 w-auto">
   </div>
 
-  <hr class="border-gray-200">
+  <hr class="border-white my-4">
 
   <!-- Menu -->
   <nav class="flex-1 overflow-y-auto px-2 py-4">
-    <ul class="space-y-2">
+    <ul class="space-y-1">
 
       <!-- Dashboard -->
       <li>
-        <a href="dashboard.html"
-          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100 text-primary font-semibold">
-          <i class="fas fa-tachometer-alt"></i>
+        <a href="dashboard.html" 
+           class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-600 transition-all duration-300 font-semibold shadow-sm">
+          <i class="fas fa-tachometer-alt text-lg"></i>
           داشبورد
         </a>
       </li>
 
-      <!-- Exchange -->
+      <!-- Treasury -->
       <li>
-        <a href="exchange.html"
-          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100 text-gray-700">
-          <i class="fas fa-exchange-alt"></i>
-          تبادله
+        <a href="treasury.html"
+           class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-600 transition-all duration-300 font-semibold shadow-sm">
+          <i class="fas fa-wallet text-lg"></i>
+          دخل / کش
         </a>
       </li>
 
-    
-     <!-- Hawala (حواله) با زیرمنوی باز شونده -->
-<li>
-  <button id="hawalaBtn"
-          class="flex items-center justify-between w-full gap-3 px-4 py-2 rounded hover:bg-gray-100 text-gray-700 focus:outline-none">
-    <span><i class="fas fa-paper-plane"></i> حواله</span>
-    <i id="hawalaIcon" class="fas fa-chevron-left transition-transform duration-300"></i>
-  </button>
-
-  <!-- زیرمنو حواله -->
-  <ul id="hawalaSubmenu" class="hidden flex-col mt-2 space-y-1 pl-8">
-    <!-- اینجا مراحل بعدی اضافه می‌شوند -->
-    <li><a href="#" class="block px-4 py-2 rounded hover:bg-gray-100 text-gray-600">ایجاد حواله جدید</a></li>
-    <li><a href="#" class="block px-4 py-2 rounded hover:bg-gray-100 text-gray-600">لیست حواله‌ها</a></li>
-    <li><a href="#" class="block px-4 py-2 rounded hover:bg-gray-100 text-gray-600">تاریخچه حواله‌ها</a></li>
-  </ul>
-</li>
-
-      <!-- Customers -->
+      <!-- Activity Log -->
       <li>
-        <a href="#"
-          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100 text-gray-700">
-          <i class="fas fa-users"></i>
-          مشتریان
+        <a href="activity-log.html"
+           class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-600 transition-all duration-300 font-semibold shadow-sm">
+          <i class="fas fa-history text-lg"></i>
+          روزنامچه
         </a>
       </li>
 
-      <!-- Transactions -->
+      <!-- Transactions Dropdown -->
+      <li class="relative">
+        <button id="transactionsBtn"
+                class="w-full flex items-center justify-between px-4 py-3 rounded-lg hover:bg-blue-600 transition-all duration-300 font-semibold shadow-sm">
+          <span class="flex items-center gap-3">
+            <i class="fas fa-exchange-alt text-lg"></i>
+            معاملات
+          </span>
+          <i id="transactionsArrow" class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
+        </button>
+        <ul id="transactionsMenu" class="hidden flex flex-col mt-1 ml-6 space-y-1 text-sm">
+          <li><a href="exchange.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-500 transition">تبادله</a></li>
+          <li><a href="exchange-list.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-500 transition">لیست تبادله</a></li>
+          <li><a href="exchange-history.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-500 transition">تاریخچه تبادله</a></li>
+          <li><a href="transaction.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-500 transition">حواله</a></li>
+          <li><a href="transaction-list.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-500 transition">لیست حواله‌ها</a></li>
+          <li><a href="transaction-history.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-500 transition">تاریخچه حواله‌ها</a></li>
+        </ul>
+      </li>
+
+      <!-- Users -->
       <li>
-        <a href="#"
-          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100 text-gray-700">
-          <i class="fas fa-receipt"></i>
-          معاملات
+        <a href="users.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-600 transition-all duration-300 font-semibold shadow-sm">
+          <i class="fas fa-users text-lg"></i>
+          کاربران
         </a>
       </li>
 
       <!-- Currency Rates -->
       <li>
-        <a href="#"
-          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100 text-gray-700">
-          <i class="fas fa-dollar-sign"></i>
+        <a href="currency-rates.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-600 transition-all duration-300 font-semibold shadow-sm">
+          <i class="fas fa-dollar-sign text-lg"></i>
           نرخ اسعار
         </a>
       </li>
 
       <!-- Reports -->
       <li>
-        <a href="#"
-          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100 text-gray-700">
-          <i class="fas fa-chart-line"></i>
+        <a href="reports.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-600 transition-all duration-300 font-semibold shadow-sm">
+          <i class="fas fa-chart-line text-lg"></i>
           گزارشات
         </a>
       </li>
 
-      <hr class="my-3">
+      <hr class="border-white my-2">
 
-      <!-- Settings -->
-      <li>
-        <a href="#"
-          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100 text-gray-700">
-          <i class="fas fa-cog"></i>
-          تنظیمات
-        </a>
+      <!-- Settings Dropdown -->
+      <li class="relative">
+        <button id="settingsBtn" class="w-full flex items-center justify-between px-4 py-3 rounded-lg hover:bg-blue-600 transition-all duration-300 font-semibold shadow-sm">
+          <span class="flex items-center gap-3">
+            <i class="fas fa-cog text-lg"></i>
+            تنظیمات
+          </span>
+          <i id="settingsArrow" class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
+        </button>
+        <ul id="settingsMenu" class="hidden flex flex-col mt-1 ml-6 space-y-1 text-sm">
+          <li><a href="company-info.html" class="block px-4 py-2 rounded-lg hover:bg-blue-500 transition">مشخصات شرکت</a></li>
+          <li><a href="system-sitting.html" class="block px-4 py-2 rounded-lg hover:bg-blue-500 transition">تنظیمات سیستم</a></li>
+          <li><a href="#" class="block px-4 py-2 rounded-lg hover:bg-blue-500 transition">نوعیت حساب</a></li>
+          <li><a href="#" class="block px-4 py-2 rounded-lg hover:bg-blue-500 transition">مدیریت زبان</a></li>
+          <li><a href="#" class="block px-4 py-2 rounded-lg hover:bg-blue-500 transition">امنیت</a></li>
+          <li><a href="#" class="block px-4 py-2 rounded-lg hover:bg-blue-500 transition">بکاپ</a></li>
+        </ul>
       </li>
-
     </ul>
   </nav>
-
 </aside>
 
-   <!-- Main Content -->
-<main class="flex-1 p-6 space-y-8">
+    <!-- Main Content -->
+    <main class="flex-1 p-6 space-y-8">
 
-  <!-- کارت های مالی -->
-  <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
-    <!-- دخل / کش -->
-    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="font-semibold text-gray-800 text-lg">دخل / کش</h3>
-        <i class="fas fa-wallet text-blue-500 text-xl"></i>
+      <!-- کارت های مالی -->
+      <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+        <!-- دخل / کش -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-semibold text-gray-800 text-lg">دخل / کش</h3>
+            <i class="fas fa-wallet text-blue-500 text-xl"></i>
+          </div>
+
+          <div class="flex flex-col gap-2 text-sm">
+            <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
+              <span>دالر</span>
+              <span class="font-semibold">34,000</span>
+            </div>
+            <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
+              <span>افغانی</span>
+              <span class="font-semibold">114,000</span>
+            </div>
+            <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
+              <span>کالدَر</span>
+              <span class="font-semibold">134,000</span>
+            </div>
+            <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
+              <span>ریال</span>
+              <span class="font-semibold">23,000</span>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- توتل قرض بر مردم -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-semibold text-gray-800 text-lg">توتل قرض بر مردم</h3>
+            <i class="fas fa-arrow-up text-red-500 text-xl"></i>
+          </div>
+
+          <div class="flex flex-col gap-2 text-sm">
+            <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
+              <span>دالر</span>
+              <span class="font-semibold text-red-600">12,500</span>
+            </div>
+            <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
+              <span>افغانی</span>
+              <span class="font-semibold text-red-600">450,000</span>
+            </div>
+            <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
+              <span>کالدَر</span>
+              <span class="font-semibold text-red-600">80,000</span>
+            </div>
+            <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
+              <span>ریال</span>
+              <span class="font-semibold text-red-600">1,200,000</span>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- توتل طلب مردم -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-semibold text-gray-800 text-lg">توتل طلب مردم</h3>
+            <i class="fas fa-arrow-down text-green-500 text-xl"></i>
+          </div>
+
+          <div class="flex flex-col gap-2 text-sm">
+            <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
+              <span>دالر</span>
+              <span class="font-semibold text-green-600">18,000</span>
+            </div>
+            <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
+              <span>افغانی</span>
+              <span class="font-semibold text-green-600">320,000</span>
+            </div>
+            <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
+              <span>کالدَر</span>
+              <span class="font-semibold text-green-600">70,000</span>
+            </div>
+            <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
+              <span>ریال</span>
+              <span class="font-semibold text-green-600">900,000</span>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- حواله های نااجرا -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-semibold text-gray-800 text-lg">حواله‌های نااجرا</h3>
+            <i class="fas fa-clock text-yellow-500 text-xl"></i>
+          </div>
+
+          <div class="flex flex-col gap-2 text-sm">
+            <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
+              <span>دالر</span>
+              <span class="font-semibold text-yellow-600">5 حواله</span>
+            </div>
+            <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
+              <span>افغانی</span>
+              <span class="font-semibold text-yellow-600">3 حواله</span>
+            </div>
+            <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
+              <span>کالدَر</span>
+              <span class="font-semibold text-yellow-600">2 حواله</span>
+            </div>
+            <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
+              <span>درهم</span>
+              <span class="font-semibold text-yellow-600">4 حواله</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="flex flex-col gap-2 text-sm">
-        <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
-          <span>دالر</span>
-          <span class="font-semibold">34,000</span>
-        </div>
-        <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
-          <span>افغانی</span>
-          <span class="font-semibold">114,000</span>
-        </div>
-        <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
-          <span>کالدَر</span>
-          <span class="font-semibold">134,000</span>
-        </div>
-        <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
-          <span>ریال</span>
-          <span class="font-semibold">23,000</span>
-        </div>
-      </div>
-    </div>
+
+      <!-- کارت های عملیات -->
+      <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- انتقال دیتا حواله ها -->
+        <a href="#"
+          class="bg-blue-100 p-6 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+
+          <div class="flex justify-end">
+            <div class="bg-blue-100 text-blue-600 p-3 rounded-lg text-xl">
+              <i class="fas fa-database"></i>
+            </div>
+          </div>
+
+          <h3 class="mt-6 text-blue-700 font-semibold text-lg">
+            انتقال دیتا حواله‌ها
+          </h3>
+
+        </a>
 
 
-    <!-- توتل قرض بر مردم -->
-    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="font-semibold text-gray-800 text-lg">توتل قرض بر مردم</h3>
-        <i class="fas fa-arrow-up text-red-500 text-xl"></i>
-      </div>
+        <!-- تعیین نرخ گل صبح -->
+        <a href="#"
+          class="bg-green-100 p-6 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
 
-      <div class="flex flex-col gap-2 text-sm">
-        <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
-          <span>دالر</span>
-          <span class="font-semibold text-red-600">12,500</span>
-        </div>
-        <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
-          <span>افغانی</span>
-          <span class="font-semibold text-red-600">450,000</span>
-        </div>
-        <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
-          <span>کالدَر</span>
-          <span class="font-semibold text-red-600">80,000</span>
-        </div>
-        <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
-          <span>ریال</span>
-          <span class="font-semibold text-red-600">1,200,000</span>
-        </div>
-      </div>
-    </div>
+          <div class="flex justify-end">
+            <div class="bg-green-100 text-green-600 p-3 rounded-lg text-xl">
+              <i class="fas fa-coins"></i>
+            </div>
+          </div>
+
+          <h3 class="mt-6 text-green-700 font-semibold text-lg">
+            تعیین نرخ گل صبح
+          </h3>
+
+        </a>
 
 
-    <!-- توتل طلب مردم -->
-    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="font-semibold text-gray-800 text-lg">توتل طلب مردم</h3>
-        <i class="fas fa-arrow-down text-green-500 text-xl"></i>
-      </div>
+        <!-- امپورت یا اکسپورت بیکپ -->
+        <a href="#"
+          class="bg-purple-100 p-6 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
 
-      <div class="flex flex-col gap-2 text-sm">
-        <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
-          <span>دالر</span>
-          <span class="font-semibold text-green-600">18,000</span>
-        </div>
-        <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
-          <span>افغانی</span>
-          <span class="font-semibold text-green-600">320,000</span>
-        </div>
-        <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
-          <span>کالدَر</span>
-          <span class="font-semibold text-green-600">70,000</span>
-        </div>
-        <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
-          <span>ریال</span>
-          <span class="font-semibold text-green-600">900,000</span>
-        </div>
-      </div>
-    </div>
+          <div class="flex justify-end">
+            <div class="bg-purple-100 text-purple-600 p-3 rounded-lg text-xl">
+              <i class="fas fa-file-export"></i>
+            </div>
+          </div>
 
+          <h3 class="mt-6 text-purple-700 font-semibold text-lg">
+            امپورت / اکسپورت بیکپ
+          </h3>
 
-    <!-- حواله های نااجرا -->
-    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="font-semibold text-gray-800 text-lg">حواله‌های نااجرا</h3>
-        <i class="fas fa-clock text-yellow-500 text-xl"></i>
+        </a>
+
       </div>
 
-      <div class="flex flex-col gap-2 text-sm">
-        <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
-          <span>دالر</span>
-          <span class="font-semibold text-yellow-600">5 حواله</span>
+
+      <!-- آمار روزانه -->
+      <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+
+        <!-- دخل دیروز -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-gray-600 font-semibold">دخل دیروز</h3>
+            <i class="fas fa-calendar-day text-blue-500 text-xl"></i>
+          </div>
+
+          <p class="text-2xl font-bold text-gray-800">
+            45,000 USD
+          </p>
+
+          <div class="mt-3 pt-3 border-t text-sm text-gray-500 space-y-1">
+            <p>AFN 3,200,000</p>
+            <p>PKR 1,450,000</p>
+            <p>IRR 820,000</p>
+          </div>
+
         </div>
-        <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
-          <span>افغانی</span>
-          <span class="font-semibold text-yellow-600">3 حواله</span>
+
+
+        <!-- دخل امروز -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-gray-600 font-semibold">دخل امروز</h3>
+            <i class="fas fa-coins text-green-500 text-xl"></i>
+          </div>
+
+          <p class="text-2xl font-bold text-gray-800">
+            62,000 USD
+          </p>
+
+          <div class="mt-3 pt-3 border-t text-sm text-gray-500 space-y-1">
+            <p>AFN 4,320,000</p>
+            <p>PKR 1,750,000</p>
+            <p>IRR 980,000</p>
+          </div>
+
         </div>
-        <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
-          <span>کالدَر</span>
-          <span class="font-semibold text-yellow-600">2 حواله</span>
+
+
+        <!-- تفاوت دیروز و امروز -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-gray-600 font-semibold">
+              تفاوت دیروز و امروز
+            </h3>
+            <i class="fas fa-chart-line text-purple-500 text-xl"></i>
+          </div>
+
+          <p class="text-2xl font-bold text-green-600">
+            +17,000 USD
+          </p>
+
+          <div class="mt-3 pt-3 border-t text-sm text-gray-500 space-y-1">
+            <p>AFN +1,120,000</p>
+            <p>PKR +300,000</p>
+            <p>IRR +160,000</p>
+          </div>
+
         </div>
-        <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
-          <span>درهم</span>
-          <span class="font-semibold text-yellow-600">4 حواله</span>
+
+
+        <!-- همه فعالیت ها -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-gray-600 font-semibold">
+              همه فعالیت‌ها
+            </h3>
+            <i class="fas fa-tasks text-orange-500 text-xl"></i>
+          </div>
+
+          <select
+            class="w-full border border-gray-200 rounded-lg p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <option>انتخاب فعالیت</option>
+            <option>تبادله</option>
+            <option>حواله</option>
+            <option>برد</option>
+            <option>رسید</option>
+            <option>تغییر نرخ</option>
+          </select>
+
+        </div>
+
+      </div>
+
+
+
+
+      <!-- Modal ایجاد حواله جدید -->
+      <div id="hawalaModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white rounded-xl shadow-lg w-full max-w-lg p-6 relative">
+
+          <!-- دکمه بستن -->
+          <button id="closeHawalaModal" class="absolute top-4 left-4 text-gray-500 hover:text-gray-800">
+            <i class="fas fa-times text-xl"></i>
+          </button>
+
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">ایجاد حواله جدید</h2>
+
+          <form class="space-y-4">
+            <!-- فرستنده -->
+            <div>
+              <label class="block text-gray-700 mb-1">فرستنده</label>
+              <input type="text" placeholder="نام فرستنده"
+                class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+
+            <!-- گیرنده -->
+            <div>
+              <label class="block text-gray-700 mb-1">گیرنده</label>
+              <input type="text" placeholder="نام گیرنده"
+                class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+
+            <!-- مقدار حواله -->
+            <div>
+              <label class="block text-gray-700 mb-1">مقدار</label>
+              <input type="number" placeholder="مقدار حواله"
+                class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+
+            <!-- واحد پول -->
+            <div>
+              <label class="block text-gray-700 mb-1">واحد پول</label>
+              <select
+                class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <option>دالر</option>
+                <option>افغانی</option>
+                <option>کالدَر</option>
+                <option>ریال</option>
+              </select>
+            </div>
+
+            <!-- دکمه ارسال -->
+            <div class="flex justify-end mt-4">
+              <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition">ارسال
+                حواله</button>
+            </div>
+          </form>
+
         </div>
       </div>
-    </div>
-
-  </div>
 
 
-  <!-- کارت های عملیات -->
-<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Modal جزئیات حواله -->
+      <div id="hawalaDetailModal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
 
-  <!-- انتقال دیتا حواله ها -->
-  <a href="#" class="bg-blue-50 p-6 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
-    
-    <div class="flex justify-end">
-      <div class="bg-blue-100 text-blue-600 p-3 rounded-lg text-xl">
-        <i class="fas fa-database"></i>
-      </div>
-    </div>
+          <!-- دکمه بستن -->
+          <button id="closeHawalaDetailModal" class="absolute top-4 left-4 text-gray-500 hover:text-gray-800">
+            <i class="fas fa-times text-xl"></i>
+          </button>
 
-    <h3 class="mt-6 text-blue-700 font-semibold text-lg">
-      انتقال دیتا حواله‌ها
-    </h3>
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">جزئیات حواله</h2>
 
-  </a>
-
-
-  <!-- تعیین نرخ گل صبح -->
-  <a href="#" class="bg-green-50 p-6 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
-    
-    <div class="flex justify-end">
-      <div class="bg-green-100 text-green-600 p-3 rounded-lg text-xl">
-        <i class="fas fa-coins"></i>
-      </div>
-    </div>
-
-    <h3 class="mt-6 text-green-700 font-semibold text-lg">
-      تعیین نرخ گل صبح
-    </h3>
-
-  </a>
-
-
-  <!-- امپورت یا اکسپورت بیکپ -->
-  <a href="#" class="bg-purple-50 p-6 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
-    
-    <div class="flex justify-end">
-      <div class="bg-purple-100 text-purple-600 p-3 rounded-lg text-xl">
-        <i class="fas fa-file-export"></i>
-      </div>
-    </div>
-
-    <h3 class="mt-6 text-purple-700 font-semibold text-lg">
-      امپورت / اکسپورت بیکپ
-    </h3>
-
-  </a>
-
-</div>
-
-
-<!-- آمار روزانه -->
-<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-
-  <!-- دخل دیروز -->
-  <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
-    
-    <div class="flex justify-between items-center mb-4">
-      <h3 class="text-gray-600 font-semibold">دخل دیروز</h3>
-      <i class="fas fa-calendar-day text-blue-500 text-xl"></i>
-    </div>
-
-    <p class="text-2xl font-bold text-gray-800">
-      45,000 USD
-    </p>
-
-    <div class="mt-3 pt-3 border-t text-sm text-gray-500 space-y-1">
-      <p>AFN 3,200,000</p>
-      <p>PKR 1,450,000</p>
-      <p>IRR 820,000</p>
-    </div>
-
-  </div>
-
-
-  <!-- دخل امروز -->
-  <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
-    
-    <div class="flex justify-between items-center mb-4">
-      <h3 class="text-gray-600 font-semibold">دخل امروز</h3>
-      <i class="fas fa-coins text-green-500 text-xl"></i>
-    </div>
-
-    <p class="text-2xl font-bold text-gray-800">
-      62,000 USD
-    </p>
-
-    <div class="mt-3 pt-3 border-t text-sm text-gray-500 space-y-1">
-      <p>AFN 4,320,000</p>
-      <p>PKR 1,750,000</p>
-      <p>IRR 980,000</p>
-    </div>
-
-  </div>
-
-
-  <!-- تفاوت دیروز و امروز -->
-  <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
-    
-    <div class="flex justify-between items-center mb-4">
-      <h3 class="text-gray-600 font-semibold">
-        تفاوت دیروز و امروز
-      </h3>
-      <i class="fas fa-chart-line text-purple-500 text-xl"></i>
-    </div>
-
-    <p class="text-2xl font-bold text-green-600">
-      +17,000 USD
-    </p>
-
-    <div class="mt-3 pt-3 border-t text-sm text-gray-500 space-y-1">
-      <p>AFN +1,120,000</p>
-      <p>PKR +300,000</p>
-      <p>IRR +160,000</p>
-    </div>
-
-  </div>
-
-
-  <!-- همه فعالیت ها -->
-  <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
-    
-    <div class="flex justify-between items-center mb-4">
-      <h3 class="text-gray-600 font-semibold">
-        همه فعالیت‌ها
-      </h3>
-      <i class="fas fa-tasks text-orange-500 text-xl"></i>
-    </div>
-
-    <select class="w-full border border-gray-200 rounded-lg p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
-      <option>انتخاب فعالیت</option>
-      <option>تبادله</option>
-      <option>حواله</option>
-      <option>برد</option>
-      <option>رسید</option>
-      <option>تغییر نرخ</option>
-    </select>
-
-  </div>
-
-</div>
-
-
-
-
-<!-- Modal ایجاد حواله جدید -->
-<div id="hawalaModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-  <div class="bg-white rounded-xl shadow-lg w-full max-w-lg p-6 relative">
-    
-    <!-- دکمه بستن -->
-    <button id="closeHawalaModal" class="absolute top-4 left-4 text-gray-500 hover:text-gray-800">
-      <i class="fas fa-times text-xl"></i>
-    </button>
-
-    <h2 class="text-2xl font-semibold text-gray-800 mb-4">ایجاد حواله جدید</h2>
-
-    <form class="space-y-4">
-      <!-- فرستنده -->
-      <div>
-        <label class="block text-gray-700 mb-1">فرستنده</label>
-        <input type="text" placeholder="نام فرستنده" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <div id="hawalaDetailContent" class="space-y-2 text-gray-700">
+            <p><strong>شماره حواله:</strong> <span id="detailHawalaId"></span></p>
+            <p><strong>فرستنده:</strong> <span id="detailSender"></span></p>
+            <p><strong>گیرنده:</strong> <span id="detailReceiver"></span></p>
+            <p><strong>مقدار:</strong> <span id="detailAmount"></span></p>
+            <p><strong>واحد پول:</strong> <span id="detailCurrency"></span></p>
+            <p><strong>وضعیت:</strong> <span id="detailStatus"></span></p>
+            <p><strong>تاریخ:</strong> <span id="detailDate"></span></p>
+          </div>
+        </div>
       </div>
 
-      <!-- گیرنده -->
-      <div>
-        <label class="block text-gray-700 mb-1">گیرنده</label>
-        <input type="text" placeholder="نام گیرنده" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+      <!-- لیست حواله‌ها -->
+      <div id="hawalaListSection" class="hidden bg-white rounded-xl shadow p-6 mt-8">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-4">
+          <h2 class="text-xl font-semibold text-gray-800">لیست حواله‌ها</h2>
+
+          <!-- فیلتر وضعیت -->
+          <div class="flex gap-2 items-center">
+            <label class="text-gray-700">فیلتر وضعیت:</label>
+            <select id="hawalaStatusFilter"
+              class="border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
+              <option value="all">همه</option>
+              <option value="pending">در انتظار</option>
+              <option value="completed">تکمیل شده</option>
+              <option value="canceled">لغو شده</option>
+            </select>
+          </div>
+
+          <!-- جستجو -->
+          <div class="flex gap-2 items-center">
+            <input type="text" id="hawalaSearch" placeholder="جستجو..."
+              class="border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <button id="hawalaSearchBtn"
+              class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 transition">جستجو</button>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-left text-gray-700 border border-gray-200 rounded">
+            <thead class="bg-gray-100 text-gray-800 font-semibold">
+              <tr>
+                <th class="px-4 py-2">شماره حواله</th>
+                <th class="px-4 py-2">فرستنده</th>
+                <th class="px-4 py-2">گیرنده</th>
+                <th class="px-4 py-2">مقدار</th>
+                <th class="px-4 py-2">واحد پول</th>
+                <th class="px-4 py-2">وضعیت</th>
+                <th class="px-4 py-2">تاریخ</th>
+                <th class="px-4 py-2">عملیات</th>
+              </tr>
+            </thead>
+            <tbody id="hawalaTableBody" class="divide-y divide-gray-200">
+              <!-- نمونه داده‌ها -->
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">#1001</td>
+                <td class="px-4 py-2">احمد</td>
+                <td class="px-4 py-2">علی</td>
+                <td class="px-4 py-2">1,000</td>
+                <td class="px-4 py-2">دالر</td>
+                <td class="px-4 py-2 text-yellow-600 font-semibold">در انتظار</td>
+                <td class="px-4 py-2">2026-03-17</td>
+                <td class="px-4 py-2">
+                  <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
+                  <button class="text-green-500 hover:text-green-700 ml-2"><i class="fas fa-check"></i></button>
+                  <button class="text-red-500 hover:text-red-700 ml-2"><i class="fas fa-times"></i></button>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">#1002</td>
+                <td class="px-4 py-2">فاطمه</td>
+                <td class="px-4 py-2">حسین</td>
+                <td class="px-4 py-2">500</td>
+                <td class="px-4 py-2">افغانی</td>
+                <td class="px-4 py-2 text-green-600 font-semibold">تکمیل شده</td>
+                <td class="px-4 py-2">2026-03-16</td>
+                <td class="px-4 py-2">
+                  <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
+                  <button class="text-green-500 hover:text-green-700 ml-2"><i class="fas fa-check"></i></button>
+                  <button class="text-red-500 hover:text-red-700 ml-2"><i class="fas fa-times"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <!-- مقدار حواله -->
-      <div>
-        <label class="block text-gray-700 mb-1">مقدار</label>
-        <input type="number" placeholder="مقدار حواله" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+      <!-- تاریخچه حواله ها -->
+      <div id="hawalaHistorySection" class="hidden bg-white p-6 rounded shadow">
+
+        <h2 class="text-xl font-bold mb-4">تاریخچه حواله‌ها</h2>
+
+        <table class="w-full text-sm text-right border">
+
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="p-2">شماره</th>
+              <th class="p-2">فرستنده</th>
+              <th class="p-2">گیرنده</th>
+              <th class="p-2">مبلغ</th>
+              <th class="p-2">ارز</th>
+              <th class="p-2">وضعیت</th>
+              <th class="p-2">تاریخ</th>
+            </tr>
+          </thead>
+
+          <tbody id="hawalaHistoryTableBody">
+
+            <tr>
+              <td class="p-2">HW102</td>
+              <td class="p-2">احمد</td>
+              <td class="p-2">کریم</td>
+              <td class="p-2">500</td>
+              <td class="p-2">USD</td>
+              <td class="p-2 text-green-600">تکمیل شده</td>
+              <td class="p-2">2024-01-12</td>
+            </tr>
+
+            <tr>
+              <td class="p-2">HW103</td>
+              <td class="p-2">جمال</td>
+              <td class="p-2">حسین</td>
+              <td class="p-2">300</td>
+              <td class="p-2">AFN</td>
+              <td class="p-2 text-red-600">لغو شده</td>
+              <td class="p-2">2024-01-15</td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
       </div>
 
-      <!-- واحد پول -->
-      <div>
-        <label class="block text-gray-700 mb-1">واحد پول</label>
-        <select class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
-          <option>دالر</option>
-          <option>افغانی</option>
-          <option>کالدَر</option>
-          <option>ریال</option>
-        </select>
-      </div>
-
-      <!-- دکمه ارسال -->
-      <div class="flex justify-end mt-4">
-        <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition">ارسال حواله</button>
-      </div>
-    </form>
-
-  </div>
-</div>
-
-
-<!-- Modal جزئیات حواله -->
-<div id="hawalaDetailModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-  <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
-    
-    <!-- دکمه بستن -->
-    <button id="closeHawalaDetailModal" class="absolute top-4 left-4 text-gray-500 hover:text-gray-800">
-      <i class="fas fa-times text-xl"></i>
-    </button>
-
-    <h2 class="text-2xl font-semibold text-gray-800 mb-4">جزئیات حواله</h2>
-
-    <div id="hawalaDetailContent" class="space-y-2 text-gray-700">
-      <p><strong>شماره حواله:</strong> <span id="detailHawalaId"></span></p>
-      <p><strong>فرستنده:</strong> <span id="detailSender"></span></p>
-      <p><strong>گیرنده:</strong> <span id="detailReceiver"></span></p>
-      <p><strong>مقدار:</strong> <span id="detailAmount"></span></p>
-      <p><strong>واحد پول:</strong> <span id="detailCurrency"></span></p>
-      <p><strong>وضعیت:</strong> <span id="detailStatus"></span></p>
-      <p><strong>تاریخ:</strong> <span id="detailDate"></span></p>
-    </div>
-  </div>
-</div>
-
-
-<!-- لیست حواله‌ها -->
-<div id="hawalaListSection" class="hidden bg-white rounded-xl shadow p-6 mt-8">
-  <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-4">
-    <h2 class="text-xl font-semibold text-gray-800">لیست حواله‌ها</h2>
-
-    <!-- فیلتر وضعیت -->
-    <div class="flex gap-2 items-center">
-      <label class="text-gray-700">فیلتر وضعیت:</label>
-      <select id="hawalaStatusFilter" class="border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
-        <option value="all">همه</option>
-        <option value="pending">در انتظار</option>
-        <option value="completed">تکمیل شده</option>
-        <option value="canceled">لغو شده</option>
-      </select>
-    </div>
-
-    <!-- جستجو -->
-    <div class="flex gap-2 items-center">
-      <input type="text" id="hawalaSearch" placeholder="جستجو..." class="border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
-      <button id="hawalaSearchBtn" class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 transition">جستجو</button>
-    </div>
-  </div>
-
-  <div class="overflow-x-auto">
-    <table class="w-full text-sm text-left text-gray-700 border border-gray-200 rounded">
-      <thead class="bg-gray-100 text-gray-800 font-semibold">
-        <tr>
-          <th class="px-4 py-2">شماره حواله</th>
-          <th class="px-4 py-2">فرستنده</th>
-          <th class="px-4 py-2">گیرنده</th>
-          <th class="px-4 py-2">مقدار</th>
-          <th class="px-4 py-2">واحد پول</th>
-          <th class="px-4 py-2">وضعیت</th>
-          <th class="px-4 py-2">تاریخ</th>
-          <th class="px-4 py-2">عملیات</th>
-        </tr>
-      </thead>
-      <tbody id="hawalaTableBody" class="divide-y divide-gray-200">
-        <!-- نمونه داده‌ها -->
-        <tr class="hover:bg-gray-50">
-          <td class="px-4 py-2">#1001</td>
-          <td class="px-4 py-2">احمد</td>
-          <td class="px-4 py-2">علی</td>
-          <td class="px-4 py-2">1,000</td>
-          <td class="px-4 py-2">دالر</td>
-          <td class="px-4 py-2 text-yellow-600 font-semibold">در انتظار</td>
-          <td class="px-4 py-2">2026-03-17</td>
-          <td class="px-4 py-2">
-            <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-            <button class="text-green-500 hover:text-green-700 ml-2"><i class="fas fa-check"></i></button>
-            <button class="text-red-500 hover:text-red-700 ml-2"><i class="fas fa-times"></i></button>
-          </td>
-        </tr>
-        <tr class="hover:bg-gray-50">
-          <td class="px-4 py-2">#1002</td>
-          <td class="px-4 py-2">فاطمه</td>
-          <td class="px-4 py-2">حسین</td>
-          <td class="px-4 py-2">500</td>
-          <td class="px-4 py-2">افغانی</td>
-          <td class="px-4 py-2 text-green-600 font-semibold">تکمیل شده</td>
-          <td class="px-4 py-2">2026-03-16</td>
-          <td class="px-4 py-2">
-            <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-            <button class="text-green-500 hover:text-green-700 ml-2"><i class="fas fa-check"></i></button>
-            <button class="text-red-500 hover:text-red-700 ml-2"><i class="fas fa-times"></i></button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-
-<!-- تاریخچه حواله ها -->
-<div id="hawalaHistorySection" class="hidden bg-white p-6 rounded shadow">
-
-<h2 class="text-xl font-bold mb-4">تاریخچه حواله‌ها</h2>
-
-<table class="w-full text-sm text-right border">
-
-<thead class="bg-gray-100">
-<tr>
-<th class="p-2">شماره</th>
-<th class="p-2">فرستنده</th>
-<th class="p-2">گیرنده</th>
-<th class="p-2">مبلغ</th>
-<th class="p-2">ارز</th>
-<th class="p-2">وضعیت</th>
-<th class="p-2">تاریخ</th>
-</tr>
-</thead>
-
-<tbody id="hawalaHistoryTableBody">
-
-<tr>
-<td class="p-2">HW102</td>
-<td class="p-2">احمد</td>
-<td class="p-2">کریم</td>
-<td class="p-2">500</td>
-<td class="p-2">USD</td>
-<td class="p-2 text-green-600">تکمیل شده</td>
-<td class="p-2">2024-01-12</td>
-</tr>
-
-<tr>
-<td class="p-2">HW103</td>
-<td class="p-2">جمال</td>
-<td class="p-2">حسین</td>
-<td class="p-2">300</td>
-<td class="p-2">AFN</td>
-<td class="p-2 text-red-600">لغو شده</td>
-<td class="p-2">2024-01-15</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</main>
+    </main>
 
   </div>
 
   <!-- JS -->
   <script src="main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+
 </body>
 
 </html>

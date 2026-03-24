@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد صرافی - تبادله ارز</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="bg-gray-100 font-poppins">
+
+    <!-- Navbar -->
+    <header class="flex items-center  justify-between bg-white shadow px-4 py-3 sticky top-0 z-50">
+        <!-- چپ: سلکت ادمین -->
+        <div class="flex items-center space-x-4 rtl:space-x-reverse">
+            <div class="relative">
+                <button id="adminDropdownBtn"
+                    class="flex items-center gap-2 px-3 py-1 bg-gray-100 rounded hover:bg-gray-200">
+                    <span>ادمین</span>
+                    <i class="fas fa-chevron-down text-gray-600"></i>
+                </button>
+                <div id="adminDropdown" class="hidden absolute right-0 mt-2 w-40 bg-white border rounded shadow-md">
+                    <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"><i class="fas fa-key"></i>
+                        تغییر
+                        رمز</a>
+                    <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"><i
+                            class="fas fa-sign-out-alt"></i>
+                        خروج</a>
+                </div>
+            </div>
+
+            <!-- سلکت زبان -->
+            <div class="relative">
+                <button id="langDropdownBtn"
+                    class="flex items-center gap-2 px-3 py-1 bg-gray-100 rounded hover:bg-gray-200">
+                    <i class="fas fa-globe"></i> <span>FA</span>
+                </button>
+                <div id="langDropdown" class="hidden absolute right-0 mt-2 w-28 bg-white border rounded shadow-md">
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-100"> فارسی</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">English</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- مرکز: لینک‌ها -->
+        <nav class="hidden md:flex items-center gap-6 rtl:gap-reverse">
+            <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-primary"><i
+                    class="fas fa-exchange-alt"></i>
+                تبادله</a>
+            <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-primary"><i class="fas fa-wallet"></i>
+                حواله</a>
+            <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-primary"><i class="fas fa-receipt"></i>
+                برد/رسید</a>
+            <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-primary"><i
+                    class="fas fa-dollar-sign"></i>
+                نرخ اسعار</a>
+            <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-primary"><i class="fas fa-gavel"></i>
+                تعزیرات</a>
+            <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-primary"><i class="fas fa-bolt"></i>
+                اکشن‌ها</a>
+        </nav>
+
+        <!-- راست: ایکن‌ها (مثل notifications) -->
+        <div class="flex items-center gap-4 rtl:gap-reverse">
+            <button class="text-gray-600 hover:text-primary"><i class="fas fa-bell"></i></button>
+            <button class="text-gray-600 hover:text-primary"><i class="fas fa-cog"></i></button>
+        </div>
+    </header>
+
+    <div class="flex">
+
+<!-- Sidebar -->
+<aside id="sidebar" class="w-64 bg-blue-900 h-screen shadow-md flex flex-col sticky top-0 transition-all duration-300">
+
+    <!-- Toggle Button -->
+  <div class="flex justify-end p-2">
+    <button id="sidebarToggle" class="text-white">
+      <i class="fas fa-angle-double-left text-xl"></i>
+    </button>
+  </div>
+
+
+  <!-- Logo -->
+  <div class="flex items-center justify-center h-20 mt-10">
+    <img src="images/logo.png" style="width: 200px; height: 200px;"  alt="لوگو شرکت" class="h-12">
+  </div>
+
+  <hr class="border-gray-200">
+
+  <!-- Menu -->
+  <nav class="flex-1 overflow-y-auto px-2 py-4">
+    <ul class="space-y-2">
+
+      <!-- Dashboard -->
+      <li>
+        <a href="dashboard.html"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-500 text-white font-semibold">
+          <i class="fas fa-tachometer-alt"></i>
+          داشبورد
+        </a>
+      </li>
+
+      <!-- Exchange -->
+      <li>
+        <a href="exchange.html"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-500 text-white">
+          <i class="fas fa-exchange-alt"></i>
+          تبادله
+        </a>
+      </li>
+
+       <li>
+        <a href="exchange-history.html"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-500 text-white">
+          <i class="fas fa-exchange-alt"></i>
+          تاریخچه تبادله
+        </a>
+      </li>
+
+       <li>
+        <a href="transaction.html"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-500 text-white">
+          <i class="fas fa-receipt"></i>
+         حواله
+        </a>
+      </li>
+
+       <li>
+        <a href="transaction-list.html"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-500 text-white">
+          <i class="fas fa-receipt"></i>
+        لیست حواله ها
+        </a>
+      </li>
+
+    <li>
+        <a href="transaction-history.html"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-500 text-white">
+          <i class="fas fa-receipt"></i>
+           تاریخچه حواله ها
+        </a>
+      </li>
+
+    
+
+
+      <!-- Customers -->
+      <li>
+        <a href="#"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-500 text-white">
+          <i class="fas fa-users"></i>
+          مشتریان
+        </a>
+      </li>
+
+      <!-- Transactions -->
+      <li>
+        <a href="#"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-500 text-white">
+          <i class="fas fa-receipt"></i>
+          معاملات
+        </a>
+      </li>
+
+      <!-- Currency Rates -->
+      <li>
+        <a href="#"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-500 text-white">
+          <i class="fas fa-dollar-sign"></i>
+          نرخ اسعار
+        </a>
+      </li>
+
+      <!-- Reports -->
+      <li>
+        <a href="#"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-500 text-white">
+          <i class="fas fa-chart-line"></i>
+          گزارشات
+        </a>
+      </li>
+
+      <hr class="my-3">
+
+      <!-- Settings -->
+      <li>
+        <a href="#"
+          class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-500 text-white">
+          <i class="fas fa-cog"></i>
+          تنظیمات
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+
+</aside>
+
+        <!-- ===== Main Content ===== -->
+        <main class="flex-1 p-6 space-y-8">
+
+            <!-- کارت های مالی -->
+            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+                <!-- دخل / کش -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-semibold text-gray-800 text-lg">دخل / کش</h3>
+                        <i class="fas fa-wallet text-blue-500 text-xl"></i>
+                    </div>
+
+                    <div class="flex flex-col gap-2 text-sm">
+                        <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
+                            <span>دالر</span>
+                            <span class="font-semibold">34,000</span>
+                        </div>
+                        <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
+                            <span>افغانی</span>
+                            <span class="font-semibold">114,000</span>
+                        </div>
+                        <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
+                            <span>کالدَر</span>
+                            <span class="font-semibold">134,000</span>
+                        </div>
+                        <div class="flex justify-between bg-gray-50 px-4 py-2 rounded">
+                            <span>ریال</span>
+                            <span class="font-semibold">23,000</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- توتل قرض بر مردم -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-semibold text-gray-800 text-lg">توتل قرض بر مردم</h3>
+                        <i class="fas fa-arrow-up text-red-500 text-xl"></i>
+                    </div>
+
+                    <div class="flex flex-col gap-2 text-sm">
+                        <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
+                            <span>دالر</span>
+                            <span class="font-semibold text-red-600">12,500</span>
+                        </div>
+                        <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
+                            <span>افغانی</span>
+                            <span class="font-semibold text-red-600">450,000</span>
+                        </div>
+                        <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
+                            <span>کالدَر</span>
+                            <span class="font-semibold text-red-600">80,000</span>
+                        </div>
+                        <div class="flex justify-between bg-red-50 px-4 py-2 rounded">
+                            <span>ریال</span>
+                            <span class="font-semibold text-red-600">1,200,000</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- توتل طلب مردم -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-semibold text-gray-800 text-lg">توتل طلب مردم</h3>
+                        <i class="fas fa-arrow-down text-green-500 text-xl"></i>
+                    </div>
+
+                    <div class="flex flex-col gap-2 text-sm">
+                        <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
+                            <span>دالر</span>
+                            <span class="font-semibold text-green-600">18,000</span>
+                        </div>
+                        <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
+                            <span>افغانی</span>
+                            <span class="font-semibold text-green-600">320,000</span>
+                        </div>
+                        <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
+                            <span>کالدَر</span>
+                            <span class="font-semibold text-green-600">70,000</span>
+                        </div>
+                        <div class="flex justify-between bg-green-50 px-4 py-2 rounded">
+                            <span>ریال</span>
+                            <span class="font-semibold text-green-600">900,000</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- حواله های نااجرا -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-semibold text-gray-800 text-lg">حواله‌های نااجرا</h3>
+                        <i class="fas fa-clock text-yellow-500 text-xl"></i>
+                    </div>
+
+                    <div class="flex flex-col gap-2 text-sm">
+                        <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
+                            <span>دالر</span>
+                            <span class="font-semibold text-yellow-600">5 حواله</span>
+                        </div>
+                        <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
+                            <span>افغانی</span>
+                            <span class="font-semibold text-yellow-600">3 حواله</span>
+                        </div>
+                        <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
+                            <span>کالدَر</span>
+                            <span class="font-semibold text-yellow-600">2 حواله</span>
+                        </div>
+                        <div class="flex justify-between bg-yellow-50 px-4 py-2 rounded">
+                            <span>درهم</span>
+                            <span class="font-semibold text-yellow-600">4 حواله</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+           <!-- ===== بخش حواله ===== -->
+<div class="bg-white p-6 rounded-lg shadow-lg mt-8">
+  <h2 class="text-xl font-semibold mb-6 text-white bg-blue-600 py-2 rounded-md px-3">ایجاد حواله</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <div>
+      <label class="block mb-2">فرستنده</label>
+      <input id="sender" type="text" class="w-full border p-3 rounded-lg">
+    </div>
+
+    <div>
+      <label class="block mb-2">گیرنده</label>
+      <input id="receiver" type="text" class="w-full border p-3 rounded-lg">
+    </div>
+
+    <div>
+      <label class="block mb-2">مقدار</label>
+      <input id="amount" type="number" class="w-full border p-3 rounded-lg">
+    </div>
+
+    <div>
+      <label class="block mb-2">واحد پول</label>
+      <select id="currency" class="w-full border p-3 rounded-lg">
+        <option>USD</option>
+        <option>AFN</option>
+        <option>EUR</option>
+      </select>
+    </div>
+
+  </div>
+
+  <button id="createHawalaBtn" class="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg">
+    ثبت حواله
+  </button>
+
+  <!-- جدول حواله -->
+<div class="mt-8 overflow-x-auto">
+  <table class="min-w-full bg-white rounded-lg shadow">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="py-3 px-6">ID</th>
+        <th class="py-3 px-6">فرستنده</th>
+        <th class="py-3 px-6">گیرنده</th>
+        <th class="py-3 px-6">مقدار</th>
+        <th class="py-3 px-6">ارز</th>
+        <th class="py-3 px-6">تاریخ</th>
+        <th class="py-3 px-6">عملیات</th>
+      </tr>
+    </thead>
+    <tbody id="hawalaTableBody"></tbody>
+  </table>
+</div>
+</div>
+
+
+
+        </main>
+    </div>
+
+
+
+
+    <!-- main js link -->
+    <script src="main.js"></script>
+    
+<script>
+let hawalaCount = 0;
+const tableBody = document.getElementById('hawalaTableBody');
+
+document.getElementById('createHawalaBtn').addEventListener('click', () => {
+  const sender = document.getElementById('sender').value;
+  const receiver = document.getElementById('receiver').value;
+  const amount = document.getElementById('amount').value;
+  const currency = document.getElementById('currency').value;
+
+  if(!sender || !receiver || !amount){
+    alert("همه فیلدها را پر کنید");
+    return;
+  }
+
+  // ID
+  hawalaCount++;
+  const id = "HW" + hawalaCount.toString().padStart(3,'0');
+
+  // تاریخ
+  const date = new Date().toLocaleString('fa-IR');
+
+  // ساخت ردیف
+  const tr = document.createElement('tr');
+  tr.classList.add('hover:bg-gray-50');
+
+  tr.innerHTML = `
+    <td class="py-3 px-6">${id}</td>
+    <td class="py-3 px-6">${sender}</td>
+    <td class="py-3 px-6">${receiver}</td>
+    <td class="py-3 px-6">${amount}</td>
+    <td class="py-3 px-6">${currency}</td>
+    <td class="py-3 px-6">${date}</td>
+    <td class="py-3 px-6 text-center">
+      <button class="deleteBtn text-red-500">حذف</button>
+    </td>
+  `;
+
+  tableBody.appendChild(tr);
+
+  // ریست فرم
+  document.getElementById('sender').value = '';
+  document.getElementById('receiver').value = '';
+  document.getElementById('amount').value = '';
+
+  alert("حواله ثبت شد ✅");
+});
+
+// حذف
+document.addEventListener('click', (e)=>{
+  if(e.target.classList.contains('deleteBtn')){
+    if(confirm("حذف شود؟")){
+      e.target.closest('tr').remove();
+    }
+  }
+});
+</script>
+
+</body>
+
+</html>
