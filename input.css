@@ -18,6 +18,9 @@
 }
 
 @layer components {
+  .active{
+    @apply  bg-blue-700 text-white;
+  }
 
     /* وقتی سایدبار جمع شده */
 .sidebar-collapsed {
