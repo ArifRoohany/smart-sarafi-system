@@ -1,308 +1,381 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-<title>Exchange Dashboard</title>
+  <title>سیستم صرافی - هوشمند</title>
 </head>
 
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-100 font-sans overflow-x-hidden">
 
-<div class="flex min-h-screen">
+  <div class="flex min-h-screen">
 
-<!-- ================= Sidebar ================= -->
-<aside id="sidebar"
-class="w-64 bg-gradient-to-b from-blue-900 to-blue-800 text-white h-screen fixed overflow-y-auto right-0 top-0 transform transition-all duration-300">
+    <!-- ================= Sidebar ================= -->
+    <aside id="sidebar"
+      class="w-64 bg-gradient-to-b from-blue-900 to-blue-800 text-white h-screen fixed overflow-y-auto right-0 top-0 transform transition-all duration-300">
 
-<!-- Logo -->
-<div class="p-5 text-center">
-<img src="images/logo.png" class="mx-auto mb-3">
-<hr class="border-white border-dashed border-1">
-</div>
+      <!-- لوگو -->
+      <div class="p-5 text-center">
+        <img src="images/logo.png" class="mx-auto mb-3">
+        <hr class="border-white border-dashed border-1">
+      </div>
 
-<!-- Menu -->
-<ul class="mt-2 space-y-2 px-3">
+      <!-- Menu -->
+      <ul class="mt-2 space-y-2 px-3">
 
-<li>
-<a href="dashboard.html" class="flex items-center gap-3 p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white">
-<i class="fas fa-home"></i>
-داشبورد
-</a>
-</li>
+        <!-- داشبورد -->
+        <li>
+          <a href="dashboard.html"
+            class="flex items-center gap-3 p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white duration-300">
+            <i class="fas fa-home"></i>
+            داشبورد
+          </a>
+        </li>
 
-<li>
-<a href="treasury.html" class="flex items-center gap-3 p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white">
-<i class="fas fa-wallet"></i>
-خزانه
-</a>
-</li>
+        <!-- حزانه -->
+        <li>
+          <a href="treasury.html"
+            class="flex items-center gap-3 p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white duration-300">
+            <i class="fas fa-wallet"></i>
+            خزانه
+          </a>
+        </li>
 
-<li>
-<a href="activity-log.html" class="flex items-center gap-3 p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white">
-<i class="fas fa-book"></i>
-روزنامچه
-</a>
-</li>
+        <!-- روزنامچه -->
+        <li>
+          <a href="activity-log.html"
+            class="flex items-center gap-3 p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white duration-300">
+            <i class="fas fa-book"></i>
+            روزنامچه
+          </a>
+        </li>
 
-<!-- معاملات -->
-<li>
-<button onclick="toggleSubmenu('dealMenu','dealIcon')"
-class="w-full flex items-center justify-between p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white">
+        <!-- اطلاعات اولیه-->
+        <li>
+          <button onclick="toggleSubmenu('infoMenu','infoIcon')"
+            class="w-full flex items-center justify-between p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white duration-300">
 
-<span class="flex items-center gap-3">
-<i class="fas fa-exchange-alt"></i>
-معاملات
-</span>
+            <span class="flex items-center gap-3">
+              <i class="fas fa-exchange-alt"></i>
+              اطلاعات اولیه
+            </span>
 
-<i id="dealIcon" class="fas fa-chevron-left transition-transform duration-300"></i>
-</button>
+            <i id="infoIcon" class="fas fa-chevron-left transition-transform duration-300"></i>
+          </button>
 
-<ul id="dealMenu" class="hidden mr-4 mt-2 space-y-2 text-sm">
+          <ul id="infoMenu" class="hidden mt-2 space-y-2 text-md duration-300">
 
-<li>
-  <a href="exchange.html" 
-     class="flex gap-2 items-center hover:text-gray-300 cursor-pointer">
-    <i class="fas fa-arrow-left"></i>
-    تبادله
-  </a>
-</li>
+            <!-- نرخ اسعار -->
+            <li>
+              <a href="currency-rates.html"
+                class="flex items-center gap-3 p-3 rounded-full  hover:bg-blue-700 text-white">
+                <i class="fas fa-rotate-forward"></i>
+                نرخ اسعار
+              </a>
+            </li>
 
-<li>
-  <a href="exchange-list.html" 
-     class="flex gap-2 items-center hover:text-gray-300 cursor-pointer">
-    <i class="fas fa-arrow-left"></i>
-   لیست تبادله
-  </a>
-</li>
+            <!--   حساب (کهاته ها) -->
+            <li>
+              <a href="accounts.html" class="flex items-center gap-3 p-3 rounded-full hover:bg-blue-700 text-white">
 
-<li>
-  <a href="exchange-history.html" 
-     class="flex gap-2 items-center hover:text-gray-300 cursor-pointer">
-    <i class="fas fa-arrow-left"></i>
-   تاریخچه تبادله
-  </a>
-</li>
+                <i class="fas fa-wallet"></i>
+                حساب (کهاته ها)
 
-<li>
-  <a href="transaction.html" 
-     class="flex gap-2 items-center hover:text-gray-300 cursor-pointer">
-    <i class="fas fa-arrow-left"></i>
-  حواله
-  </a>
-</li>
+              </a>
+            </li>
 
-<li>
-  <a href="transaction-list.html" 
-     class="flex gap-2 items-center hover:text-gray-300 cursor-pointer">
-    <i class="fas fa-arrow-left"></i>
- لیست حواله ها
-  </a>
-</li>
+            <!-- کاربران -->
+            <li>
+              <a href="users.html" class="flex items-center gap-3 p-3 rounded-full hover:bg-blue-700 text-white">
+                <i class="fas fa-users"></i>
+                کاربران
+              </a>
+            </li>
 
-<li>
-  <a href="transaction-history.html" 
-     class="flex gap-2 items-center hover:text-gray-300 cursor-pointer">
-    <i class="fas fa-arrow-left"></i>
- تاریخچه حواله ها
-  </a>
-</li>
+            <!-- شعبات-->
+            <li>
+              <a href="branches.html" class="flex items-center gap-3 p-3 rounded-full hover:bg-blue-700 text-white">
+                <i class="fas fa-building"></i>
+                شعبات
+              </a>
+            </li>
 
-</ul>
-</li>
+            <!-- شهر ها-->
+            <li>
+              <a href="cities.html" class="flex items-center gap-3 p-3 rounded-full hover:bg-blue-700 text-white">
+                <i class="fas fa-location-dot"></i>
+                شهر ها
+              </a>
+            </li>
 
-<li>
-<a href="users.html" class="flex items-center gap-3 p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white">
-<i class="fas fa-users"></i>
-کاربران
-</a>
-</li>
+          </ul>
+        </li>
 
-<li>
-<a href="currency-rates.html" class="flex items-center gap-3 p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white">
-<i class="fas fa-rotate-forward"></i>
-نرخ اسعار
-</a>
-</li>
+        <!-- عملیات-->
+        <li>
+          <button onclick="toggleSubmenu('actionsMenu','actionsIcon')"
+            class="w-full flex items-center justify-between p-3 text-blue-950 rounded-full bg-white hover:bg-blue-700 hover:text-white">
 
-<li>
-<a href="reports.html" class="flex items-center gap-3 p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white">
-<i class="fas fa-square-poll-vertical"></i>
-گزارشات
-</a>
-</li>
+            <span class="flex items-center gap-3">
+              <i class="fas fa-briefcase"></i>
+              عملیات
+            </span>
 
-<!-- Settings -->
-<li>
-<button onclick="toggleSubmenu('settingMenu','settingIcon')"
-class="w-full flex items-center justify-between p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white">
+            <i id="actionsIcon" class="fas fa-chevron-left transition-transform duration-300"></i>
+          </button>
 
-<span class="flex items-center gap-3">
-<i class="fas fa-cog"></i>
-تنظیمات
-</span>
+          <ul id="actionsMenu" class="hidden mt-2 space-y-2 text-md">
 
-<i id="settingIcon" class="fas fa-chevron-left transition-transform duration-300"></i>
-</button>
+            <li>
+              <a href="cash_balance.html"
+                class="flex gap-2 items-center hover:bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-wallet pr-3"></i>
+                موجود نقدی
+              </a>
+            </li>
 
-<ul id="settingMenu" class="hidden mr-4 my-2 space-y-2 text-sm">
+            <li>
+              <a href="activity-log.html"
+                class="flex gap-2 items-center hover:bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-book pr-3"></i>
+                ژورنال/روزنامچه
+              </a>
+            </li>
 
-<li>
-  <a href="company-info.html" 
-     class="flex gap-2 items-center hover:text-gray-300 cursor-pointer">
-    <i class="fas fa-arrow-left"></i>
-    مشخصات شرکت  
-  </a>
-</li>
+            <li>
+              <a href="transaction.html"
+                class="flex gap-2 items-center hover:bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-paper-plane pr-3"></i>
+                حواله پول
+              </a>
+            </li>
 
-<li>
-  <a href="system-sitting.html" 
-     class="flex gap-2 items-center hover:text-gray-300 cursor-pointer">
-    <i class="fas fa-arrow-left"></i>
-    تنظیمات سیستم 
-  </a>
-</li>
+            <li>
+              <a href="exchange.html"
+                class="flex gap-2 items-center hover:bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-exchange-alt pr-3"></i>
+                تبادله اسعار
+              </a>
+            </li>
 
-<li>
-  <a href="transaction.html" 
-     class="flex gap-2 items-center hover:text-gray-300 cursor-pointer">
-    <i class="fas fa-arrow-left"></i>
-   نوعیت حساب
-  </a>
-</li>
+            <li>
+              <a href="checks.html"
+                class="flex gap-2 items-center hover:bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-file-invoice-dollar pr-3"></i>
+                چک یا پارچه صرافی
+              </a>
+            </li>
 
-<li>
-  <a href="transaction.html" 
-     class="flex gap-2 items-center hover:text-gray-300 cursor-pointer">
-    <i class="fas fa-arrow-left"></i>
-  مدیریت زبان
-  </a>
-</li>
+            <li>
+              <a href="#"
+                class="flex gap-2 items-center hover:bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-calendar-alt pr-3"></i>
+                تاریخ سر رسید
+              </a>
+            </li>
 
-<li>
-  <a href="transaction.html" 
-     class="flex gap-2 items-center hover:text-gray-300 cursor-pointer">
-    <i class="fas fa-arrow-left"></i>
-  امنیت
-  </a>
-</li>
+            <li>
+              <a href="cash-result.html"
+                class="flex gap-2 items-center hover:bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-chart-line pr-3"></i>
+                نقدینگ و نتیجه
+              </a>
+            </li>
 
-<li>
-  <a href="transaction.html" 
-     class="flex gap-2 items-center hover:text-gray-300 cursor-pointer">
-    <i class="fas fa-arrow-left"></i>
-  بکاپ
-  </a>
-</li>
+            <li>
+              <a href="ok-accounts.html"
+                class="flex gap-2 items-center hover:bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-check-circle pr-3"></i>
+                اوکی حساب
+              </a>
+            </li>
 
-</ul>
-</li>
+          </ul>
+        </li>
 
-</ul>
+        <!-- گزارشات -->
+        <li>
+          <a href="reports.html"
+            class="flex items-center gap-3 p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white">
+            <i class="fas fa-square-poll-vertical"></i>
+            گزارشات
+          </a>
+        </li>
 
-</aside>
+        <!-- تیظیمات -->
+        <li>
+          <button onclick="toggleSubmenu('settingMenu','settingIcon')"
+            class="w-full flex items-center justify-between p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white">
+
+            <span class="flex items-center gap-3">
+              <i class="fas fa-cog"></i>
+              تنظیمات
+            </span>
+
+            <i id="settingIcon" class="fas fa-chevron-left transition-transform duration-300"></i>
+          </button>
+
+          <ul id="settingMenu" class="hidden my-2 space-y-2 text-md">
+
+            <li>
+              <a href="company-info.html"
+                class="flex gap-2 items-center hover:bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-building pr-3"></i>
+                مشخصات شرکت
+              </a>
+            </li>
+
+            <li>
+              <a href="system-sitting.html"
+                class="flex gap-2 items-center hover:bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-sliders-h pr-3"></i>
+                تنظیمات سیستم
+              </a>
+            </li>
+
+            <li>
+              <a href="transaction.html"
+                class="flex gap-2 items-center hover:bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-layer-group pr-3"></i>
+                نوعیت حساب
+              </a>
+            </li>
+
+            <li>
+              <a href="transaction.html"
+                class="flex gap-2 items-center hover:bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-language pr-3"></i>
+                مدیریت زبان
+              </a>
+            </li>
+
+            <li>
+              <a href="transaction.html"
+                class="flex gap-2 items-center hover:bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-shield-alt pr-3"></i>
+                امنیت
+              </a>
+            </li>
+
+            <li>
+              <a href="transaction.html"
+                class="flex gap-2 items-center hover:bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-database pr-3"></i>
+                بکاپ
+              </a>
+            </li>
+
+          </ul>
+        </li>
+
+      </ul>
+
+    </aside>
 
 
-<!-- ================= Content ================= -->
-<div class="flex-1 pr-64 min-w-0 transition-all duration-300" id="content">
+    <!-- ================= Content ================= -->
+    <div class="flex-1 pr-64 min-w-0 transition-all duration-300" id="content">
 
-<!-- ================= Header ================= -->
-<header id="header"
-class="sticky top-4 bg-white shadow-lg rounded-full mx-auto px-6 py-4 flex items-center justify-between w-[96%] z-40 transition-all duration-300">
+      <!-- ================= Header ================= -->
+      <header id="header"
+        class="sticky top-4 bg-gradient-to-r from-blue-900 to-blue-800 shadow-lg rounded-full mx-auto px-6 py-4 flex items-center justify-between w-[96%] z-40 transition-all duration-300">
 
-<!-- Right -->
-<div class="flex items-center gap-4">
+        <!-- Right -->
+        <div class="flex items-center gap-4">
 
-<!-- Menu Icon -->
-<button onclick="toggleSidebar()" class="text-xl">
-<i class="fas fa-bars"></i>
-</button>
+          <!-- Menu Icon -->
+          <button onclick="toggleSidebar()" class="text-xl text-white">
+            <i class="fas fa-bars"></i>
+          </button>
 
-<!-- Admin Dropdown -->
-<div class="relative">
-<button onclick="toggleDropdown('adminMenu')" class="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded">
-<i class="fas fa-user"></i>
-ادمین
-</button>
+          <!-- Admin Dropdown -->
+          <div class="relative">
+            <button onclick="toggleDropdown('adminMenu')" class="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded">
+              <i class="fas fa-user"></i>
+              ادمین
+            </button>
 
-<div id="adminMenu"
-class="hidden absolute right-0 mt-2 bg-white shadow rounded w-40">
+            <div id="adminMenu" class="hidden absolute right-0 mt-2 bg-white shadow rounded w-40">
 
-<div class="p-2 hover:bg-gray-100 cursor-pointer flex gap-2">
-<i class="fas fa-key"></i> تغییر رمز
-</div>
 
-<div class="p-2 hover:bg-gray-100 cursor-pointer flex gap-2">
-<i class="fas fa-sign-out-alt"></i> خروج
-</div>
 
-</div>
-</div>
+              <div class="p-2 hover:bg-gray-100 cursor-pointer flex gap-2">
+                <i class="fas fa-sign-out-alt"></i> خروج
+              </div>
 
-<!-- Language -->
-<div class="relative">
-<button onclick="toggleDropdown('langMenu')" class="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded">
-زبان
-<i class="fas fa-globe"></i>
-</button>
+              <div class="p-2 hover:bg-gray-100 cursor-pointer flex gap-2">
+                <a href="profile-sitting.html">
+                  <i class="fas  fa-cog"></i> تنظیمات پروفایل
+                </a>
+              </div>
 
-<div id="langMenu"
-class="hidden absolute right-0 mt-2 bg-white shadow rounded w-32">
+            </div>
+          </div>
 
-<div class="p-2 hover:bg-gray-100 cursor-pointer">فارسی</div>
-<div class="p-2 hover:bg-gray-100 cursor-pointer">English</div>
+          <!-- Language -->
+          <div class="relative">
+            <button onclick="toggleDropdown('langMenu')" class="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded">
+              زبان
+              <i class="fas fa-globe"></i>
+            </button>
 
-</div>
-</div>
+            <div id="langMenu" class="hidden absolute right-0 mt-2 bg-white shadow rounded w-32">
 
-</div>
+              <div class="p-2 hover:bg-gray-100 cursor-pointer">فارسی</div>
+              <div class="p-2 hover:bg-gray-100 cursor-pointer">English</div>
 
-<!-- Center Links -->
-<div class="hidden md:flex gap-6 text-gray-700">
+            </div>
+          </div>
 
-<a class="flex gap-2 items-center hover:text-blue-600 cursor-pointer">
-<i class="fas fa-exchange-alt"></i> تبادله
-</a>
+        </div>
 
-<a class="flex gap-2 items-center hover:text-blue-600 cursor-pointer">
-<i class="fas fa-paper-plane"></i> حواله
-</a>
+        <!-- Center Links -->
+        <div class="hidden md:flex gap-6 text-gray-700">
 
-<a class="flex gap-2 items-center hover:text-blue-600 cursor-pointer">
-<i class="fas fa-receipt"></i> برد/رسید
-</a>
+          <a class="flex gap-2 items-center text-white cursor-pointer">
+            <i class="fas fa-exchange-alt"></i> تبادله
+          </a>
 
-<a class="flex gap-2 items-center hover:text-blue-600 cursor-pointer">
-<i class="fas fa-chart-line"></i> نرخ اسعار
-</a>
+          <a class="flex gap-2 items-center text-white cursor-pointer">
+            <i class="fas fa-paper-plane"></i> حواله
+          </a>
 
-<a class="flex gap-2 items-center hover:text-blue-600 cursor-pointer">
-<i class="fas fa-balance-scale"></i> تعزیرات
-</a>
+          <a class="flex gap-2 items-center text-white cursor-pointer">
+            <i class="fas fa-receipt"></i> برد/رسید
+          </a>
 
-<a class="flex gap-2 items-center hover:text-blue-600 cursor-pointer">
-<i class="fas fa-bolt"></i> اکشن‌ها
-</a>
+          <a class="flex gap-2 items-center text-white cursor-pointer">
+            <i class="fas fa-chart-line"></i> نرخ اسعار
+          </a>
 
-</div>
+          <a class="flex gap-2 items-center text-white cursor-pointer">
+            <i class="fas fa-balance-scale"></i> تعزیرات
+          </a>
 
-<!-- Left Icons -->
-<div class="flex gap-4 text-xl">
+          <a class="flex gap-2 items-center text-white cursor-pointer">
+            <i class="fas fa-bolt"></i> اکشن‌ها
+          </a>
 
-<i class="fas fa-bell cursor-pointer hover:text-blue-600"></i>
-<i class="fas fa-cog cursor-pointer hover:text-blue-600"></i>
+        </div>
 
-</div>
+        <!-- Left Icons -->
+        <div class="flex gap-4 text-xl">
 
-</header>
+          <i class="fas fa-bell cursor-pointer text-white"></i>
+          <i class="fas fa-cog cursor-pointer text-white"></i>
 
-    <!-- Main Content -->
-    <main class="flex-1 p-6 space-y-8 mt-5">
+        </div>
+
+      </header>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-6 space-y-8 mt-5">
 
         <div class="bg-white p-6 rounded-xl shadow-lg mt-8 overflow-hidden">
 
@@ -341,194 +414,253 @@ class="hidden absolute right-0 mt-2 bg-white shadow rounded w-32">
     </div>
   </div>
 
-  <!-- ===== Table ===== -->
-  <div class="w-full overflow-x-auto border rounded-lg">
+  <!-- ===== Users Table ===== -->
+<div class="w-full overflow-x-auto border rounded-xl shadow-sm bg-white">
 
-    <table class="w-full text-base text-center min-w-[700px]">
+  <table class="w-full text-sm text-center min-w-[900px]">
 
-      <!-- Head -->
-      <thead class="bg-gray-100 text-gray-800">
-        <tr>
-          <th class="py-4 px-6 whitespace-nowrap">#</th>
-          <th class="py-4 px-6 whitespace-nowrap">نام کاربر</th>
-          <th class="py-4 px-6 whitespace-nowrap hidden md:table-cell">ایمیل</th>
-          <th class="py-4 px-6 whitespace-nowrap">نقش</th>
-          <th class="py-4 px-6 whitespace-nowrap hidden lg:table-cell">وضعیت</th>
-          <th class="py-4 px-6 whitespace-nowrap hidden lg:table-cell">آخرین ورود</th>
-          <th class="py-4 px-6 whitespace-nowrap">عملیات</th>
-        </tr>
-      </thead>
+    <!-- Header -->
+    <thead class="bg-gray-100 text-gray-700">
+      <tr>
+        <th class="py-4 px-4">#</th>
+        <th class="py-4 px-4">کود کاربری</th>
+        <th class="py-4 px-4">اسم کاربری</th>
+        <th class="py-4 px-4">وضعیت کاربری</th>
+        <th class="py-4 px-4">سطح کاربری</th>
+        <th class="py-4 px-4">نماینده گی</th>
+        <th class="py-4 px-4 hidden lg:table-cell">تفصیلات</th>
+        <th class="py-4 px-4">عملیات</th>
+      </tr>
+    </thead>
 
-      <!-- Body -->
-      <tbody class="divide-y">
+    <!-- Body -->
+    <tbody class="divide-y">
 
-        <!-- Example User 1 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">1</td>
-          <td class="font-bold py-5 px-6">علی</td>
-          <td class="py-5 px-6 hidden md:table-cell">jan@example.com</td>
-          <td class="py-5 px-6">
-            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-semibold">Admin</span>
-          </td>
-          <td class="py-5 px-6 hidden lg:table-cell">
-            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm font-semibold">فعال</span>
-          </td>
-          <td class="py-5 px-6 hidden lg:table-cell">2026-03-19 15:00</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700" title="مشاهده"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700" title="ویرایش"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700" title="حذف"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
+      <!-- Row -->
+      <tr class="hover:bg-gray-50 transition">
+        <td class="py-4 px-4">1</td>
+        <td class="py-4 px-4 font-semibold">USR-001</td>
+        <td class="py-4 px-4">علی احمدی</td>
 
-        <!-- Example User 2 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">2</td>
-          <td class="font-bold py-5 px-6">سمیرا</td>
-          <td class="py-5 px-6 hidden md:table-cell">samira@example.com</td>
-          <td class="py-5 px-6">
-            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-sm font-semibold">Operator</span>
-          </td>
-          <td class="py-5 px-6 hidden lg:table-cell">
-            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm font-semibold">فعال</span>
-          </td>
-          <td class="py-5 px-6 hidden lg:table-cell">2026-03-19 14:50</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
+        <!-- Status -->
+        <td class="py-4 px-4">
+          <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">
+            فعال
+          </span>
+        </td>
 
-          <!-- Example User 3 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">3</td>
-          <td class="font-bold py-5 px-6">مریم</td>
-          <td class="py-5 px-6 hidden md:table-cell">maryam.com</td>
-          <td class="py-5 px-6">
-            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-sm font-semibold">Operator</span>
-          </td>
-          <td class="py-5 px-6 hidden lg:table-cell">
-            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm font-semibold">فعال</span>
-          </td>
-          <td class="py-5 px-6 hidden lg:table-cell">2026-03-19 14:50</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
+        <!-- Role -->
+        <td class="py-4 px-4">
+          <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">
+            مدیر شعبه
+          </span>
+        </td>
+
+        <!-- Branch -->
+        <td class="py-4 px-4">
+          <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs">
+            شعبه کابل
+          </span>
+        </td>
+
+        <!-- Details -->
+        <td class="py-4 px-4 hidden lg:table-cell text-gray-500">
+          دسترسی کامل به سیستم
+        </td>
+
+        <!-- Actions -->
+        <td class="py-4 px-4">
+          <div class="flex justify-center gap-3 text-lg">
+
+            <button class="text-blue-500 hover:text-blue-700" title="مشاهده">
+              <i class="fas fa-eye"></i>
+            </button>
+
+            <button class="text-emerald-500 hover:text-emerald-700" title="ویرایش">
+              <i class="fas fa-edit"></i>
+            </button>
+
+            <button class="text-red-500 hover:text-red-700" title="حذف">
+              <i class="fas fa-trash"></i>
+            </button>
+
+          </div>
+        </td>
+      </tr>
 
 
+      <!-- Row -->
+      <tr class="hover:bg-gray-50 transition">
+        <td class="py-4 px-4">2</td>
+        <td class="py-4 px-4 font-semibold">USR-002</td>
+        <td class="py-4 px-4">سمیرا حسینی</td>
 
-            <!-- Example User 2 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">2</td>
-          <td class="font-bold py-5 px-6">سمیرا</td>
-          <td class="py-5 px-6 hidden md:table-cell">samira@example.com</td>
-          <td class="py-5 px-6">
-            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-sm font-semibold">Operator</span>
-          </td>
-          <td class="py-5 px-6 hidden lg:table-cell">
-            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm font-semibold">فعال</span>
-          </td>
-          <td class="py-5 px-6 hidden lg:table-cell">2026-03-19 14:50</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
+        <td class="py-4 px-4">
+          <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold">
+            غیرفعال
+          </span>
+        </td>
 
+        <td class="py-4 px-4">
+          <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold">
+            کارمند شعبه
+          </span>
+        </td>
 
-            <!-- Example User 2 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">3</td>
-          <td class="font-bold py-5 px-6">علی</td>
-          <td class="py-5 px-6 hidden md:table-cell">ali@example.com</td>
-          <td class="py-5 px-6">
-            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-sm font-semibold">Operator</span>
-          </td>
-          <td class="py-5 px-6 hidden lg:table-cell">
-            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm font-semibold">فعال</span>
-          </td>
-          <td class="py-5 px-6 hidden lg:table-cell">2026-03-19 14:50</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
+        <td class="py-4 px-4">
+          <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs">
+            شعبه هرات
+          </span>
+        </td>
 
+        <td class="py-4 px-4 hidden lg:table-cell text-gray-500">
+          دسترسی محدود
+        </td>
 
-            <!-- Example User 2 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">2</td>
-          <td class="font-bold py-5 px-6">سمیرا</td>
-          <td class="py-5 px-6 hidden md:table-cell">samira@example.com</td>
-          <td class="py-5 px-6">
-            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-sm font-semibold">Operator</span>
-          </td>
-          <td class="py-5 px-6 hidden lg:table-cell">
-            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm font-semibold">فعال</span>
-          </td>
-          <td class="py-5 px-6 hidden lg:table-cell">2026-03-19 14:50</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
-        
-      </tbody>
+        <td class="py-4 px-4">
+          <div class="flex justify-center gap-3 text-lg">
+            <button class="text-blue-500 hover:text-blue-700">
+              <i class="fas fa-eye"></i>
+            </button>
 
-    </table>
-  </div>
+            <button class="text-emerald-500 hover:text-emerald-700">
+              <i class="fas fa-edit"></i>
+            </button>
+
+            <button class="text-red-500 hover:text-red-700">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+
+  </table>
+</div>
 
 
-  <!-- Modal -->
-<div id="addUserModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-  <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
+<!-- Modal -->
+<div id="addUserModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
 
-    <!-- Close Button -->
-    <button id="closeModalBtn" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
-      <i class="fas fa-times text-lg"></i>
-    </button>
+  <div class="bg-white rounded-2xl shadow-xl w-full max-w-3xl relative">
 
-    <!-- Modal Header -->
-    <h3 class="text-xl font-bold my-4">اضافه کردن کاربر جدید</h3>
+    <!-- Header -->
+    <div class="flex justify-between items-center border-b p-4">
+      <h3 class="text-lg font-bold flex items-center gap-2">
+        <i class="fas fa-user-plus text-blue-600"></i>
+        اضافه کردن کاربر جدید
+      </h3>
+
+      <button id="closeModalBtn" class="text-gray-500 hover:text-red-500">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
 
     <!-- Form -->
-    <form id="addUserForm" class="flex flex-col gap-4">
+    <form id="addUserForm" class="p-5 space-y-4">
 
-      <input type="text" placeholder="نام کاربر" class="border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      <!-- Row 1 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-      <input type="email" placeholder="ایمیل" class="border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <div>
+          <label class="text-sm font-semibold">نام کاربری</label>
+          <div class="relative">
+            <i class="fas fa-user absolute right-3 top-3 text-gray-400"></i>
+            <input type="text" placeholder="نام کاربری..."
+            class="w-full border rounded-lg pr-10 p-2 focus:ring-2 focus:ring-blue-500 outline-none">
+          </div>
+        </div>
 
-      <select class="border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
-        <option value="Admin">Admin</option>
-        <option value="Operator">Operator</option>
-        <option value="User">User</option>
-      </select>
+        <div>
+          <label class="text-sm font-semibold">ایمیل</label>
+          <div class="relative">
+            <i class="fas fa-envelope absolute right-3 top-3 text-gray-400"></i>
+            <input type="email" placeholder="ایمیل..."
+            class="w-full border rounded-lg pr-10 p-2 focus:ring-2 focus:ring-blue-500 outline-none">
+          </div>
+        </div>
 
-      <select class="border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
-  <option value="active">فعال</option>
-  <option value="inactive">غیرفعال</option>
-</select>
+      </div>
 
-      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">ثبت کاربر</button>
+      <!-- Row 2 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <div>
+          <label class="text-sm font-semibold">سطح کاربری</label>
+          <div class="relative">
+            <i class="fas fa-user-shield absolute right-3 top-3 text-gray-400"></i>
+            <select class="w-full border rounded-lg pr-10 p-2 focus:ring-2 focus:ring-blue-500 outline-none">
+              <option>کارمند شعبه</option>
+              <option>مدیر شعبه</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="text-sm font-semibold">شماره موبایل</label>
+          <div class="relative">
+            <i class="fas fa-phone absolute right-3 top-3 text-gray-400"></i>
+            <input type="text" placeholder="شماره موبایل..."
+            class="w-full border rounded-lg pr-10 p-2 focus:ring-2 focus:ring-blue-500 outline-none">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Row 3 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+        <label class="text-sm font-semibold">نام و تخلص</label>
+        <div class="relative">
+          <i class="fas fa-id-card absolute right-3 top-3 text-gray-400"></i>
+          <input type="text" placeholder="نام و تخلص..."
+          class="w-full border rounded-lg pr-10 p-2 focus:ring-2 focus:ring-blue-500 outline-none">
+        </div>
+      </div>
+
+       <div>
+          <label class="text-sm font-semibold">وضیعت</label>
+          <div class="relative">
+            <i class="fas fa-user-check absolute right-3 top-3 text-gray-400"></i>
+            <select class="w-full border rounded-lg pr-10 p-2 focus:ring-2 focus:ring-blue-500 outline-none">
+              <option>فعال</option>
+              <option>غیرفعال</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 4 -->
+      <div>
+        <label class="text-sm font-semibold">نمایندگی</label>
+        <div class="relative">
+          <i class="fas fa-building absolute right-3 top-3 text-gray-400"></i>
+          <select class="w-full border rounded-lg pr-10 p-2 focus:ring-2 focus:ring-blue-500 outline-none">
+            <option>شعبه کابل</option>
+            <option>شعبه هرات</option>
+            <option>شعبه مزار</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex justify-end gap-2 pt-4 border-t">
+
+        <button type="button" id="cancelBtn"
+        class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg flex items-center gap-2">
+          <i class="fas fa-arrow-right"></i>
+          بازگشت
+        </button>
+
+        <button type="submit"
+        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+          <i class="fas fa-save"></i>
+          ذخیره
+        </button>
+
+      </div>
+
     </form>
   </div>
 </div>
@@ -545,25 +677,28 @@ class="hidden absolute right-0 mt-2 bg-white shadow rounded w-32">
   <!-- JS -->
   <script src="main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
-  <script>
-  const addUserBtn = document.getElementById("addUserBtn");
-  const addUserModal = document.getElementById("addUserModal");
-  const closeModalBtn = document.getElementById("closeModalBtn");
+<script>
+const addUserBtn = document.getElementById("addUserBtn");
+const addUserModal = document.getElementById("addUserModal");
+const closeModalBtn = document.getElementById("closeModalBtn");
 
-  addUserBtn.addEventListener("click", () => {
-    addUserModal.classList.remove("hidden");
-  });
+addUserBtn.addEventListener("click", () => {
+  addUserModal.classList.remove("hidden");
+  addUserModal.classList.add("flex");   // این خط مهم است
+});
 
-  closeModalBtn.addEventListener("click", () => {
+closeModalBtn.addEventListener("click", () => {
+  addUserModal.classList.add("hidden");
+  addUserModal.classList.remove("flex");
+});
+
+// بستن با کلیک بیرون
+addUserModal.addEventListener("click", (e) => {
+  if(e.target === addUserModal) {
     addUserModal.classList.add("hidden");
-  });
-
-  // بستن با کلیک بیرون از modal
-  addUserModal.addEventListener("click", (e) => {
-    if(e.target === addUserModal) {
-      addUserModal.classList.add("hidden");
-    }
-  });
+    addUserModal.classList.remove("flex");
+  }
+});
 </script>
 </body>
 

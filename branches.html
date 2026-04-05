@@ -377,173 +377,190 @@
       <!-- Main Content -->
       <main class="flex-1 p-6 space-y-8 mt-5">
 
-<div class="bg-white p-6 rounded-xl shadow-lg mt-8">
-
-  <!-- ===== Header ===== -->
-  <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
-
-    <!-- Title -->
-    <h2 class="text-2xl font-bold bg-blue-600 text-white px-5 py-2 rounded flex items-center gap-2">
-      <i class="fas fa-coins"></i>
-      خزانه
-    </h2>
-
-    <!-- Actions -->
-    <div class="flex flex-wrap gap-2 w-full md:w-auto">
-
-      <!-- Search -->
-      <input type="text" placeholder="جستجو..."
-        class="border px-4 py-3 text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-64">
-
-      <!-- Buttons -->
-      <button class="bg-gray-200 px-4 py-3 rounded hover:bg-gray-300 flex items-center gap-2">
-        <i class="fas fa-copy"></i> Copy
-      </button>
-
-      <button class="bg-green-500 text-white px-4 py-3 rounded hover:bg-green-600 flex items-center gap-2">
-        <i class="fas fa-file-excel"></i> Excel
-      </button>
-
-      <button class="bg-blue-500 text-white px-4 py-3 rounded hover:bg-blue-600 flex items-center gap-2">
-        <i class="fas fa-print"></i> Print
-      </button>
-
-    </div>
-  </div>
-
-  <!-- ===== Table ===== -->
-  <!-- فقط جدول اسکرول شود و کل صفحه نه -->
-  <div class="w-full overflow-x-auto border rounded-lg">
-
-    <table class="w-full min-w-[900px] text-base text-center border-collapse">
-
-      <!-- Head -->
-      <thead class="bg-gray-100 text-gray-800 sticky top-0 z-10">
-        <tr>
-          <th class="py-5 px-6 whitespace-nowrap">#</th>
-          <th class="py-5 px-6 whitespace-nowrap">ارز</th>
-          <th class="py-5 px-6 whitespace-nowrap">موجود</th>
-          <th class="py-5 px-6 whitespace-nowrap">بانک</th>
-          <th class="py-5 px-6 whitespace-nowrap hidden md:table-cell">طلب مشتریان</th>
-          <th class="py-5 px-6 whitespace-nowrap hidden lg:table-cell">طلبات نمایندگی</th>
-          <th class="py-5 px-6 whitespace-nowrap">سرمایه</th>
-          <th class="py-5 px-6 whitespace-nowrap hidden lg:table-cell">معلومات</th>
-          <th class="py-5 px-6 whitespace-nowrap">عملیات</th>
-        </tr>
-      </thead>
-
-      <!-- Body -->
-      <tbody class="divide-y">
-
-        <!-- Row 1 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">1</td>
-          <td class="font-bold text-lg py-5 px-6">افغانی</td>
-          <td class="text-green-600 font-bold py-5 px-6">1,250,000</td>
-          <td class="py-5 px-6">350,000</td>
-          <td class="text-red-500 py-5 px-6 hidden md:table-cell">120,000</td>
-          <td class="text-red-500 py-5 px-6 hidden lg:table-cell">80,000</td>
-          <td class="font-bold text-blue-600 py-5 px-6">1,400,000</td>
-          <td class="text-gray-500 py-5 px-6 hidden lg:table-cell">نقد + بانک</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
-
-        <!-- Row 2 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">2</td>
-          <td class="font-bold text-lg py-5 px-6">دالر</td>
-          <td class="text-green-600 font-bold py-5 px-6">45,000</td>
-          <td class="py-5 px-6">12,000</td>
-          <td class="text-red-500 py-5 px-6 hidden md:table-cell">5,500</td>
-          <td class="text-red-500 py-5 px-6 hidden lg:table-cell">3,000</td>
-          <td class="font-bold text-blue-600 py-5 px-6">50,000</td>
-          <td class="text-gray-500 py-5 px-6 hidden lg:table-cell">USD Reserve</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
-
-        <!-- Row 3 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">3</td>
-          <td class="font-bold text-lg py-5 px-6">کلدار</td>
-          <td class="text-green-600 font-bold py-5 px-6">980,000</td>
-          <td class="py-5 px-6">200,000</td>
-          <td class="text-red-500 py-5 px-6 hidden md:table-cell">70,000</td>
-          <td class="text-red-500 py-5 px-6 hidden lg:table-cell">40,000</td>
-          <td class="font-bold text-blue-600 py-5 px-6">1,050,000</td>
-          <td class="text-gray-500 py-5 px-6 hidden lg:table-cell">PKR</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
-
-        <!-- Row 4 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">4</td>
-          <td class="font-bold text-lg py-5 px-6">یورو</td>
-          <td class="text-green-600 font-bold py-5 px-6">22,000</td>
-          <td class="py-5 px-6">8,000</td>
-          <td class="text-red-500 py-5 px-6 hidden md:table-cell">2,000</td>
-          <td class="text-red-500 py-5 px-6 hidden lg:table-cell">1,500</td>
-          <td class="font-bold text-blue-600 py-5 px-6">25,000</td>
-          <td class="text-gray-500 py-5 px-6 hidden lg:table-cell">EUR Balance</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
-
-        <!-- Row 5 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">5</td>
-          <td class="font-bold text-lg py-5 px-6">تومن</td>
-          <td class="text-green-600 font-bold py-5 px-6">3,500,000</td>
-          <td class="py-5 px-6">900,000</td>
-          <td class="text-red-500 py-5 px-6 hidden md:table-cell">200,000</td>
-          <td class="text-red-500 py-5 px-6 hidden lg:table-cell">150,000</td>
-          <td class="font-bold text-blue-600 py-5 px-6">3,800,000</td>
-          <td class="text-gray-500 py-5 px-6 hidden lg:table-cell">IRR</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
-
-      </tbody>
-
-    </table>
-
-  </div>
+<div class="max-w-7xl mx-auto">
+    <!-- Page Title -->
+<div class="mb-4 mt-5">
+    <h1 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
+        <i class="fa fa-building text-blue-600"></i>
+        مدیریت شعبات
+    </h1>
+    <p class="text-gray-800 text-sm mt-1">
+        در این بخش می‌توانید تمام شعبات صرافی را مدیریت، جستجو و شعبه جدید اضافه نمایید.
+    </p>
 </div>
+
+<!-- Header -->
+<div class="bg-white rounded-xl shadow p-4 mb-4">
+
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+
+<!-- Right -->
+<div class="flex gap-2">
+
+<button onclick="openModal()" 
+class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition">
+<i class="fa fa-plus"></i>
+افزودن
+</button>
+
+<button class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg flex items-center gap-2 transition">
+<i class="fa fa-filter"></i>
+فلتر
+</button>
+
+</div>
+
+<!-- Search -->
+<div class="relative w-full md:w-72">
+<input type="text" placeholder="جستجو شعبه..."
+class="w-full border rounded-lg pr-10 pl-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+<i class="fa fa-search absolute right-3 top-3 text-gray-400"></i>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Table -->
+<div class="bg-white rounded-xl shadow overflow-hidden">
+
+<table class="w-full text-md text-right">
+
+<thead class="bg-blue-700 text-white">
+<tr>
+<th class="px-3 py-5">کد نمایندگی</th>
+<th class="px-3 py-5">عنوان</th>
+<th class="px-3 py-5">آدرس دفتر</th>
+<th class="px-3 py-5 text-center">عملیات</th>
+</tr>
+</thead>
+
+<tbody class="divide-y">
+
+<tr class="hover:bg-gray-50 transition">
+<td class="p-3 font-semibold">001</td>
+<td class="p-3">شعبه کابل</td>
+<td class="p-3">کابل چهارراهی صدارت</td>
+<td class="p-3">
+<div class="flex justify-center gap-2">
+
+<button class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">
+<i class="fa fa-edit"></i>
+</button>
+
+<button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
+<i class="fa fa-trash"></i>
+</button>
+
+</div>
+</td>
+</tr>
+
+<tr class="hover:bg-gray-50 transition">
+<td class="p-3 font-semibold">002</td>
+<td class="p-3">شعبه هرات</td>
+<td class="p-3">هرات شهر نو</td>
+<td class="p-3">
+<div class="flex justify-center gap-2">
+
+<button class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">
+<i class="fa fa-edit"></i>
+</button>
+
+<button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
+<i class="fa fa-trash"></i>
+</button>
+
+</div>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<!-- Modal -->
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center p-4">
+
+<div class="bg-white rounded-2xl shadow-xl w-full max-w-lg">
+
+<!-- Header -->
+<div class="flex justify-between items-center border-b p-4">
+<h2 class="text-lg font-bold">افزودن شعبه</h2>
+
+<button onclick="closeModal()" class="text-gray-500 hover:text-red-500">
+<i class="fa fa-times"></i>
+</button>
+
+</div>
+
+<!-- Body -->
+<div class="p-4 space-y-4">
+
+<div>
+<label class="text-sm font-semibold">عنوان</label>
+<input type="text" placeholder="عنوان شعبه..."
+class="w-full border rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+</div>
+
+<div>
+<label class="text-sm font-semibold">آدرس دفتر</label>
+<input type="text" placeholder="آدرس دفتر..."
+class="w-full border rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+</div>
+
+<div>
+<label class="text-sm font-semibold">تفصیلات</label>
+<textarea placeholder="تفصیلات شعبه..."
+class="w-full border rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="flex justify-end gap-2 p-4 border-t">
+
+<button class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded-lg">
+بازگشت
+</button>
+
+<button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+<i class="fa fa-save"></i>
+ذخیره
+</button>
+
+</div>
+
+</div>
+
+</div>
+
 
     </main>
 
-  </div>
+</div>
 
-  <!-- JS -->
-  <script src="main.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+</div>
+
+
+<!-- js link -->
+ <script src="main.js"></script>
+ <script>
+function openModal(){
+document.getElementById('modal').classList.remove('hidden')
+document.getElementById('modal').classList.add('flex')
+}
+
+function closeModal(){
+document.getElementById('modal').classList.add('hidden')
+}
+</script>
 </body>
-
 </html>

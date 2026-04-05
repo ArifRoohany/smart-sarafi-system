@@ -22,19 +22,134 @@
     @apply  bg-blue-700 text-white;
   }
 
+
     /* وقتی سایدبار جمع شده */
-.sidebar-collapsed {
+/* .sidebar-collapsed {
   width: 0 !important;
   overflow: hidden;
-}
+} */
 
 /* محتوای اصلی که فضای سایدبار را پر می‌کند */
-.main-collapsed {
+/* .main-collapsed {
   margin-left: 0 !important;
   transition: margin 0.3s;
+} */
+
+
+/* ====================== Edit Account Modal =============================== */
+/* glass modal */
+.glass-modal{
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    border:1px solid rgba(255,255,255,0.3);
+}
+
+/* header gradient */
+.modal-header{
+    background: linear-gradient(135deg,#1e40af,#2563eb,#3b82f6);
+}
+
+/* input */
+.input{
+    width:100%;
+    border:1px solid #e5e7eb;
+    padding:12px 14px;
+    border-radius:12px;
+    margin-top:6px;
+    outline:none;
+    transition:.25s;
+    background:white;
+}
+
+.input:focus{
+    border-color:#3b82f6;
+    box-shadow:0 0 0 3px rgba(59,130,246,.15);
+}
+
+/* buttons */
+.btn{
+    color:white;
+    padding:10px 20px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    transition:.25s;
+    font-weight:500;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+.btn:hover{
+    transform:translateY(-1px);
+    box-shadow:0 8px 18px rgba(0,0,0,.15);
+}
+
+/* animation */
+.animate-fadeIn{
+    animation:modalFade .25s ease;
+}
+
+@keyframes modalFade{
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.96);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+
+.input{
+width:100%;
+border:1px solid #b5c0ce;   /* قوی‌تر از قبلی */
+border-radius:10px;
+padding:10px 12px;
+outline:none;
+background:#fff;
+transition:all .2s ease;
+}
+
+input::placeholder,
+textarea::placeholder{
+color:#777 !important;  /* رنگ خاکستری برای placeholder */
+}
+
+.input:hover{
+border-color:#94a3b8;  /* hover واضح */
+}
+
+.input:focus{
+border-color:#4f46e5;  /* رنگ اصلی */
+box-shadow:0 0 0 3px rgba(79,70,229,.15);
+}
+
+
+.info-box{
+display:flex;
+align-items:center;
+gap:8px;
+background:#f8fafc;
+padding:10px 12px;
+border-radius:10px;
+}
+
+
+@keyframes fadeIn {
+from {opacity:0; transform: translateY(20px);}
+to {opacity:1; transform: translateY(0);}
+}
+
+.animate-fadeIn{
+animation: fadeIn .3s ease;
+}
+
+
+  
 }
    
-}
+
 
 
 

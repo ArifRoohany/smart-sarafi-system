@@ -377,173 +377,344 @@
       <!-- Main Content -->
       <main class="flex-1 p-6 space-y-8 mt-5">
 
-<div class="bg-white p-6 rounded-xl shadow-lg mt-8">
+<div class="max-w-7xl mx-auto">
 
-  <!-- ===== Header ===== -->
-  <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+<!-- Header -->
+<div class="bg-white p-5 rounded-xl shadow-sm border mb-4">
+  <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
 
-    <!-- Title -->
-    <h2 class="text-2xl font-bold bg-blue-600 text-white px-5 py-2 rounded flex items-center gap-2">
-      <i class="fas fa-coins"></i>
-      خزانه
-    </h2>
+    <div>
+      <h1 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
+        <i class="fas fa-city text-indigo-600"></i>
+        مدیریت شهر ها
+      </h1>
+      <p class="text-gray-500 text-sm mt-1">
+        در این بخش میتوانید شهر ها و دفاتر مربوطه را مدیریت نمایید
+      </p>
+    </div>
 
-    <!-- Actions -->
-    <div class="flex flex-wrap gap-2 w-full md:w-auto">
+    <div class="flex flex-wrap gap-2">
 
-      <!-- Search -->
-      <input type="text" placeholder="جستجو..."
-        class="border px-4 py-3 text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-64">
-
-      <!-- Buttons -->
-      <button class="bg-gray-200 px-4 py-3 rounded hover:bg-gray-300 flex items-center gap-2">
-        <i class="fas fa-copy"></i> Copy
+      <button id="addCityBtn"
+        class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow">
+        <i class="fas fa-plus"></i>
+        افزودن شهر
       </button>
 
-      <button class="bg-green-500 text-white px-4 py-3 rounded hover:bg-green-600 flex items-center gap-2">
-        <i class="fas fa-file-excel"></i> Excel
+      <button
+        class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg flex items-center gap-2">
+        <i class="fas fa-filter"></i>
+        فلتر
       </button>
 
-      <button class="bg-blue-500 text-white px-4 py-3 rounded hover:bg-blue-600 flex items-center gap-2">
-        <i class="fas fa-print"></i> Print
-      </button>
+      <div class="relative">
+        <input type="text" placeholder="جستجو..."
+          class="border rounded-lg pl-10 pr-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none">
+        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+      </div>
 
     </div>
-  </div>
-
-  <!-- ===== Table ===== -->
-  <!-- فقط جدول اسکرول شود و کل صفحه نه -->
-  <div class="w-full overflow-x-auto border rounded-lg">
-
-    <table class="w-full min-w-[900px] text-base text-center border-collapse">
-
-      <!-- Head -->
-      <thead class="bg-gray-100 text-gray-800 sticky top-0 z-10">
-        <tr>
-          <th class="py-5 px-6 whitespace-nowrap">#</th>
-          <th class="py-5 px-6 whitespace-nowrap">ارز</th>
-          <th class="py-5 px-6 whitespace-nowrap">موجود</th>
-          <th class="py-5 px-6 whitespace-nowrap">بانک</th>
-          <th class="py-5 px-6 whitespace-nowrap hidden md:table-cell">طلب مشتریان</th>
-          <th class="py-5 px-6 whitespace-nowrap hidden lg:table-cell">طلبات نمایندگی</th>
-          <th class="py-5 px-6 whitespace-nowrap">سرمایه</th>
-          <th class="py-5 px-6 whitespace-nowrap hidden lg:table-cell">معلومات</th>
-          <th class="py-5 px-6 whitespace-nowrap">عملیات</th>
-        </tr>
-      </thead>
-
-      <!-- Body -->
-      <tbody class="divide-y">
-
-        <!-- Row 1 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">1</td>
-          <td class="font-bold text-lg py-5 px-6">افغانی</td>
-          <td class="text-green-600 font-bold py-5 px-6">1,250,000</td>
-          <td class="py-5 px-6">350,000</td>
-          <td class="text-red-500 py-5 px-6 hidden md:table-cell">120,000</td>
-          <td class="text-red-500 py-5 px-6 hidden lg:table-cell">80,000</td>
-          <td class="font-bold text-blue-600 py-5 px-6">1,400,000</td>
-          <td class="text-gray-500 py-5 px-6 hidden lg:table-cell">نقد + بانک</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
-
-        <!-- Row 2 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">2</td>
-          <td class="font-bold text-lg py-5 px-6">دالر</td>
-          <td class="text-green-600 font-bold py-5 px-6">45,000</td>
-          <td class="py-5 px-6">12,000</td>
-          <td class="text-red-500 py-5 px-6 hidden md:table-cell">5,500</td>
-          <td class="text-red-500 py-5 px-6 hidden lg:table-cell">3,000</td>
-          <td class="font-bold text-blue-600 py-5 px-6">50,000</td>
-          <td class="text-gray-500 py-5 px-6 hidden lg:table-cell">USD Reserve</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
-
-        <!-- Row 3 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">3</td>
-          <td class="font-bold text-lg py-5 px-6">کلدار</td>
-          <td class="text-green-600 font-bold py-5 px-6">980,000</td>
-          <td class="py-5 px-6">200,000</td>
-          <td class="text-red-500 py-5 px-6 hidden md:table-cell">70,000</td>
-          <td class="text-red-500 py-5 px-6 hidden lg:table-cell">40,000</td>
-          <td class="font-bold text-blue-600 py-5 px-6">1,050,000</td>
-          <td class="text-gray-500 py-5 px-6 hidden lg:table-cell">PKR</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
-
-        <!-- Row 4 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">4</td>
-          <td class="font-bold text-lg py-5 px-6">یورو</td>
-          <td class="text-green-600 font-bold py-5 px-6">22,000</td>
-          <td class="py-5 px-6">8,000</td>
-          <td class="text-red-500 py-5 px-6 hidden md:table-cell">2,000</td>
-          <td class="text-red-500 py-5 px-6 hidden lg:table-cell">1,500</td>
-          <td class="font-bold text-blue-600 py-5 px-6">25,000</td>
-          <td class="text-gray-500 py-5 px-6 hidden lg:table-cell">EUR Balance</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
-
-        <!-- Row 5 -->
-        <tr class="hover:bg-gray-50 transition">
-          <td class="py-5 px-6">5</td>
-          <td class="font-bold text-lg py-5 px-6">تومن</td>
-          <td class="text-green-600 font-bold py-5 px-6">3,500,000</td>
-          <td class="py-5 px-6">900,000</td>
-          <td class="text-red-500 py-5 px-6 hidden md:table-cell">200,000</td>
-          <td class="text-red-500 py-5 px-6 hidden lg:table-cell">150,000</td>
-          <td class="font-bold text-blue-600 py-5 px-6">3,800,000</td>
-          <td class="text-gray-500 py-5 px-6 hidden lg:table-cell">IRR</td>
-          <td class="py-5 px-6">
-            <div class="flex justify-center gap-4 text-lg">
-              <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-eye"></i></button>
-              <button class="text-green-500 hover:text-green-700"><i class="fas fa-edit"></i></button>
-              <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
-            </div>
-          </td>
-        </tr>
-
-      </tbody>
-
-    </table>
 
   </div>
 </div>
 
+<!-- Table Container -->
+<div class="bg-white shadow-md rounded-xl overflow-hidden border border-gray-100 my-6">
+
+<div class="overflow-x-auto">
+
+<table class="w-full min-w-[900px] text-sm text-center">
+
+<!-- Header -->
+<thead class="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+<tr>
+<th class="py-4 px-4 font-semibold">#</th>
+<th class="px-4 font-semibold">کود شهر</th>
+<th class="px-4 font-semibold">عنوان</th>
+<th class="px-4 font-semibold">آدرس دفتر</th>
+<th class="px-4 font-semibold">حساب مالی</th>
+<th class="px-4 font-semibold">عملیات</th>
+</tr>
+</thead>
+
+<!-- Body -->
+<tbody class="divide-y">
+
+<tr class="hover:bg-gray-50 transition">
+<td class="py-4 px-4">1</td>
+<td class="font-semibold px-4">CTY-001</td>
+<td class="px-4">کابل</td>
+<td class="text-gray-500 px-4">وزیر اکبر خان</td>
+<td class="px-4">
+<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">
+علی
+</span>
+</td>
+<td class="px-4">
+<div class="flex justify-center gap-2">
+
+<button class="bg-blue-50 hover:bg-blue-100 text-blue-600 w-9 h-9 rounded-lg flex items-center justify-center transition">
+<i class="fas fa-edit"></i>
+</button>
+
+<button class="bg-red-50 hover:bg-red-100 text-red-600 w-9 h-9 rounded-lg flex items-center justify-center transition">
+<i class="fas fa-trash"></i>
+</button>
+
+</div>
+</td>
+</tr>
+
+<tr class="hover:bg-gray-50 transition">
+<td class="py-4 px-4">2</td>
+<td class="font-semibold px-4">CTY-002</td>
+<td class="px-4">هرات</td>
+<td class="text-gray-500 px-4">شهر نو</td>
+<td class="px-4">
+<span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs">
+سمیرا
+</span>
+</td>
+<td class="px-4">
+<div class="flex justify-center gap-2">
+<button class="bg-blue-50 hover:bg-blue-100 text-blue-600 w-9 h-9 rounded-lg flex items-center justify-center">
+<i class="fas fa-edit"></i>
+</button>
+<button class="bg-red-50 hover:bg-red-100 text-red-600 w-9 h-9 rounded-lg flex items-center justify-center">
+<i class="fas fa-trash"></i>
+</button>
+</div>
+</td>
+</tr>
+
+<tr class="hover:bg-gray-50 transition">
+<td class="py-4 px-4">3</td>
+<td class="font-semibold px-4">CTY-003</td>
+<td class="px-4">مزار</td>
+<td class="text-gray-500 px-4">چهارراهی</td>
+<td class="px-4">
+<span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs">
+حسین
+</span>
+</td>
+<td class="px-4">
+<div class="flex justify-center gap-2">
+<button class="bg-blue-50 hover:bg-blue-100 text-blue-600 w-9 h-9 rounded-lg flex items-center justify-center">
+<i class="fas fa-edit"></i>
+</button>
+<button class="bg-red-50 hover:bg-red-100 text-red-600 w-9 h-9 rounded-lg flex items-center justify-center">
+<i class="fas fa-trash"></i>
+</button>
+</div>
+</td>
+</tr>
+
+<tr class="hover:bg-gray-50 transition">
+<td class="py-4 px-4">4</td>
+<td class="font-semibold px-4">CTY-004</td>
+<td class="px-4">قندهار</td>
+<td class="text-gray-500 px-4">مرکز شهر</td>
+<td class="px-4">
+<span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs">
+احمد
+</span>
+</td>
+<td class="px-4">
+<div class="flex justify-center gap-2">
+<button class="bg-blue-50 hover:bg-blue-100 text-blue-600 w-9 h-9 rounded-lg flex items-center justify-center">
+<i class="fas fa-edit"></i>
+</button>
+<button class="bg-red-50 hover:bg-red-100 text-red-600 w-9 h-9 rounded-lg flex items-center justify-center">
+<i class="fas fa-trash"></i>
+</button>
+</div>
+</td>
+</tr>
+
+<tr class="hover:bg-gray-50 transition">
+<td class="py-4 px-4">5</td>
+<td class="font-semibold px-4">CTY-005</td>
+<td class="px-4">جلال آباد</td>
+<td class="text-gray-500 px-4">چهار باغ</td>
+<td class="px-4">
+<span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-xs">
+نعیم
+</span>
+</td>
+<td class="px-4">
+<div class="flex justify-center gap-2">
+<button class="bg-blue-50 hover:bg-blue-100 text-blue-600 w-9 h-9 rounded-lg flex items-center justify-center">
+<i class="fas fa-edit"></i>
+</button>
+<button class="bg-red-50 hover:bg-red-100 text-red-600 w-9 h-9 rounded-lg flex items-center justify-center">
+<i class="fas fa-trash"></i>
+</button>
+</div>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+</div>
+
+</div>
+
+<!-- Modal -->
+<div id="cityModal"
+class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+
+<div class="bg-white w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden">
+
+<!-- Header -->
+<div class="flex items-center justify-between px-6 py-4 border-b bg-gray-50">
+<h2 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+<i class="fas fa-city text-indigo-600"></i>
+افزودن شهر جدید
+</h2>
+
+<button id="closeCityModal"
+class="text-gray-400 hover:text-red-500 transition">
+<i class="fas fa-times text-lg"></i>
+</button>
+</div>
+
+<!-- Body -->
+<div class="p-6">
+
+<form class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+<!-- عنوان -->
+<div>
+<label class="block text-sm font-semibold mb-1 text-gray-600">
+عنوان شهر
+</label>
+<input class="input" placeholder="مثلاً کابل">
+</div>
+
+<!-- حساب مالی -->
+<div>
+<label class="block text-sm font-semibold mb-1 text-gray-600">
+حساب مالی
+</label>
+<select class="input">
+<option>انتخاب کنید</option>
+<option>علی</option>
+<option>سمیرا</option>
+</select>
+</div>
+
+<!-- مسول دفتر -->
+<div>
+<label class="block text-sm font-semibold mb-1 text-gray-600">
+مسول دفتر
+</label>
+<input class="input" placeholder="نام مسول">
+</div>
+
+<!-- شماره -->
+<div>
+<label class="block text-sm font-semibold mb-1 text-gray-600">
+شماره تیلفون دفتر
+</label>
+<input class="input" placeholder="0700000000">
+</div>
+
+<!-- آدرس -->
+<div>
+<label class="block text-sm font-semibold mb-1 text-gray-600">
+آدرس دفتر
+</label>
+<input class="input" placeholder="آدرس کامل">
+</div>
+
+<!-- نمایندگی -->
+<div>
+<label class="block text-sm font-semibold mb-1 text-gray-600">
+نماینده گی دفتر
+</label>
+<select class="input">
+<option>انتخاب نمایندگی</option>
+<option>کابل</option>
+<option>هرات</option>
+</select>
+</div>
+
+<!-- تفصیلات -->
+<div class="md:col-span-2">
+<label class="block text-sm font-semibold mb-1 text-gray-600">
+تفصیلات
+</label>
+<textarea class="input h-24" placeholder="تفصیلات اضافی..."></textarea>
+</div>
+
+<!-- موقعیت -->
+<div class="md:col-span-2">
+<label class="block text-sm font-semibold mb-1 text-gray-600">
+موقعیت جغرافیایی
+</label>
+<input class="input" placeholder="Latitude , Longitude">
+</div>
+
+</form>
+
+</div>
+
+<!-- Footer -->
+<div class="flex justify-end gap-3 px-6 py-4 border-t bg-gray-50">
+
+<button type="button"
+class="px-5 py-2 rounded-lg border bg-red-500 text-white transition">
+<i class="fas fa-arrow-right ml-1"></i>
+بازگشت
+</button>
+
+<button
+class="px-5 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition shadow">
+<i class="fas fa-save ml-1"></i>
+ذخیره
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+
     </main>
 
-  </div>
+</div>
 
-  <!-- JS -->
-  <script src="main.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+</div>
+
+
+<!-- js link -->
+ <script src="main.js"></script>
+ <script>
+const cityModal = document.getElementById("cityModal");
+const addCityBtn = document.getElementById("addCityBtn");
+const closeCityModal = document.getElementById("closeCityModal");
+
+addCityBtn.onclick = () => {
+cityModal.classList.remove("hidden");
+cityModal.classList.add("flex");
+}
+
+closeCityModal.onclick = () => {
+cityModal.classList.add("hidden");
+cityModal.classList.remove("flex");
+}
+
+cityModal.addEventListener("click",(e)=>{
+if(e.target === cityModal){
+cityModal.classList.add("hidden");
+cityModal.classList.remove("flex");
+}
+})
+</script>
 </body>
-
 </html>
+```
