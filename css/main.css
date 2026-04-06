@@ -2454,6 +2454,10 @@ textarea::placeholder{
     display: flex;
   }
 
+  .sm\:w-64{
+    width: 16rem;
+  }
+
   .sm\:grid-cols-1{
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
