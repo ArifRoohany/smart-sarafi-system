@@ -2470,6 +2470,10 @@ textarea::placeholder{
 }
 
 @media (min-width: 480px){
+  .sm\:block{
+    display: block;
+  }
+
   .sm\:w-64{
     width: 16rem;
   }
