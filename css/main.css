@@ -842,6 +842,10 @@ textarea::placeholder{
   z-index: 50;
 }
 
+.z-20{
+  z-index: 20;
+}
+
 .col-span-2{
   grid-column: span 2 / span 2;
 }
@@ -894,6 +898,10 @@ textarea::placeholder{
   margin-bottom: 2rem;
 }
 
+.mb-\[160px\]{
+  margin-bottom: 160px;
+}
+
 .ml-1{
   margin-left: 0.25rem;
 }
@@ -928,6 +936,10 @@ textarea::placeholder{
 
 .mt-8{
   margin-top: 2rem;
+}
+
+.mt-\[250px\]{
+  margin-top: 250px;
 }
 
 .block{
@@ -984,6 +996,10 @@ textarea::placeholder{
 
 .h-9{
   height: 2.25rem;
+}
+
+.h-full{
+  height: 100%;
 }
 
 .h-screen{
@@ -1064,6 +1080,10 @@ textarea::placeholder{
 
 .w-\[96\%\]{
   width: 96%;
+}
+
+.w-auto{
+  width: auto;
 }
 
 .w-full{
@@ -2450,10 +2470,6 @@ textarea::placeholder{
 }
 
 @media (min-width: 480px){
-  .sm\:flex{
-    display: flex;
-  }
-
   .sm\:w-64{
     width: 16rem;
   }
@@ -2478,6 +2494,10 @@ textarea::placeholder{
 
   .md\:mt-0{
     margin-top: 0px;
+  }
+
+  .md\:block{
+    display: block;
   }
 
   .md\:flex{
@@ -2506,10 +2526,6 @@ textarea::placeholder{
 
   .md\:w-auto{
     width: auto;
-  }
-
-  .md\:w-6{
-    width: 1.5rem;
   }
 
   .md\:grid-cols-2{
@@ -2544,6 +2560,10 @@ textarea::placeholder{
 @media (min-width: 976px){
   .lg\:col-span-3{
     grid-column: span 3 / span 3;
+  }
+
+  .lg\:flex{
+    display: flex;
   }
 
   .lg\:table-cell{
