@@ -450,547 +450,160 @@
       <!-- Main Content -->
       <main class="flex-1 p-6 space-y-8 mt-5">
 
+<div class="p-6 space-y-6">
 
-<!-- TITLE -->
-<div class="bg-white rounded-2xl shadow-sm border p-5 mb-4">
+<!-- Header -->
+<div class="bg-blue-700 text-white p-5 rounded-xl shadow">
+<h1 class="text-xl font-bold flex items-center gap-2">
+<i class="fas fa-list"></i>
+مشاهده لیست ترانکش ها
+</h1>
+<p class="text-sm opacity-90">نمایش تمام معاملات سیستم صرافی</p>
+</div>
 
-<div class="flex items-start gap-3">
+<!-- Filter Section -->
+<div class="bg-white p-5 rounded-xl shadow">
 
-<div class="bg-blue-100 text-blue-600 w-12 h-12 rounded-xl flex items-center justify-center text-xl">
-<i class="fas fa-money-check-alt"></i>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+<div>
+<label class="text-sm font-semibold">انتخاب حساب</label>
+<select class="w-full mt-1 bg-gray-100 border rounded-lg p-2">
+<option>همه حساب ها</option>
+<option>احمد صرافی</option>
+<option>محمد کریمی</option>
+</select>
 </div>
 
 <div>
-<h1 class="text-xl font-bold text-gray-800">
-مدیریت چک ها / پارچه صرافی
-</h1>
+<label class="text-sm font-semibold">انتخاب یوزر</label>
+<select class="w-full mt-1 bg-gray-100 border rounded-lg p-2">
+<option>همه کاربران</option>
+<option>ادمین</option>
+<option>کاربر 1</option>
+</select>
+</div>
 
-<p class="text-gray-500 text-sm mt-1">
-در این بخش میتوانید چک ها را ثبت، مدیریت و پیگیری نمایید
-</p>
+<div>
+<label class="text-sm font-semibold">انتخاب شعبه</label>
+<select class="w-full mt-1 bg-gray-100 border rounded-lg p-2">
+<option>همه شعبات</option>
+<option>مرکزی</option>
+<option>هرات</option>
+</select>
+</div>
+
+<div>
+<label class="text-sm font-semibold">نوع عملیات</label>
+<select class="w-full mt-1 bg-gray-100 border rounded-lg p-2">
+<option>همه</option>
+<option>بردگی</option>
+<option>رسیدگی</option>
+<option>تبادله</option>
+</select>
 </div>
 
 </div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+
+<div>
+<label class="text-sm font-semibold">از تاریخ</label>
+<input type="date" class="w-full mt-1 border rounded-lg p-2">
 </div>
 
-<!-- ACTION BAR -->
-<div class="bg-white rounded-2xl shadow-sm border p-4 mb-4">
+<div>
+<label class="text-sm font-semibold">تا تاریخ</label>
+<input type="date" class="w-full mt-1 border rounded-lg p-2">
+</div>
 
-<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+</div>
 
-<div class="flex gap-2">
+<div class="flex gap-3 mt-5">
 
-<button onclick="openModal()"
-class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl flex items-center gap-2 shadow">
-
-<i class="fas fa-plus"></i>
-افزودن چک جدید
+<button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+<i class="fas fa-search"></i>
+جستجو
 </button>
 
-<button class="bg-gray-800 hover:bg-black text-white px-4 py-2.5 rounded-xl flex items-center gap-2">
+<button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+<i class="fas fa-file-excel"></i>
+اکسل
+</button>
 
-<i class="fas fa-filter"></i>
-فلتر
+<button class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+<i class="fas fa-print"></i>
+چاپ
 </button>
 
 </div>
 
-<div class="relative">
-
-<i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
-
-<input type="text"
-placeholder="جستجوی چک..."
-class="border rounded-xl pr-10 pl-4 py-2.5 focus:ring-2 focus:ring-blue-500">
-
 </div>
 
-</div>
-</div>
+<!-- Table Section -->
+<div class="bg-white rounded-xl shadow overflow-x-auto">
 
-<!-- TABLE -->
-<div class="bg-white rounded-2xl shadow border overflow-x-auto">
+<table class="w-full text-sm text-center">
 
-<table class="w-full text-md text-center">
-
-<thead class="bg-gradient-to-l from-blue-600 to-blue-800 text-white">
+<thead class="bg-blue-700 text-white">
 <tr>
-<th class="p-4">#</th>
-<th class="p-4">نمبر چک</th>
-<th class="p-4">تاریخ</th>
-<th class="p-4">تاریخ پرداخت</th>
-<th class="p-4">حساب</th>
-<th class="p-4">مبلغ</th>
-<th class="p-4">عنوان پول</th>
-<th class="p-4">وضعیت</th>
-<th class="p-4 text-center">مشاهده</th>
+<th class="p-3">#</th>
+<th class="p-3">تاریخ</th>
+<th class="p-3">شماره ترانکش</th>
+<th class="p-3">حساب</th>
+<th class="p-3">نوع عملیات</th>
+<th class="p-3">مبلغ</th>
+<th class="p-3">پول</th>
+<th class="p-3">شعبه</th>
+<th class="p-3">یوزر</th>
+<th class="p-3">بیلانس</th>
 </tr>
 </thead>
 
 <tbody class="divide-y">
 
-<tr class="transition hover:bg-gray-100">
-
-<td class="p-4 font-bold text-blue-700">1</td>
-<td class="p-4">CHK-001</td>
-<td class="p-4">1404/02/10</td>
-<td class="p-4">1404/02/20</td>
-
-<td class="p-4">
-<span class="bg-gray-100 px-3 py-1 rounded-full text-xs font-semibold">
-صراف کابل
-</span>
-</td>
-
-<td class="p-4">
-<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">
-50,000
-</span>
-</td>
-
-<td class="p-4">
-<span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold">
-AFN
-</span>
-</td>
-
-<td class="p-4">
-<span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold">
-در انتظار
-</span>
-</td>
-
-<td class="p-4 text-center">
-<button onclick="openViewModal()"
-class="w-9 h-9 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">
-<i class="fas fa-eye"></i>
-</button>
-</td>
-
+<tr class="hover:bg-gray-50">
+<td class="p-3">1</td>
+<td class="p-3">1404/01/01</td>
+<td class="p-3">1001</td>
+<td class="p-3">احمد صرافی</td>
+<td class="p-3 text-green-600">رسیدگی</td>
+<td class="p-3">5000</td>
+<td class="p-3">USD</td>
+<td class="p-3">کابل</td>
+<td class="p-3">ادمین</td>
+<td class="p-3 font-semibold">5000</td>
 </tr>
 
-<tr class="transition hover:bg-gray-100">
-
-<td class="p-4 font-bold text-blue-700">1</td>
-<td class="p-4">CHK-001</td>
-<td class="p-4">1404/02/10</td>
-<td class="p-4">1404/02/20</td>
-
-<td class="p-4">
-<span class="bg-gray-100 px-3 py-1 rounded-full text-xs font-semibold">
-صراف کابل
-</span>
-</td>
-
-<td class="p-4">
-<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">
-50,000
-</span>
-</td>
-
-<td class="p-4">
-<span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold">
-AFN
-</span>
-</td>
-
-<td class="p-4">
-<span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold">
-در انتظار
-</span>
-</td>
-
-<td class="p-4 text-center">
-<button class="w-9 h-9 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">
-
-<i class="fas fa-eye"></i>
-</button>
-</td>
-
-</tr>
-
-
-<tr class="transition hover:bg-gray-100">
-
-<td class="p-4 font-bold text-blue-700">1</td>
-<td class="p-4">CHK-001</td>
-<td class="p-4">1404/02/10</td>
-<td class="p-4">1404/02/20</td>
-
-<td class="p-4">
-<span class="bg-gray-100 px-3 py-1 rounded-full text-xs font-semibold">
-صراف کابل
-</span>
-</td>
-
-<td class="p-4">
-<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">
-50,000
-</span>
-</td>
-
-<td class="p-4">
-<span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold">
-AFN
-</span>
-</td>
-
-<td class="p-4">
-<span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold">
-در انتظار
-</span>
-</td>
-
-<td class="p-4 text-center">
-<button class="w-9 h-9 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">
-
-<i class="fas fa-eye"></i>
-</button>
-</td>
-
+<tr class="hover:bg-gray-50">
+<td class="p-3">2</td>
+<td class="p-3">1404/01/02</td>
+<td class="p-3">1002</td>
+<td class="p-3">محمد کریمی</td>
+<td class="p-3 text-red-600">بردگی</td>
+<td class="p-3">2000</td>
+<td class="p-3">USD</td>
+<td class="p-3">هرات</td>
+<td class="p-3">کاربر 1</td>
+<td class="p-3 font-semibold">3000</td>
 </tr>
 
 </tbody>
 
 </table>
-</div>
-
-<!-- MODAL ایجاد چک -->
-<div id="modal"
-class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50">
-
-<div id="modalBox"
-class="bg-white w-full max-w-3xl mx-4 rounded-2xl shadow-2xl
-transform scale-95 opacity-0 transition-all duration-300 overflow-hidden">
-
-<!-- HEADER -->
-<div class="bg-gradient-to-l from-blue-600 to-blue-800 text-white px-6 py-4 flex justify-between">
-
-<h2 class="font-bold text-lg flex items-center gap-2">
-<i class="fas fa-plus-circle"></i>
-افزودن چک جدید
-</h2>
-
-<button onclick="closeModal()">
-<i class="fas fa-xmark text-xl"></i>
-</button>
-
-</div>
-
-<!-- BODY -->
-<div class="p-6 space-y-4 bg-gray-50">
-
-<div class="grid md:grid-cols-2 gap-4">
-
-<div>
-<label class="font-semibold text-sm">انتخاب حساب</label>
-<select class="w-full border mt-2 rounded-xl px-3 py-2.5">
-<option>انتخاب حساب...</option>
-<option>صراف کابل</option>
-<option>صراف هرات</option>
-</select>
-</div>
-
-<div>
-<label class="font-semibold text-sm">مبلغ</label>
-<input type="number" placeholder="مثلاً 50000"
-class="w-full border mt-2 rounded-xl px-3 py-2.5">
-</div>
-
-</div>
-
-<div class="grid md:grid-cols-2 gap-4">
-
-<div>
-<label class="font-semibold text-sm">عنوان پول</label>
-<select class="w-full border mt-2 rounded-xl px-3 py-2.5">
-<option>انتخاب ارز...</option>
-<option>AFN</option>
-<option>USD</option>
-</select>
-</div>
-
-<div>
-<label class="font-semibold text-sm">در وجه</label>
-<input type="text" placeholder="نام دریافت کننده"
-class="w-full border mt-2 rounded-xl px-3 py-2.5">
-</div>
-
-</div>
-
-<div class="grid md:grid-cols-2 gap-4">
-
-<div>
-<label class="font-semibold text-sm">تاریخ پرداخت</label>
-<input type="date"
-class="w-full border mt-2 rounded-xl px-3 py-2.5">
-</div>
-
-<div>
-<label class="font-semibold text-sm">سند / عکس</label>
-<input type="file"
-class="w-full border mt-2 rounded-xl px-3 py-2.5">
-</div>
-
-</div>
-
-<div>
-<label class="font-semibold text-sm">تفصیلات</label>
-<textarea placeholder="تفصیلات چک..."
-class="w-full border mt-2 rounded-xl px-3 py-2.5"></textarea>
-</div>
-
-</div>
-
-<!-- FOOTER -->
-<div class="flex justify-between px-6 py-4 border-t">
-
-<button onclick="closeModal()"
-class="border px-5 py-2 rounded-xl hover:bg-gray-100 flex items-center gap-2">
-
-<i class="fas fa-arrow-right"></i>
-بازگشت
-</button>
-
-<button
-class="bg-blue-600 text-white px-5 py-2 rounded-xl hover:bg-blue-700 flex items-center gap-2">
-
-<i class="fas fa-save"></i>
-ذخیره چک
-</button>
 
 </div>
 
 </div>
-</div>
+     </main>
 
+    </div>
 
-<!-- Check Execute Modal -->
-<div id="viewModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden items-center justify-center z-50">
+  </div>
 
-<div id="viewModalBox" class="bg-white w-[95%] xl:w-[1100px] rounded-2xl shadow-2xl p-6">
 
-<!-- Header -->
-<div class="bg-indigo-600 text-white rounded-lg py-3 px-4 flex justify-between items-center mb-5">
-<h2 class="text-xl font-bold flex items-center gap-2">
-<i class="fas fa-eye"></i>
-مشاهده و اجرای چک
-</h2>
-
-<button onclick="closeViewModal()" class="text-white text-xl">
-<i class="fas fa-times"></i>
-</button>
-</div>
-
-
-<!-- Content -->
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-<!-- RIGHT SIDE (اطلاعات چک) -->
-<div class="divide-y divide-gray-200 border border-gray-300 rounded-xl p-4">
-
-<div class="flex justify-start py-3 hover:bg-gray-50 px-2 rounded">
-<span class="text-gray-600 w-64">نمبر چک</span>
-<span class="font-bold w-64">CHK-001</span>
-</div>
-
-<div class="flex justify-start py-3 hover:bg-gray-50 px-2 rounded">
-<span class="text-gray-600 w-64">تاریخ ثبت</span>
-<span class="font-bold w-64">1404/02/10</span>
-</div>
-
-<div class="flex justify-start py-3 hover:bg-gray-50 px-2 rounded">
-<span class="text-gray-600 w-64">تاریخ پرداخت</span>
-<span class="font-bold w-64">1404/02/20</span>
-</div>
-
-<div class="flex justify-start py-3 hover:bg-gray-50 px-2 rounded">
-<span class="text-gray-600 w-64">حساب</span>
-<span class="font-bold w-64">صراف کابل</span>
-</div>
-
-<div class="flex justify-start py-3 hover:bg-gray-50 px-2 rounded">
-<span class="text-gray-600 w-64">مبلغ</span>
-<span class="font-bold w-64 text-green-600">50,000</span>
-</div>
-
-<div class="flex justify-start py-3 hover:bg-gray-50 px-2 rounded">
-<span class="text-gray-600 w-64">عنوان پول</span>
-<span class="font-bold w-64">AFN</span>
-</div>
-
-<div class="flex justify-start py-3 hover:bg-gray-50 px-2 rounded">
-<span class="text-gray-600 w-64">در وجه</span>
-<span class="font-bold w-64">محمد احمدی</span>
-</div>
-
-<div class="flex justify-start py-3 hover:bg-gray-50 px-2 rounded">
-<span class="text-gray-600 w-64">وضعیت</span>
-<span class="font-bold text-yellow-600 w-64">در انتظار</span>
-</div>
-
-<div class="flex justify-start py-3 hover:bg-gray-50 px-2 rounded">
-<span class="text-gray-600 w-64">تفصیلات</span>
-<span class="font-bold w-64">پرداخت چک مشتری</span>
-</div>
-
-</div>
-
-
-<!-- LEFT SIDE (اجرای چک) -->
-<div class="border border-gray-300 rounded-xl p-4">
-
-<h3 class="font-bold text-gray-700 mb-3">
-معلومات اجرای چک
-</h3>
-
-<div class="space-y-3">
-
-<div>
-<select
-class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-1 focus:ring-indigo-500">
-
-<option value="">انتخاب حساب پرداخت کننده</option>
-<option>صندوق اصلی</option>
-<option>صندوق کابل</option>
-<option>بانک</option>
-<option>حساب دالر</option>
-
-</select>
-</div>
-
-<input type="text" placeholder="شهرت اخذ کننده"
-class="w-full border border-gray-300 rounded-lg px-3 py-2">
-
-<textarea placeholder="تفصیلات اجرای چک"
-class="w-full border border-gray-300 rounded-lg px-3 py-2"></textarea>
-
-<div>
-<label class="text-md font-bold text-gray-600">
-سند معامله / رسید
-</label>
-
-<input type="file"
-class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
-</div>
-
-</div>
-
-
-<!-- Action Button -->
-<div class="flex gap-3 mt-4">
-
-<button class="flex items-center gap-2 px-3 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200">
-<i class="fas fa-check"></i>
-اجرای چک
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- Footer -->
-<div class="flex justify-between items-center mt-6 border-t pt-4">
-
-<div class="flex gap-3 flex-wrap">
-
-<button class="flex items-center gap-2 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200">
-<i class="fas fa-print"></i>
-<span>چاپ</span>
-</button>
-
-<button onclick="closeViewModal()" class="flex items-center gap-2 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200">
-<i class="fas fa-arrow-right"></i>
-<span>بستن</span>
-</button>
-
-<button class="flex items-center gap-2 px-3 py-2 bg-yellow-100 text-yellow-600 rounded-lg hover:bg-yellow-200">
-<i class="fas fa-pen"></i>
-<span>ویرایش</span>
-</button>
-
-<button class="flex items-center gap-2 px-3 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200">
-<i class="fas fa-trash"></i>
-<span>حذف</span>
-</button>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-<script>
-function openModal(){
-let modal = document.getElementById('modal');
-let box = document.getElementById('modalBox');
-
-modal.classList.remove('hidden');
-modal.classList.add('flex');
-
-setTimeout(()=>{
-box.classList.remove('scale-95','opacity-0');
-box.classList.add('scale-100','opacity-100');
-},50);
-}
-
-function closeModal(){
-let modal = document.getElementById('modal');
-let box = document.getElementById('modalBox');
-
-box.classList.add('scale-95','opacity-0');
-
-setTimeout(()=>{
-modal.classList.add('hidden');
-modal.classList.remove('flex');
-},200);
-}
-
-
-
-
-
-
-// 
-function openViewModal(){
-let modal = document.getElementById('viewModal');
-let box = document.getElementById('viewModalBox');
-
-modal.classList.remove('hidden');
-modal.classList.add('flex');
-
-setTimeout(()=>{
-box.classList.remove('scale-95','opacity-0');
-box.classList.add('scale-100','opacity-100');
-},50);
-}
-
-function closeViewModal(){
-let modal = document.getElementById('viewModal');
-let box = document.getElementById('viewModalBox');
-
-box.classList.add('scale-95','opacity-0');
-
-setTimeout(()=>{
-modal.classList.add('hidden');
-modal.classList.remove('flex');
-},200);
-}
-</script>
-
-
-    </main>
-
-</div>
-
-</div>
-
-
-<!-- js link -->
- <script src="main.js"></script>
+  <!-- js link -->
+  <script src="main.js"></script>
 </body>
+
 </html>

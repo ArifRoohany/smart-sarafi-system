@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/main.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <title>سیستم صرافی - هوشمند</title>
+</head>
+
+<body class="bg-gray-100 font-sans overflow-x-hidden">
+
+  <div class="flex min-h-screen">
+
+    <!-- ================= Sidebar ================= -->
+    <aside id="sidebar"
+      class="w-full sm:w-64 bg-gradient-to-b from-blue-900 to-blue-800 text-white overflow-y-auto fixed right-0 top-0 h-screen transform transition-all duration-300">
+
+      <!-- لوگو -->
+      <div class="p-5 text-center sticky top-0 bg-gradient-to-b from-blue-900 to-blue-800 z-20">
+        <img src="images/logo.png" class="mx-auto mb-3">
+        <hr class="border-white border-dashed border-1">
+      </div>
+
+      <!-- Menu -->
+      <ul class="space-y-2 px-3 py-4">
+
+        <!-- داشبورد -->
+        <li>
+          <a href="dashboard.html"
+            class="flex items-center gap-3 p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white duration-300">
+            <i class="fas fa-home"></i>
+            داشبورد
+          </a>
+        </li>
+
+        <!-- حزانه -->
+        <li>
+          <a href="treasury.html"
+            class="flex items-center gap-3 p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white duration-300">
+            <i class="fas fa-wallet"></i>
+            خزانه
+          </a>
+        </li>
+
+        <!-- روزنامچه -->
+        <li>
+          <a href="activity-log.html"
+            class="flex items-center gap-3 p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white duration-300">
+            <i class="fas fa-book"></i>
+            روزنامچه
+          </a>
+        </li>
+
+        <!-- اطلاعات اولیه-->
+        <li>
+          <button onclick="toggleSubmenu('infoMenu','infoIcon')"
+            class="w-full flex items-center justify-between p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white duration-300">
+
+            <span class="flex items-center gap-3">
+              <i class="fas fa-exchange-alt"></i>
+              اطلاعات اولیه
+            </span>
+
+            <i id="infoIcon" class="fas fa-chevron-left transition-transform duration-300"></i>
+          </button>
+
+          <ul id="infoMenu" class="hidden mt-2 space-y-2 text-md">
+
+            <!-- نرخ اسعار -->
+            <li>
+              <a href="currency-rates.html"
+                class="flex items-center gap-3 p-3 rounded-full  hover:underline bg-blue-700 text-white">
+                <i class="fas fa-rotate-forward"></i>
+                نرخ اسعار
+              </a>
+            </li>
+
+            <!--   حساب (کهاته ها) -->
+            <li>
+              <a href="accounts.html" class="flex items-center gap-3 p-3 rounded-full hover:underline bg-blue-700 text-white">
+
+                <i class="fas fa-wallet"></i>
+                حساب (کهاته ها)
+
+              </a>
+            </li>
+
+            <!-- کاربران -->
+            <li>
+              <a href="users.html" class="flex items-center gap-3 p-3 rounded-full hover:underline bg-blue-700 text-white">
+                <i class="fas fa-users"></i>
+                کاربران
+              </a>
+            </li>
+
+            <!-- شعبات-->
+            <li>
+              <a href="branches.html" class="flex items-center gap-3 p-3 rounded-full hover:underline bg-blue-700 text-white">
+                <i class="fas fa-building"></i>
+                شعبات
+              </a>
+            </li>
+
+            <!-- شهر ها-->
+            <li>
+              <a href="cities.html" class="flex items-center gap-3 p-3 rounded-full hover:underline bg-blue-700 text-white">
+                <i class="fas fa-location-dot"></i>
+                شهر ها
+              </a>
+            </li>
+
+          </ul>
+        </li>
+
+        <!-- عملیات-->
+        <li>
+          <button onclick="toggleSubmenu('actionsMenu','actionsIcon')"
+            class="w-full flex items-center justify-between p-3 text-blue-950 rounded-full bg-white hover:bg-blue-700 hover:text-white">
+
+            <span class="flex items-center gap-3">
+              <i class="fas fa-briefcase"></i>
+              عملیات
+            </span>
+
+            <i id="actionsIcon" class="fas fa-chevron-left transition-transform duration-300"></i>
+          </button>
+
+          <ul id="actionsMenu" class="hidden mt-2 space-y-2 text-md">
+
+            <li>
+              <a href="cash_balance.html"
+                class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-wallet pr-3"></i>
+                موجود نقدی
+              </a>
+            </li>
+
+            <li>
+              <a href="activity-log.html"
+                class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-book pr-3"></i>
+                ژورنال/روزنامچه
+              </a>
+            </li>
+
+            <li>
+              <a href="transaction.html"
+                class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-paper-plane pr-3"></i>
+                حواله پول
+              </a>
+            </li>
+
+            <li>
+              <a href="exchange.html"
+                class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-exchange-alt pr-3"></i>
+                تبادله اسعار
+              </a>
+            </li>
+
+            <li>
+              <a href="checks.html"
+                class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-file-invoice-dollar pr-3"></i>
+                چک یا پارچه صرافی
+              </a>
+            </li>
+
+            <li>
+              <a href="#"
+                class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-calendar-alt pr-3"></i>
+                تاریخ سر رسید
+              </a>
+            </li>
+
+            <li>
+              <a href="cash-result.html"
+                class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-chart-line pr-3"></i>
+                نقدینگ و نتیجه
+              </a>
+            </li>
+
+            <li>
+              <a href="ok-accounts.html"
+                class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+                <i class="fas fa-check-circle pr-3"></i>
+                اوکی حساب
+              </a>
+            </li>
+
+          </ul>
+        </li>
+
+        <!-- گزارشات -->
+        <!-- <li>
+          <a href="reports.html"
+            class="flex items-center gap-3 p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white">
+            <i class="fas fa-square-poll-vertical"></i>
+            گزارشات
+          </a>
+        </li> -->
+
+<!-- گزارشات-->
+<li>
+  <button onclick="toggleSubmenu('reportsMenu','reportsIcon')"
+    class="w-full flex items-center justify-between p-3 text-blue-950 rounded-full bg-white hover:bg-blue-700 hover:text-white">
+
+    <span class="flex items-center gap-3">
+      <i class="fas fa-chart-bar"></i>
+      گزارشات
+    </span>
+
+    <i id="reportsIcon"
+      class="fas fa-chevron-left transition-transform duration-300"></i>
+  </button>
+
+  <ul id="reportsMenu" class="hidden mt-2 space-y-2 text-md">
+
+    <li>
+      <a href="general-ledger.html"
+        class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+        <i class="fas fa-book-open pr-3"></i>
+        دفتر کل
+      </a>
+    </li>
+
+    <li>
+      <a href="transaction-list.html"
+        class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+        <i class="fas fa-list pr-3"></i>
+        مشاهده لیست
+      </a>
+    </li>
+
+    <li>
+      <a href="transaction-reports.html"
+        class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+        <i class="fas fa-money-bill-transfer pr-3"></i>
+        تراکنش های مالی
+      </a>
+    </li>
+
+    <li>
+      <a href="trial-balance.html"
+        class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+        <i class="fas fa-balance-scale pr-3"></i>
+        بلانس آزمایشی
+      </a>
+    </li>
+
+    <li>
+      <a href="balance-sheet.html"
+        class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+        <i class="fas fa-file-invoice pr-3"></i>
+        بیلانس شیت
+      </a>
+    </li>
+
+    <li>
+      <a href="#"
+        class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+        <i class="fas fa-paper-plane pr-3"></i>
+        حواله
+      </a>
+    </li>
+
+    <li>
+      <a href="exchange-report.html"
+        class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+        <i class="fas fa-exchange-alt pr-3"></i>
+        تبادله اسعار
+      </a>
+    </li>
+
+  </ul>
+</li>
+
+        <!-- تیظیمات -->
+        <li>
+          <button onclick="toggleSubmenu('settingMenu','settingIcon')"
+            class="w-full flex items-center justify-between p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white">
+
+            <span class="flex items-center gap-3">
+              <i class="fas fa-cog"></i>
+              تنظیمات
+            </span>
+
+            <i id="settingIcon" class="fas fa-chevron-left transition-transform duration-300"></i>
+          </button>
+
+          <ul id="settingMenu" class="hidden my-2 space-y-2 text-md">
+
+            <li>
+              <a href="company-info.html"
+                class="flex gap-2 items-center hover:underline bg-blue-700 py-3 rounded-full cursor-pointer">
+                <i class="fas fa-building pr-3"></i>
+                مشخصات شرکت
+              </a>
+            </li>
+
+            <li>
+              <a href="system-sitting.html"
+                class="flex gap-2 items-center hover:underline bg-blue-700 py-3 rounded-full cursor-pointer">
+                <i class="fas fa-sliders-h pr-3"></i>
+                تنظیمات سیستم
+              </a>
+            </li>
+
+            <li>
+              <a href="transaction.html"
+                class="flex gap-2 items-center hover:underline bg-blue-700 py-3 rounded-full cursor-pointer">
+                <i class="fas fa-layer-group pr-3"></i>
+                نوعیت حساب
+              </a>
+            </li>
+
+            <li>
+              <a href="transaction.html"
+                class="flex gap-2 items-center hover:underline bg-blue-700 py-3 rounded-full cursor-pointer">
+                <i class="fas fa-language pr-3"></i>
+                مدیریت زبان
+              </a>
+            </li>
+
+            <li>
+              <a href="transaction.html"
+                class="flex gap-2 items-center hover:underline bg-blue-700 py-3 rounded-full cursor-pointer">
+                <i class="fas fa-shield-alt pr-3"></i>
+                امنیت
+              </a>
+            </li>
+
+            <li>
+              <a href="transaction.html"
+                class="flex gap-2 items-center hover:underline bg-blue-700 py-3 rounded-full cursor-pointer">
+                <i class="fas fa-database pr-3"></i>
+                بکاپ
+              </a>
+            </li>
+
+          </ul>
+        </li>
+
+      </ul>
+
+    </aside>
+
+
+    <!-- ================= Content ================= -->
+    <div class="flex-1 pr-64 min-w-0 transition-all duration-300" id="content">
+
+      <!-- ================= Header ================= -->
+      <header id="header"
+        class="sticky top-4 bg-gradient-to-r from-blue-900 to-blue-800 shadow-lg rounded-full mx-auto px-6 py-4 flex items-center justify-between w-[96%] z-40 transition-all duration-300">
+
+        <!-- Right -->
+        <div class="flex items-center gap-4">
+
+          <!-- Menu Icon -->
+          <button onclick="toggleSidebar()" class="text-xl text-white">
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <!-- Admin Dropdown -->
+          <div class="relative hidden md:block">
+            <button onclick="toggleDropdown('adminMenu')" class="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded">
+              <i class="fas fa-user"></i>
+              ادمین
+            </button>
+
+            <div id="adminMenu" class="hidden absolute right-0 mt-2 bg-white shadow rounded w-40">
+
+              <div class="p-2 hover:bg-gray-100 cursor-pointer flex gap-2">
+                <i class="fas fa-sign-out-alt"></i> خروج
+              </div>
+
+              <div class="p-2 hover:bg-gray-100 cursor-pointer flex gap-2">
+                <a href="profile-sitting.html">
+                  <i class="fas  fa-cog"></i> تنظیمات پروفایل
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Language -->
+          <div class="relative hidden sm:block">
+            <button onclick="toggleDropdown('langMenu')" class="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded">
+              زبان
+              <i class="fas fa-globe"></i>
+            </button>
+
+            <div id="langMenu" class="hidden absolute right-0 mt-2 bg-white shadow rounded w-32">
+
+              <div class="p-2 hover:bg-gray-100 cursor-pointer">فارسی</div>
+              <div class="p-2 hover:bg-gray-100 cursor-pointer">English</div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Center Links -->
+        <div class="hidden lg:flex gap-6 text-gray-700">
+
+          <a class="flex gap-2 items-center text-white cursor-pointer">
+            <i class="fas fa-exchange-alt"></i> تبادله
+          </a>
+
+          <a class="flex gap-2 items-center text-white cursor-pointer">
+            <i class="fas fa-paper-plane"></i> حواله
+          </a>
+
+          <a class="flex gap-2 items-center text-white cursor-pointer">
+            <i class="fas fa-receipt"></i> برد/رسید
+          </a>
+
+          <a class="flex gap-2 items-center text-white cursor-pointer">
+            <i class="fas fa-chart-line"></i> نرخ اسعار
+          </a>
+
+          <a class="flex gap-2 items-center text-white cursor-pointer">
+            <i class="fas fa-balance-scale"></i> تعزیرات
+          </a>
+
+          <a class="flex gap-2 items-center text-white cursor-pointer">
+            <i class="fas fa-bolt"></i> اکشن‌ها
+          </a>
+
+        </div>
+
+        <!-- Left Icons -->
+        <div class="hidden  md:flex gap-4 text-xl">
+
+          <i class="fas fa-bell cursor-pointer text-white"></i>
+          <i class="fas fa-cog cursor-pointer text-white"></i>
+
+        </div>
+
+      </header>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-6 space-y-8 mt-5">
+          <!-- =================== بلانس آزمایشی =================== -->
+
+           <!-- عنوان و توضیح -->
+  <div class="mb-10 text-center md:text-right bg-white p-4 rounded-xl">
+    <h2 class="text-2xl md:text-3xl font-bold text-blue-900 mb-2">بلانس آزمایشی</h2>
+    <p class="text-gray-600 text-sm md:text-base">در این بخش می‌توانید بلانس آزمایشی خود را مدیریت کنید و گزارش‌ها را مشاهده کنید.</p>
+  </div>
+<div class="bg-white rounded-2xl shadow-lg p-6 mb-6 max-w-7xl mx-auto">
+
+ 
+
+  <!-- Row اصلی -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- ستون اول -->
+    <div class="space-y-4">
+      <!-- انتخاب دوره -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">انتخاب دوره</label>
+        <select class="w-full border bg-gray-100 border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option>روزانه</option>
+          <option>هفتگی</option>
+          <option>ماهانه</option>
+        </select>
+      </div>
+
+      <!-- نوعیت حساب -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">نوعیت حساب</label>
+        <select class="w-full border bg-gray-100 border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option>حقیقی</option>
+          <option>مجازی</option>
+        </select>
+      </div>
+
+      <!-- نوعیت پول -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">نوعیت پول</label>
+        <select class="w-full border bg-gray-100 border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option>تومان</option>
+          <option>دلار</option>
+          <option>یورو</option>
+        </select>
+      </div>
+
+      <!-- نوعیت بلانس -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">نوعیت بلانس</label>
+        <select class="w-full border bg-gray-100 border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option>آزمایشی</option>
+          <option>اصلی</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ستون دوم -->
+    <div class="space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- شماره حساب اول و دوم -->
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">از کد حساب</label>
+          <input type="number" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="مثلاً 12345">
+        </div>
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">تا کد حساب</label>
+          <input type="number" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="مثلاً 54321">
+        </div>
+      </div>
+
+      <!-- از تاریخ تا تاریخ -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">از تاریخ</label>
+          <input type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">تا تاریخ</label>
+          <input type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+      </div>
+
+      <!-- تبدیل به ارز اصلی -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">تبدیل به ارز اصلی</label>
+        <select class="w-full border bg-gray-100 border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option>بلی</option>
+          <option>نخیر</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ستون سوم -->
+    <div class="space-y-4 flex flex-col justify-between">
+      <!-- تعداد نمایش ردیف -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">تعداد نمایش ردیف در یک صفحه</label>
+        <input type="number" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="مثلاً 10">
+      </div>
+
+      <!-- دکمه‌ها -->
+      <div class="flex flex-col sm:flex-row gap-3 mt-4">
+        <button class="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
+          <i class="fas fa-sort-amount-up"></i>
+          ترتیب بلانس آزمایشی
+        </button>
+        <button class="flex-1 flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
+          <i class="fas fa-arrow-left"></i>
+          بازگشت
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- =================== جدول گزارش بلانس آزمایشی کامل با border =================== -->
+<div class="bg-white rounded-2xl shadow-lg p-6 mb-6 max-w-7xl mx-auto">
+
+  <!-- عنوان و توضیح -->
+  <div class="mb-6 flex flex-col md:flex-row md:justify-between md:items-center">
+    <div class="mb-4 md:mb-0">
+      <h2 class="text-2xl md:text-3xl font-bold text-blue-900 mb-2">گزارش بلانس آزمایشی</h2>
+      <p class="text-gray-600 text-sm md:text-base">نمایش کامل بلانس آزمایشی با تمام ارزها و نوعیت حساب‌ها.</p>
+    </div>
+    <div class="flex gap-3">
+      <button class="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
+        <i class="fas fa-print"></i> چاپ
+      </button>
+      <button class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
+        <i class="fas fa-file-excel"></i> اکسل
+      </button>
+    </div>
+  </div>
+
+  <!-- جدول -->
+  <div class="overflow-x-auto">
+    <table class="min-w-full border border-gray-400 text-gray-700">
+      <thead class="bg-blue-100 font-semibold text-gray-800 text-center">
+        <!-- ردیف اول هدر -->
+        <tr>
+          <th class="p-3 border border-gray-400" rowspan="2">شماره</th>
+          <th class="p-3 border border-gray-400" rowspan="2">عنوان حساب‌ها</th>
+          <th class="p-3 border border-gray-400" rowspan="2">نوعیت حساب</th>
+          <th class="p-3 border border-gray-400" colspan="2">افغانی</th>
+          <th class="p-3 border border-gray-400" colspan="2">دالر</th>
+          <th class="p-3 border border-gray-400" colspan="2">کلدار</th>
+          <th class="p-3 border border-gray-400" colspan="2">تومان</th>
+          <th class="p-3 border border-gray-400" colspan="2">یورو</th>
+        </tr>
+        <!-- ردیف دوم هدر -->
+        <tr>
+          <th class="p-2 border border-gray-400">طلب</th>
+          <th class="p-2 border border-gray-400">باقی</th>
+          <th class="p-2 border border-gray-400">طلب</th>
+          <th class="p-2 border border-gray-400">باقی</th>
+          <th class="p-2 border border-gray-400">طلب</th>
+          <th class="p-2 border border-gray-400">باقی</th>
+          <th class="p-2 border border-gray-400">طلب</th>
+          <th class="p-2 border border-gray-400">باقی</th>
+          <th class="p-2 border border-gray-400">طلب</th>
+          <th class="p-2 border border-gray-400">باقی</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <!-- ردیف‌های پر شده 1 تا 12 -->
+        <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400">1</td>
+          <td class="p-2 border border-gray-400">اجناس</td>
+          <td class="p-2 border border-gray-400">اجناس</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400 text-red-600 font-bold">-350,000</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+        </tr>
+        <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400">2</td>
+          <td class="p-2 border border-gray-400">برق</td>
+          <td class="p-2 border border-gray-400">مصارفات</td>
+          <td class="p-2 border border-gray-400 text-green-500 font-bold">5,000</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+        </tr>
+        <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400">3</td>
+          <td class="p-2 border border-gray-400">بریالی عمری</td>
+          <td class="p-2 border border-gray-400">مشتری</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400 text-red-500 font-bold">-55,000</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+        </tr>
+        <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400">4</td>
+          <td class="p-2 border border-gray-400">خرید و فروش</td>
+          <td class="p-2 border border-gray-400">خرید و فروش</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400 text-red-500 font-bold">-115,650</td>
+          <td class="p-2 border border-gray-400 text-green-500 font-bold">1,250</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400 text-green-500 font-bold">500</td>
+          <td class="p-2 border border-gray-400"></td>
+        </tr>
+        <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400">5</td>
+          <td class="p-2 border border-gray-400">خزانه/دخل/تجری</td>
+          <td class="p-2 border border-gray-400">صندوق</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400 text-red-500 font-bold">-125,000</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400 text-red-500 font-bold">-350</td>
+        </tr>
+        <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400">6</td>
+          <td class="p-2 border border-gray-400">سرمایه اول توسط عارف</td>
+          <td class="p-2 border border-gray-400">سرمایه</td>
+          <td class="p-2 border border-gray-400 text-green-500 font-bold">551,600</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+        </tr>
+        <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400">7</td>
+          <td class="p-2 border border-gray-400">شرکت بصری</td>
+          <td class="p-2 border border-gray-400">حمایت کننده</td>
+          <td class="p-2 border border-gray-400 text-green-500 font-bold">240,320</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+        </tr>
+        <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400">8</td>
+          <td class="p-2 border border-gray-400">صرافی انصاف</td>
+          <td class="p-2 border border-gray-400">بانک/صراف</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400 text-red-500 font-bold">-1,200</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+        </tr>
+        <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400">9</td>
+          <td class="p-2 border border-gray-400">عبدالله احدی</td>
+          <td class="p-2 border border-gray-400">مشتری</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400 text-red-500 font-bold">-45,000</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+        </tr>
+        <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400">10</td>
+          <td class="p-2 border border-gray-400">عواید متفرقه</td>
+          <td class="p-2 border border-gray-400">عواید متفرقه</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400 text-red-500 font-bold">-500</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+        </tr>
+        <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400">11</td>
+          <td class="p-2 border border-gray-400">مصارف خوراک</td>
+          <td class="p-2 border border-gray-400">مصارفات</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400 text-red-500 font-bold">-700</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+        </tr>
+        <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400">12</td>
+          <td class="p-2 border border-gray-400">وسایل و تجهیزات</td>
+          <td class="p-2 border border-gray-400">تجهیزات</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400 text-red-500 font-bold">-125,000</td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+          <td class="p-2 border border-gray-400"></td>
+        </tr>
+          <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400" colspan="3">جمع کل طلب و باقی</td>
+          <td class="p-2 border border-gray-400 text-green-500 font-bold">907,210</td>
+          <td class="p-2 border border-gray-400 text-red-500 font-bold">-907,210</td>
+          <td class="p-2 border border-gray-400 text-green-500 font-bold">124</td>
+          <td class="p-2 border border-gray-400 text-red-500 font-bold">-124</td>
+          <td class="p-2 border border-gray-400 text-green-500 font-bold">0</td>
+          <td class="p-2 border border-gray-400 text-red-500 font-bold">0</td>
+          <td class="p-2 border border-gray-400 text-green-500 font-bold">0</td>
+          <td class="p-2 border border-gray-400 text-red-500 font-bold">0</td>
+          <td class="p-2 border border-gray-400 text-green-500 font-bold">150</td>
+          <td class="p-2 border border-gray-400 text-red-500 font-bold">-150</td>
+        </tr>
+        <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400" colspan="3">تفاوت طلب و باقی</td>
+          <td class="p-2 border border-gray-400" colspan="2">0</td>
+
+          <td class="p-2 border border-gray-400" colspan="2">0</td>
+
+          <td class="p-2 border border-gray-400" colspan="2">0</td>
+
+          <td class="p-2 border border-gray-400" colspan="2">0</td>
+
+          <td class="p-2 border border-gray-400" colspan="2">0</td>
+        </tr>
+          <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400" colspan="3">نرخ تبادله</td>
+          <td class="p-2 border border-gray-400" colspan="2">1</td>
+
+          <td class="p-2 border border-gray-400" colspan="2">65</td>
+
+          <td class="p-2 border border-gray-400" colspan="2">4.5</td>
+
+          <td class="p-2 border border-gray-400" colspan="2">770</td>
+
+          <td class="p-2 border border-gray-400" colspan="2">83</td>
+        </tr>
+
+
+          <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400" colspan="3">تبدیل به افغانی</td>
+          <td class="p-2 border border-gray-400" colspan="2">0</td>
+
+          <td class="p-2 border border-gray-400" colspan="2">0</td>
+
+          <td class="p-2 border border-gray-400" colspan="2">0</td>
+
+          <td class="p-2 border border-gray-400" colspan="2">0</td>
+
+          <td class="p-2 border border-gray-400" colspan="2">0</td>
+        </tr>
+
+
+          <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400" colspan="3">طلب ها و باقی ها</td>
+          <td class="p-2 border border-gray-400" colspan="10">
+            <span class="text-green-500 font-bold">طلب ها: 0 </span> - <span class="text-red-500 font-bold">باقی ها:  0</span>
+          </td>
+        </tr>
+
+          <tr class="hover:bg-blue-50 transition-colors">
+          <td class="p-2 border border-gray-400" colspan="3">بلانس</td>
+          <td class="p-2 border border-gray-400" colspan="10">
+            صفر
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+      </main>
+
+    </div>
+
+  </div>
+
+
+  <!-- js link -->
+  <script src="main.js"></script>
+</body>
+
+</html>

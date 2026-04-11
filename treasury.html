@@ -130,7 +130,7 @@
             <i id="actionsIcon" class="fas fa-chevron-left transition-transform duration-300"></i>
           </button>
 
-          <ul id="actionsMenu" class="hidden mt-2 space-y-2 text-md mb-[160px]">
+          <ul id="actionsMenu" class="hidden mt-2 space-y-2 text-md">
 
             <li>
               <a href="cash_balance.html"
@@ -200,13 +200,88 @@
         </li>
 
         <!-- گزارشات -->
-        <li>
+        <!-- <li>
           <a href="reports.html"
             class="flex items-center gap-3 p-3 text-blue-950 rounded-full bg-white  hover:bg-blue-700 hover:text-white">
             <i class="fas fa-square-poll-vertical"></i>
             گزارشات
           </a>
-        </li>
+        </li> -->
+
+<!-- گزارشات-->
+<li>
+  <button onclick="toggleSubmenu('reportsMenu','reportsIcon')"
+    class="w-full flex items-center justify-between p-3 text-blue-950 rounded-full bg-white hover:bg-blue-700 hover:text-white">
+
+    <span class="flex items-center gap-3">
+      <i class="fas fa-chart-bar"></i>
+      گزارشات
+    </span>
+
+    <i id="reportsIcon"
+      class="fas fa-chevron-left transition-transform duration-300"></i>
+  </button>
+
+  <ul id="reportsMenu" class="hidden mt-2 space-y-2 text-md">
+
+    <li>
+      <a href="general-ledger.html"
+        class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+        <i class="fas fa-book-open pr-3"></i>
+        دفتر کل
+      </a>
+    </li>
+
+    <li>
+      <a href="transaction-list.html"
+        class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+        <i class="fas fa-list pr-3"></i>
+        مشاهده لیست
+      </a>
+    </li>
+
+    <li>
+      <a href="transaction-reports.html"
+        class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+        <i class="fas fa-money-bill-transfer pr-3"></i>
+        تراکنش های مالی
+      </a>
+    </li>
+
+    <li>
+      <a href="trial-balance.html"
+        class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+        <i class="fas fa-balance-scale pr-3"></i>
+        بلانس آزمایشی
+      </a>
+    </li>
+
+    <li>
+      <a href="balance-sheet.html"
+        class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+        <i class="fas fa-file-invoice pr-3"></i>
+        بیلانس شیت
+      </a>
+    </li>
+
+    <li>
+      <a href="#"
+        class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+        <i class="fas fa-paper-plane pr-3"></i>
+        حواله
+      </a>
+    </li>
+
+    <li>
+      <a href="exchange-report.html"
+        class="flex gap-2 items-center hover:underline bg-blue-700 hover:text-white py-3 rounded-full cursor-pointer">
+        <i class="fas fa-exchange-alt pr-3"></i>
+        تبادله اسعار
+      </a>
+    </li>
+
+  </ul>
+</li>
 
         <!-- تیظیمات -->
         <li>
